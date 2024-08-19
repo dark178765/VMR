@@ -1,0 +1,16 @@
+{
+    "name": "components",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "npx babel --watch . --out-dir ../public/assets/js/component --presets react-app/prod",
+        "prod": "uglifyjs ../public/assets/js/component/*.js -e"
+    },
+    "dependencies": {
+        "babel-cli": "6",
+        "babel-minify": "^0.5.2",
+        "babel-preset-minify": "^0.5.2",
+        "babel-preset-react-app": "3"
+    }
+}

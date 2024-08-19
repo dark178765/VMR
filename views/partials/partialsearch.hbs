@@ -1,0 +1,55 @@
+<div class="custom-form">
+    <form name="searchText" id="search-text">
+        <input type="text" name="search" id="search" formControlName="searchText"
+            placeholder="Enter any text to search blogs..">
+        <input type="submit" value="Search">
+    </form>
+</div>
+<style>
+    .search-button {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        border: 0;
+        background: none;
+        font-size: 16px;
+        padding: 0 20px;
+        background: #e14073;
+        color: #fff;
+        transition: .3s;
+        border-radius: 50px;
+        box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var searchApp = new Vue({
+        el: '#search',
+        data: {
+            reports: [],
+            isSearching: false,
+            searchText: ''
+        },
+        methods: {
+            autocomplete: function () {
+                if (this.searchText.length > 3) {
+                    this.isSearching = true;
+                    fetch('{{searchUrl}}/' + this.searchText, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application-json; charset=utf-8'
+                        }
+                    }).then(res => res.json())
+                        .then(res => {
+                            this.reports = res;
+                            this.isSearching = false;
+                        });
+                }
+            },
+            search: function () {
+
+            }
+        }
+    })
+</script>

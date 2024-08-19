@@ -1,0 +1,63 @@
+# compiled output
+/dist
+/node_modules
+/node_modules_windows
+/publish
+/components/node_modules
+/public/assets/js/component/node_modules/*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.zip
+yarn.lock
+src/public/captcha.png
+src/public/assets/sitemap.xml
+temp.png
+public/demo.png
+temp.png
+public/image/input_bk.jpg
+temp.png
+.env
+*.zip
+public/image/input_bk.jpg
+public/demo.png
+/scss/output/*
+src/public/assets/js/component/node_modules
+public/assets/img/category/*
+public/assets/img/reports
+public/assets/video/VMR_back4_orig.mp4
+public/assets/video
+node_modules_bk/*
+bootstrap-5.1.3
+.sass-cache
+_out_
+.vercel

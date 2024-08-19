@@ -1,0 +1,55 @@
+<link href="/css/thanks.css" rel="stylesheet" />
+<div class="realoutercontainer">
+    <div class="outercontainer">
+        <div class="outercontainer2">
+            <div class="outercontainer3">
+                <div class="outercontainer4">
+                    <h1>Thank you !</h1>
+                    {{#if_not_eq reportTitle ''}}
+                    <p class="mb-0">
+                        We have received your request for <span style="color: #398cbf;">{{reportTitle}}</span> research
+                        report. Our research specialist will contact you soon
+                    </p>
+                    <p>
+                        <a class="btn btn-outline-primary" href="/industry-report/{{slug}}">Read Report</a>
+                        <a class="btn btn-outline-secondary" href="/toc/{{slug}}">Read Table Of Content</a>
+                    </p>
+                    {{/if_not_eq}}
+                    {{#if_eq reportTitle ''}}
+                    <p class="mb-0">
+                        We recieved your request. We will contact you.
+                    </p>
+                    {{/if_eq}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="common-rectangleGrid original">
+        <!-- Background -->
+        <div class="backgroundContainer">
+            <div class="grid">
+                <div class="background"></div>
+            </div>
+        </div>
+        <!-- rectangles -->
+        <div class="rectangleContainer">
+            <div class="grid">
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{{#metasection 'noindex'}}
+<meta name="robots" content="noindex">
+<script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_hC0yIvLqBvYJHaENNnPATLzDCjiHZFyDR8jiLaS6ZsH', { api_host: 'https://app.posthog.com' })
+</script>
+{{/metasection}}

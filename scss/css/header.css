@@ -1,0 +1,14 @@
+.about ul {
+  height: 105px; }
+
+@media (max-width: 767px) {
+  #header .container,
+  #header .container-sm {
+    max-width: 540px; }
+
+  .navbar li:hover ul {
+    display: block; }
+  .navbar li ul {
+    display: none; } }
+
+/*# sourceMappingURL=header.css.map */

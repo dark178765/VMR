@@ -1,0 +1,69 @@
+main {
+    background-image: url(../../../assets/images/home/Websitw-for-BG-50.webp);
+    background-repeat: no-repeat;
+    /* background-size: cover;
+  background-position :center; */
+}
+
+// .how-section1 {
+//     // margin-top: -15%;
+//     // padding   : 10%;
+// }
+.how-section1 h4 {
+    color: #27bcd7;
+    font-size: 22px;
+    font-weight: 700;
+    margin: .5rem 0 1rem;
+    text-transform: uppercase;
+}
+
+.how-section1 .subheading {
+    color: #444;
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: none;
+    line-height: 1.4;
+}
+
+.how-section1 .row {
+    margin-top: 10%;
+}
+
+.bx-shadow {
+    box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.10);
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.bx-shadow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+.text-muted {
+    font-size: 13px;
+    padding: 4px 0;
+    font-weight: 400;
+    margin-bottom: 0;
+    color: #444;
+}
+
+.how-img {
+    text-align: center;
+}
+
+.how-img img {
+    width: 100%;
+}
+
+.align-content-center {
+    align-items: center;
+}
+
+@media(max-width:767px) {
+    .mobile-row-reverse {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}

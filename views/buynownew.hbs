@@ -1,0 +1,872 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="breadcrumb-list">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Pages</li>
+                            <li class="breadcrumb-item" aria-current="page">Checkout</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+<div class="page-banner" style="padding-top: 35px;background-color:#30323D;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <h1 class="mb-0" style="font-size: 2rem;">{{reportTitle}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="course-content checkout-widget" style="transform: none;">
+    <div class="container" style="transform: none;">
+        <div class="row" style="transform: none;">
+            <div class="col-lg-8">
+
+                <!-- Billing Address -->
+                <div class="student-widget" id="billingaddress">
+                    <div class="student-widget-group add-course-info">
+                        <div class="cart-head">
+                            <h4>Billing Address</h4>
+                        </div>
+                        <div class="checkout-form">
+                            <form action="#" id="form">
+                                <input type="hidden" value="{{reportId}}" name="reportId" id="reportID" />
+                                <input type="hidden" value="{{paymentType}}" name="paymentType" />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="">
+                                                First Name
+                                            </label>
+                                            <input type="text" class="form-control" name="fName" id="fName" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="">
+                                                Last Name
+                                            </label>
+                                            <input type="text" class="form-control" name="lName" id="lName" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="">
+                                                Email
+                                            </label>
+                                            <input type="email" class="form-control" name="email" id="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="">
+                                                Phone Number
+                                            </label>
+                                            <input type="tel" class="form-control" name="phoneNo" id="phoneNo"
+                                                mask="(000) 000 00 00" placeholder="(000) 000 00 00" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="">
+                                                Address
+                                            </label>
+                                            <input type="text" class="form-control" rows="5" name="address" id="address"
+                                                required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="">
+                                                Country
+                                            </label>
+                                            <!-- <input type="text" class="form-control" name="country" id="country"> -->
+                                            <!-- [(ngModel)]="enquiryFrm.country" -->
+                                            <select class="form-control select" name="country" id="country" required>
+                                                <option value="">Select country</option>
+                                                {{#each country}}
+                                                <option value="{{name}}">{{name}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="">
+                                                City
+                                            </label>
+                                            <input class="form-control" name="city" id="city" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="">
+                                                State
+                                            </label>
+                                            <input class="form-control" name="state" id="state" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="">
+                                                Zip
+                                            </label>
+                                            <input class="form-control" name="zip" id="zip" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{CaptchaImage}}" height="80" class="captcha-img" />
+                                        <i class="fa fa-refresh" onclick="jsRefreshCaptcha()"
+                                            style="cursor: pointer;"></i>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Captcha</label>
+                                            <input type="text" class="form-control" required name="captcha"
+                                                id="captcha" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Billing Address -->
+                {{#if_eq showApplyCoupon true}}
+                <div class="student-widget pay-method">
+                    <div class="student-widget-group add-course-info">
+                        <div class="cart-head">
+                            <h4>Apply Coupon</h4>
+                        </div>
+                    </div>
+                    <div class="checkout-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Coupon Code</label>
+                                    <input type="text" class="form-control" id="couponCode" name="couponCode" />
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="display: flex; align-items:center;">
+                                <button class="btn btn-dark" type="button" onclick="applyCoupon()"
+                                    id="couponCodeButton">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if_eq}}
+
+                <!-- /Payment Method -->
+                <div class="student-widget pay-method">
+                    <div class="student-widget-group add-course-info">
+                        <div class="cart-head" style="display: flex;justify-content:space-between;align-items:center;">
+                            <h4>Choose Your Payment Method</h4>
+
+                            <!--<img src="https://cdn.vantagemarketresearch.com/assets/img/we-accept.jpg"
+                                style="width: 40%;" />-->
+
+                        </div>
+                        <div class="checkout-form">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="wallet-method">
+                                            <div class="row">
+                                                {{!-- <div class="col-md-4">
+                                                    <label class="radio-inline custom_radio me-4 active-card radio"
+                                                        data-value="razor">
+                                                        <input type="radio" name="optradio" checked>
+                                                        <img src="/payment-img/razor-pay.png" style="max-width: 200px;"
+                                                            class="img-fluid" />
+                                                        <span class="checkmark"></span> Credit or Debit card (RazorPay)
+                                                    </label>
+                                                </div> --}}
+                                                <div class="col-md-4">
+                                                    <label class="radio-inline custom_radio me-4 active-card radio"
+                                                        data-value="paypal">
+                                                        <input type="radio" onchange="jsShowPaypalButtons(true)"
+                                                            name="optradio" checked>
+                                                        <img src="/payment-img/paypal.png" style="max-width: 200px;"
+                                                            class="img-fluid" />
+                                                        <span class="checkmark"></span> Credit or Debit Card (PayPal)
+
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="radio-inline custom_radio radio" data-value="wire">
+                                                        <input type="radio" name="optradio"
+                                                            onchange="jsShowPaypalButtons(false)">
+                                                        <img src="/payment-img/wire-transfer.png"
+                                                            style="max-width: 200px;" class="img-fluid" />
+                                                        <span class="checkmark"></span> Wire Transfer
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <style>
+                                        .wallet-method .custom_radio .checkmark:after {
+                                            opacity: 0;
+                                        }
+
+                                        .wallet-method .custom_radio {
+                                            border: 1px solid #dfdfdf;
+                                            border-radius: 15px;
+                                        }
+
+                                        .wallet-method label {
+                                            display: flex;
+                                            flex-direction: column;
+                                            text-align: center;
+                                            padding: 15px;
+                                        }
+
+                                        .checkmark {
+                                            display: none;
+                                        }
+
+                                        .wallet-method img {
+                                            width: 200px;
+                                            max-width: 200px;
+                                            height: 100px;
+                                        }
+
+                                        .wallet-method .col-md-4 {
+                                            text-align: center;
+                                        }
+
+                                        .active-card {
+                                            border-radius: 15px;
+                                            background-color: #AAAA;
+                                            padding: 15px;
+                                            border: 2px solid blue !important;
+                                            box-shadow: 4px 4px 10px 0 black;
+                                        }
+                                    </style>
+                                    <div class="payment-btn">
+                                        <button style="width: 100%;" class="btn btn-primary" type="button"
+                                            onclick="payNow()" id="btnPaynow">Make a Payment</button>
+                                        <div id="paypalbuttons" style="display: none;"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Payment Method -->
+
+            </div>
+            <div class="col-lg-4 theiaStickySidebar"
+                style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+
+                <div class="theiaStickySidebar"
+                    style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; top: 0px; left: 991.588px;">
+                    <div class="student-widget select-plan-group">
+                        <div class="student-widget-group">
+                            <div class="plan-header">
+                                <h4>Selected Plan</h4>
+                            </div>
+                            <div class="basic-plan">
+                                <h3>{{#if_eq buynow.SingleUser true}}Standard License{{/if_eq}}{{#if_eq
+                                    buynow.MultiUser true}}Multi User License{{/if_eq}}{{#if_eq buynow.CorporateUser
+                                    true}}Enterprise License{{/if_eq}}</h3>
+
+                                {{#if_eq buynow undefined}}
+                                <h3>{{#if_eq paymentType '0'}}Standard License{{/if_eq}}{{#if_eq
+                                    paymentType '1'}}Multi User License{{/if_eq}}{{#if_eq paymentType
+                                    '2'}}Enterprise License{{/if_eq}}</h3>
+                                {{/if_eq}}
+                                <div style="display: flex;">
+                                    <h2 class="customprice"><span>$</span> {{planAmount}}</h2>
+                                </div>
+                                {{#if_eq couponApplied true}}
+                                <div style="display: block;" class="valid-feedback">40% Discount Applied!</div>
+                                {{/if_eq}}
+                            </div>
+                            <div class="benifits-feature">
+                                <h3>Includes</h3>
+                                {{#if_eq buynow.CorporateUser true}}
+                                <ul style="list-style: none;">
+                                     <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        All team license features plus</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Free 40% or 50 hours of customisation</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Unlimited user access (Within your organization)</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24"> 25%
+                                        Exclusive previews of upcoming research & latest releases</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        50% discount on your next purchase</li>
+                                        <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Free Excel Data on Next Purchase</li>
+                                        <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Personalised market brief by the lead author</li>
+                                        <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Data on our propietery interactive cloud platform</li>
+                                </ul>
+                                {{/if_eq}}
+
+                                {{#if_eq buynow.SingleUser true}}
+                                <ul style="list-style: none;">
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                       Report accessible by 1 user only</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Free 15% or 20 hours of customisation</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Free post-sale service assistance</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Direct access to lead analysts on mail</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Report delivery on PDF & Excel</li>
+                                    {{#if_eq isGlobal true}}
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Report Coverage: Global
+                                    </li>
+                                    {{/if_eq}}
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24"> Free
+                                        Post-Sale Service Assistance</li>
+                                </ul>
+                                {{/if_eq}}
+
+                                {{#if_eq buynow undefined}}
+                                {{#if_eq paymentType '0'}}
+                                <ul style="list-style: none;">
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                       Report accessible by 1 user only</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Free 15% or 20 hours of customisation</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Free post-sale service assistance</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Direct access to lead analysts on mail</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Report delivery on PDF & Excel</li>
+                                    {{#if_eq isGlobal true}}
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Report Coverage: Global
+                                    </li>
+                                    {{/if_eq}}
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24"> Free
+                                        Post-Sale Service Assistance</li>
+                                </ul>
+                                {{/if_eq}}
+                                {{/if_eq}}
+
+
+                                {{#if_eq buynow undefined}}
+                                {{#if_eq paymentType '2'}}
+                                <ul style="list-style: none;">
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Data Sheet (Excel Only)</li>
+                                </ul>
+                                {{/if_eq}}
+                                {{/if_eq}}
+
+                                {{#if_eq buynow.MultiUser true}}
+                                <ul style="list-style: none;">
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Report accessible by up to 5 users</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Free 25% or 30 hours of customisation</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Free access to report summaries</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24"> 25%
+                                        Direct access to lead analysts via mail</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Service guarantee available</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Dedicated account manager</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Personalised market brief by the lead author</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">Data on our propietery interactive cloud
+                                        platform</li>
+                                    {{#if_eq isGlobal true}}
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Report Coverage: Global</li>
+                                    {{/if_eq}}
+                                </ul>
+                                {{/if_eq}}
+
+                                {{#if_eq buynow undefined}}
+                                {{#if_eq paymentType '1'}}
+                                <ul style="list-style: none;">
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24"> All
+                                        Benefits of Standard License</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Unlimited User Access</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Direct Access to Lead Analyst</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24"> 25%
+                                        Discount on Next Purchase</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Dedicated Account Manager</li>
+                                    <li><img src="/assets/img/reports/icons/check-mark.svg" width="24" height="24">
+                                        Report Coverage: Global</li>
+                                </ul>
+                                {{/if_eq}}
+                                {{/if_eq}}
+                            </div>
+                            {{#if_eq isGlobal false}}
+                            <div class="benifits-feature">
+                                <h3>Included Regions</h3>
+                                <ul>
+                                    {{#each buynow.SelectedRegion}}
+                                    <li><i class="fas fa-circle"></i> {{fullName}}</li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            {{/if_eq}}
+                            {{#if_eq buynow.SingleUser true}}
+                            {{#if_not_eq buynow.SelectedAdOn.length 0}}
+                            {{!-- <div class="benifits-feature">
+                                <h3>Included Add Ons</h3>
+                                <ul>
+                                    {{#each buynow.SelectedAdOn}}
+                                    <li><i class="fas fa-circle"></i> {{fullName}}</li>
+                                    {{/each}}
+                                </ul>
+                            </div> --}}
+                            {{/if_not_eq}}
+                            {{/if_eq}}
+                            <div class="plan-change">
+                                <a href="/industry-report/{{slug}}" class="btn btn-primary">Change the Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resize-sensor"
+                        style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                        <div class="resize-sensor-expand"
+                            style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                            <div
+                                style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 450px; height: 1206px;">
+                            </div>
+                        </div>
+                        <div class="resize-sensor-shrink"
+                            style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                            <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<input type="hidden" id="buynowid" />
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+    .cross {
+        text-decoration: line-through;
+        color: red !important;
+        font-size: 18px !important;
+    }
+
+    .newPrice {
+        color: green;
+    }
+</style>
+{{#script_section 'Script'}}
+<script src="https://www.paypal.com/sdk/js?client-id={{CLIENTID}}&components=buttons"></script>
+
+<script>
+
+    jsShowPaypalButtons(true);
+
+    function jsShowPaypalButtons(ctl) {
+        if (ctl) {
+            $('#paypalbuttons').show();
+            $('#btnPaynow').hide();
+        } else {
+            $('#paypalbuttons').hide();
+            $('#btnPaynow').show();
+            $('#billingaddress').show();
+        }
+    }
+
+    paypal.Buttons({
+        style: {
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'rect',
+            label: 'paypal'
+        },
+        async createOrder() {
+            return await new Promise((resolve, reject) => {
+                validateForm();
+                if (isFormValid) {
+                    submitForm('form', async () => {
+                        let id = await new Promise((rs, rj) => {
+                            fetch('/create-paypal-payment', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json; charset=utf-8'
+                                },
+                                body: JSON.stringify({
+                                    buynowId: $('#buynowid').val(),
+                                })
+                            }).then(res => res.json()).then(order => { rs(order.result.id); });
+                        });
+                        $('#billingaddress').hide();
+                        resolve(id);
+                    })
+                } else {
+                    reject();
+                }
+            })
+        },
+        onApprove(data) {
+            return fetch('/complete-paypal-payment?src=js&buynowid=' + $('#buynowid').val(), {
+                method: 'GET'
+            }).then(res => res.json()).then(res => {
+                if (res && res.success && res.success === true) {
+                    window.location.href = `/payment-success/${$('#buynowid').val()}?mode=paypal`;
+                } else {
+                    window.location.href = `/payment-fail/${$('#buynowid').val()}/?mode=paypal`;
+                }
+            })
+        },
+        onCancel(data) {
+            window.location.href = `/payment-fail/${$('#buynowid').val()}/?mode=paypal&st=cancel`;
+        },
+        onError(err) {
+            console.log('PayPal Error', err);
+            //window.location.href = `/payment-fail/${$('#buynowid').val()}/?mode=paypal&st=error`;
+        }
+    }).render('#paypalbuttons');
+</script>
+
+<script>
+
+    let cc = '';
+    $(document).ready(function () {
+        $('.select').select2();
+        let query = window.location.href.split('?')[1]?.split('&');
+        let queries = {};
+        query?.forEach(q => {
+            queries[q.split('=')[0]] = q.split('=')[1];
+        })
+
+        if (queries['cc']) {
+            $('#couponCode').val(queries['cc']);
+            $('#couponCode').prop('disabled', true);
+            $('#couponCodeButton').prop('disabled', true);
+            applyCoupon();
+        }
+    })
+
+    function displayForm(ctl) {
+        //console.log(("#form").validate());
+
+        //$("#form").validate();
+        validateForm();
+        if (!isFormValid)
+            return false;
+        $("#paymentoption").css('display', '');
+        $('#form').css('display', 'none');
+        $('#step_paymentOption').addClass('active');
+        $('#step_form').removeClass('active');
+        $(ctl).css('display', 'none');
+        $('#btnPaynow').css('display', '');
+
+        submitForm('form');
+    }
+
+    function submitForm(formID, fn) {
+
+        if ($('#buynowid').val() !== '')
+            return;
+
+        $('#btnPaynow').prop('disabled', true);
+        $('#btnPaynow').text('Processing Form');
+
+        let input = $('#' + formID + ' input');
+        let textarea = $('#' + formID + ' textarea');
+        let selects = $('#' + formID + ' select');
+        let obj = {};
+
+        input.each((ind, item) => {
+            obj[$(item).prop('name')] = $(item).val();
+        });
+
+        textarea.each((index, item) => {
+            obj[$(item).prop('name')] = $(item).val();
+        });
+
+        selects.each((index, item) => {
+            obj[$(item).prop('name')] = $(item).val();
+        });
+
+        obj['paymentThrough'] = $('.active-card').attr('data-value');
+        obj['couponCode'] = $('#couponCode').val();
+        let buynowId = 0;
+
+        fetch('/submit-form', {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json; chartset=utf-8'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    buynowId = res.id;
+                    $('#buynowid').val(res.id);
+                    $('#btnPaynow').prop('disabled', false);
+                    $('#btnPaynow').text('Make a Payment');
+                    fn();
+                }
+            });
+    }
+
+    function applyCoupon() {
+        fetch('/apply-coupon', {
+            method: 'POST',
+            body: JSON.stringify({
+                CouponCode: $('#couponCode').val(),
+                reportID: $('#reportID').val(),
+                buynowID: $('#buynowid').val()
+            }),
+            headers: {
+                'Content-Type': 'application/json; chartset=utf-8'
+            }
+        }).then(res => res.json()).then(res => {
+            if (res.newPrice) {
+                if ($('.cross').length == 0) {
+                    $('.customprice').after(`<h2 class="newPrice">$ ${res.newPrice}</h2>`);
+                    $('.customprice').addClass('cross').removeClass('customprice');
+                }
+
+                $('#couponCode').removeClass('is-invalid');
+                $('#couponCode').addClass('is-valid');
+                $('.priceFeedback').remove();
+                $('#couponCode').after('<div class="priceFeedback valid-feedback">' + res.discountPer + '% Discount Applied</div>');
+            } else {
+                $('#couponCode').removeClass('is-valid');
+                $('#couponCode').addClass('is-invalid');
+                $('.priceFeedback').remove();
+                $('#couponCode').after('<div class="priceFeedback invalid-feedback">Invalid Coupon Code</div>');
+            }
+        });
+    }
+
+    function payNow() {
+        validateForm(() => {
+            submitForm('form', () => {
+                let buynowId = $('#buynowid').val();
+                $('#btnPaynow').prop('disabled', true);
+                $('#btnPaynow').text('Processing...');
+
+                if ($('.active-card').attr('data-value') == 'razor') {
+                    razorPay(buynowId);
+                } else if ($('.active-card').attr('data-value') == 'paypal') {
+                    paypal(buynowId)
+                } else if ($('.active-card').attr('data-value') == 'wire') {
+                    wire(buynowId);
+                }
+            });
+        });
+    }
+
+    function jsRefreshCaptcha() {
+        fetch('/refresh-captcha/8', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                $('.captcha-img').attr('src', res.captcha);
+            });
+    }
+
+    function razorPay(buynowId) {
+
+        fetch('/create-order', {
+            method: 'POST',
+            body: JSON.stringify({
+                buynowId: buynowId
+            }),
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                let option = {
+                    //'key': 'rzp_live_YXjqTrXmVWJXyP',
+                    'key': 'rzp_live_Ka6hoYxdeHOInj',
+                    'order_id': res.order.id,
+                    'name': `{{reportTitle}}`,
+                    'amount': res.order.amount,
+                    'currency': 'USD',
+                    handler: function (response) {
+                        response['buynowId'] = buynowId;
+                        fetch('/complete-payment', {
+                            method: 'POST',
+                            body: JSON.stringify(response),
+                            headers: {
+                                'Content-Type': 'application/json; charset=utf-8'
+                            }
+                        }).then(res => res.json())
+                            .then(res => {
+                                console.log('payment status', res.success);
+                                if (res.success) {
+                                    window.location.href = '/payment-success/' + buynowId + "?mode=razor";
+                                } else {
+                                    window.location.href = '/payment-fail/' + buynowId + "?mode=razor";
+                                }
+                            });
+                    },
+                    'prefill': {
+                        'name': $('#fName').val() + ' ' + $('#lName').val(),
+                        'email': $('#email').val(),
+                        'contact': $('#phoneNo').val()
+                    }
+                };
+                let rz = new Razorpay(option);
+                rz.open();
+            });
+
+    }
+
+    function paypal(buynowId) {
+        fetch('/create-paypal-payment', {
+            method: 'POST',
+            body: JSON.stringify({ buynowId: buynowId }),
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                if (res && res.result.links.length > 0) {
+                    let approveLink = res.result.links.filter(l => {
+                        return l.rel == 'approve';
+                    })
+                    window.location.href = approveLink[0].href;
+                }
+            })
+    }
+
+    function wire(buynowId) {
+        fetch('/complete-wiretransfer-payment', {
+            method: 'POST',
+            body: JSON.stringify({
+                buynowId: buynowId
+            }),
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                if (res && res.success) {
+                    window.location.href = '/wiretransfer/' + buynowId;
+                }
+            })
+    }
+
+    $(document).ready(function () {
+        $('.radio').click(function () {
+            $('.radio').removeClass('active-card');
+            $(this).addClass('active-card');
+        });
+
+        $('#form input[type=text],input[type=email],input[type=tel]').blur(function () {
+            if ($(this).val() == '') {
+                $(this).addClass('is-invalid');
+                $(this).removeClass('is-valid')
+            } else {
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+            }
+            validateForm();
+            if (isFormValid) {
+                //submitForm('form');
+            }
+        });
+
+        $('#form select').blur(function () {
+            if ($(this).val() == '') {
+                $(this).addClass('is-invalid');
+                $(this).removeClass('is-valid')
+            } else {
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+            }
+            validateForm();
+            if (isFormValid) {
+                //submitForm('form');
+            }
+        });
+
+        $('#form textarea').blur(function () {
+            if ($(this).val() == '') {
+                $(this).addClass('is-invalid');
+                $(this).removeClass('is-valid')
+            } else {
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+            }
+
+            validateForm();
+            if (isFormValid) {
+                //submitForm('form');
+            }
+        });
+    })
+
+    var isFormValid = true;
+    function validateForm(fn) {
+        isFormValid = true;
+        let allinputs = $("#form input[type=text],#form input[type=email],#form input[type=tel]");
+        let allselect = $('#form select');
+        let allTextArea = $("#form textarea");
+
+        allinputs.each((ind, item) => {
+            if ($(item).val() == '') {
+                $(item).addClass('is-invalid');
+                $(item).removeClass('is-valid')
+                isFormValid = false;
+            } else {
+                $(item).removeClass('is-invalid');
+                $(item).addClass('is-valid');
+
+            }
+        });
+
+        allselect.each((ind, item) => {
+            if ($(item).val() == '') {
+                $(item).addClass('is-invalid');
+                $(item).removeClass('is-valid')
+                isFormValid = false;
+            } else {
+                $(item).removeClass('is-invalid');
+                $(item).addClass('is-valid');
+            }
+        });
+
+        allTextArea.each((ind, item) => {
+            if ($(item).val() == '') {
+                $(item).removeClass('is-valid')
+                $(item).addClass('is-invalid');
+                isFormValid = false;
+            } else {
+                $(item).removeClass('is-invalid');
+                $(item).addClass('is-valid');
+            }
+        });
+
+        if (isFormValid && fn) {
+            debugger;
+            fn();
+        }
+    }
+</script>
+{{/script_section}}
+{{#metasection 'noindex'}}
+<meta name="robots" content="noindex">
+<script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_hC0yIvLqBvYJHaENNnPATLzDCjiHZFyDR8jiLaS6ZsH', { api_host: 'https://app.posthog.com' })
+</script>
+{{/metasection}}

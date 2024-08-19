@@ -1,0 +1,205 @@
+<!-- Feather CSS -->
+<link rel="stylesheet" href="/assets/css/feather.css">
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="breadcrumb-list">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="/all-reports">Research Reports</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">{{#if_eq breadCrumb undefined}}All
+                                Reports{{/if_eq}}{{#if_not_eq breadCrumb undefined}}{{title}}{{/if_not_eq}}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+<div class="page-banner bottom" {{#if_not_eq breadCrumb
+    undefined}}style="background: url(/assets/img/category/category-cover/{{getUrl breadCrumb false}}.webp);"
+    {{/if_not_eq}}>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <h1 class="mb-0">Search Reports {{searchText}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Course -->
+<section class="course-content">
+    <div class="container" style="min-height: 900px;">
+        <div className="row">
+            <div className="col-lg-9">
+                <div className="row">
+                    {{#each allReports.customReports.length == 0 ? <img src="/assets/img/loading.gif" style={{
+                        width: '35%' , margin: '0 auto' }} /> : null}
+                    {allReports ? allReports.customReports.map((ar, index) =>
+                    <div className="col-lg-12 col-md-12 d-flex" key={'allRep_' + index}>
+                        <div className="course-box course-design list-course d-flex">
+                            <div className="product">
+                                <div className="product-img">
+                                    <a href="/industry-report/{{ar.slug}}" target="_blank">
+                                        <img className="img-fluid" alt="{{ar.keyword}}"
+                                            src={`https://cdn.vantagemarketresearch.com/report/thumbnail/${normailzeString(ar.keyword.trim()).replace(/\s/gmi, '-'
+                                            ).replace(/&/gmi, 'and' ).replace(/[^a-zA-Z0-9-]/gmi, '' ) + '-Market'
+                                            }.webp`} />
+                                    </a>
+                                    <div className="price">
+                                        <h3>$ {ar.pricingOptions.singleUser} USD</h3>
+                                    </div>
+                                </div>
+
+                                <div className="product-content" style={{ display: 'flex' ,
+                                    justifyContent: 'space-between' }}>
+                                    <div style={{ display: 'flex' , justifyContent: 'space-between' ,
+                                        flexDirection: 'column' }}>
+                                        <div className="head-course-title">
+                                            <h3 className="title" style={{ textDecoration: 'underline' }}><a
+                                                    href={`/industry-report/${ar.slug}`}
+                                                    target="_blank">{normailzeString(ar.keyword)} Market</a>
+                                            </h3>
+                                        </div>
+                                        <div className="course-info border-bottom-0 pb-0 d-flex align-items-center">
+                                            <div className="rating-img d-flex align-items-center">
+                                                <img src="/assets/img/Eye.svg"
+                                                    title="Prospective clients eyeing the report at the moment" />
+                                                <p>{randomSeen()}</p>
+                                            </div>
+                                            <div className="course-view d-flex align-items-center">
+                                                <img src="assets/img/icon/icon-02.svg" alt="" />
+                                                <p><i className="fa fa-calendar"></i> {months[new
+                                                    Date(ar.publishedDate).getMonth()]}-{new
+                                                    Date(ar.publishedDate).getFullYear()}</p>
+                                            </div>
+                                        </div>
+                                        <div className="course-group d-flex mb-0">
+                                            <div className="course-group-img d-flex flex-center">
+                                                <a href={`/category/${ar.childCategory.slug}`}><img
+                                                        src={"https://cdn.vantagemarketresearch.com/category/icon/" +
+                                                        ar.parentCategory.title.trim().replace(/\s/gmi, '-'
+                                                        ).replace(/&/gmi, 'and' ) + ".svg" }
+                                                        alt={ar.parentCategory.title} className="img-fluid" /></a>
+                                                <div className="course-name">
+                                                    <h4><a target="_blank"
+                                                            href={`/category/${ar.childCategory.slug}`}>{ar.childCategory.title}</a>
+                                                    </h4>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div style={{ display: 'flex' , flexDirection: 'column' ,
+                                        justifyContent: 'space-between' , minWidth: '310px' }}>
+                                        <div className="all-btn all-category d-flex align-items-center">
+                                            <a rel="noindex" href={`/buy-now/${ar.slug}`}
+                                                className="btn btn-primary">BUY
+                                                NOW</a>
+                                            <a rel="noindex" href={`/${ar.slug}/request-sample`}
+                                                className="btn btn-primary">REQUEST SAMPLE</a>
+                                        </div>
+
+                                        <div className="course-share d-flex align-items-center justify-content-center">
+                                            <a href={`/industry-report/${ar.slug}`}
+                                                className="btn btn-sm btn-secondary">
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>) : null}
+                </div>
+
+                <div className="row">
+                    <div className="col-md-12">
+                        <ul className="pagination lms-page">
+                            <li className="page-item prev">
+                                <a className="page-link" href="" tabIndex="-1"><i className="fas fa-angle-left"></i></a>
+                            </li>
+                            {renderPageNumbers()}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-3 theiaStickySidebar">
+                <div className="filter-clear">
+                    <div className="card search-filter categories-filter-blk">
+                        <div className="card-body">
+                            <div className="filter-widget mb-0">
+                                <div className="categories-head d-flex align-items-center">
+                                    <h4>Categories</h4>
+                                    <i className="fas fa-angle-down"></i>
+                                </div>
+                                {<CategoryTree getReports={(tr)=> {
+                                    let anotherSelectedCategories = [];
+                                    tr.forEach(x => {
+                                    anotherSelectedCategories = anotherSelectedCategories.concat(x.children.filter(y =>
+                                    y.checked && y.checked == true));
+                                    });
+
+                                    if (anotherSelectedCategories.length > 0) {
+                                    setSelectedCategories([...anotherSelectedCategories]);
+                                    //setAllReports({ ...allReports, customReports: [] });
+                                    }
+                                    }} />}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- /Course -->
+<style>
+    .flex-center {
+        align-items: center;
+    }
+</style>
+<style>
+    .head-course-title h3 a {
+        font-weight: bold;
+    }
+
+    .course-name h4 a {
+        font-weight: normal;
+        font-size: 14px;
+    }
+
+    .subChilds {
+        margin-left: 25px;
+    }
+
+    .page-banner {
+        background: url(/assets/img/All-Reports.webp);
+        background-size: cover;
+        background-position: center;
+    }
+
+
+    .page-banner h1 {
+        background: rgba(16, 16, 16, 0.64);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9px);
+        -webkit-backdrop-filter: blur(9px);
+        border: 1px solid rgba(16, 16, 16, 0.3);
+        ;
+    }
+</style>
+{{#metasection 'noindex'}}
+<meta name="robots" content="noindex">
+{{/metasection}}

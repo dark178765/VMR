@@ -1,0 +1,218 @@
+import { Body, Controller, Get, NotFoundException, Param, Post, Render, Req, Res } from "@nestjs/common";
+import { FormService } from "./form.service";
+import { Captcha } from "src/util/captcha";
+import { ReportService } from "src/report/report.service";
+import { FormType } from "src/global/global.constant";
+import { RealIP } from 'nestjs-real-ip';
+import { Request, Response } from "express";
+
+@Controller()
+export class FormController {
+    constructor(
+        private readonly formService: FormService,
+        private readonly reportService: ReportService
+    ) { }
+
+    @Post('form/submit')
+    async submit(@Req() req: Request, @RealIP() ip: string) {
+
+        req.session['FillForm'] = 'yes';
+
+        if (req.session[`captcha_${req.body.formType}`] == req.body.captcha) {
+            //reset the captcha in session
+            let res: any = await this.formService.submit(req.body, ip);
+
+            if (res.success && res.success == true) {
+                req.session[`captcha_${req.body.formType}`] = null;
+                return {
+                    success: res.success,
+                    leadid: res.leadId,
+                    formType: req.body.formType,
+                    reportUrl: req.body?.reportUrl
+                };
+            } else {
+                return {
+                    success: res.success,
+                    validationError: res.controlValidations,
+                    message: res.message
+                }
+            }
+        } else {
+            return {
+                success: false,
+                message: 'Invalid Captcha'
+            };
+        }
+    }
+
+    @Get(['industry-report/:url/request-sample', 'industry-report/:url/customization-request',
+        'industry-report/:url/contact-analyst', 'industry-report/:url/inquiry-before-buying'])
+    async redirectSample(@Res() res: Response, @Param() pram, @Req() req) {
+        let redirection = req.url.split('/');
+
+        res.redirect(`/${pram.url}/${redirection[redirection.length - 1]}`, 301);
+    }
+
+    @Get([':url/request-sample', ':url/customization-request', ':url/contact-analyst', ':url/inquiry-before-buying'])
+    @Render('newform')
+    async sampleRequest(@Param() pram, @Req() req: Request, @Res() res) {
+
+        let formTitle = this.getFormTitle(req.url);
+        let report = await this.reportService.getReport(pram.url);
+
+        // let cap = await this.getCaptcha(FormType.SampleRequest);
+
+        // let urlSegments = req.url.split('/');
+        //req.session[`captcha_${this.formService.getFormType(urlSegments[urlSegments.length - 1])}`] = cap.captchaString
+        // return {
+        //     formType: this.formService.getFormType(urlSegments[urlSegments.length - 1]),
+        //     title: formTitle,
+        //     reportTitle: report.title,
+        //     reportId: report._id,
+        //     reportUrl: 'https://www.vantagemarketresearch.com/industry-report/' + report.slug,
+        //     tocUrl: '/toc/' + report.slug,
+        //     captcha: cap.dataUrl,
+        //     countries: await this.formService.getAllCountries(),
+        //     Referer: req.get('Referer')
+        // }
+
+        return {
+            formTitle,
+            reportTitle: report.title,
+            keyword: report.keyword,
+            reportUrl: report.slug,
+            metatitle: `${formTitle} of ${report.keyword}`
+        }
+
+    }
+
+    @Get('form/get-form-values/:url')
+    async getFormValues(@Param() pram, @Req() req: Request, @Res() res) {
+        let formTitle = this.getFormTitle(req.query.formUrl);
+        let report = await this.reportService.getReport(pram.url);
+
+        let cap = await this.getCaptcha(FormType.SampleRequest);
+
+        let urlSegments = req.query.formUrl.toString().split('/');
+
+        req.session[`captcha_${this.formService.getFormType(urlSegments[urlSegments.length - 1])}`] = cap.captchaString;
+
+        res.json({
+            formType: this.formService.getFormType(urlSegments[urlSegments.length - 1]),
+            title: formTitle,
+            reportTitle: report.title,
+            reportId: report._id,
+            reportUrl: 'https://www.vantagemarketresearch.com/industry-report/' + report.slug,
+            tocUrl: '/toc/' + report.slug,
+            captcha: cap.dataUrl,
+            countries: await this.formService.getAllCountries(),
+            Referer: req.get('Referer')
+        });
+    }
+
+    @Get('refresh-captcha/:formType')
+    async refreshCaptcha(@Param() pram, @Req() req: Request) {
+        let cap = await this.getCaptcha(pram.formType);
+        req.session[`captcha_${pram.formType}`] = cap.captchaString;
+        
+        return { captcha: cap.dataUrl };
+    }
+
+    getFormTitle(f) {
+        let rf = f.split('/');
+        let formTitle = '';
+        switch (rf[rf.length - 1]) {
+            case 'request-sample':
+                formTitle = 'REQUEST SAMPLE REPORT';
+                break;
+            case 'customization-request':
+                formTitle = 'CUSTOMIZATION REQUEST';
+                break;
+            case 'contact-analyst':
+                formTitle = 'SPEAK TO ANALYST';
+                break;
+            case 'inquiry-before-buying':
+                formTitle = 'INQUIRY BEFORE BUYING';
+                break;
+        }
+        return formTitle;
+    }
+
+    @Get([':url/:formType/:leadid/thank-you', '/:leadid/thank-you'])
+    @Render('thanks')
+    async thanks(@Param() pram, @Req() req) {
+
+        if (req.session['FillForm'] == null) {
+            throw new NotFoundException();
+        }
+
+        req.session['FillForm'] = null;
+
+        let leadInfo = await this.formService.getLeadInformation(pram.leadid);
+
+        if (leadInfo && leadInfo.createdAt == new Date()) {
+
+        }
+
+        let report = pram.url ? await this.reportService.getReport(pram.url) : null;
+        return {
+            reportTitle: report ? report.title : ''
+        };
+    }
+
+
+    async getCaptcha(formType) {
+        let token = await this.formService.getRandomToken(formType, formType);
+        return new Captcha().getCaptcha(token);
+    }
+
+    @Post('form/submit-popup')
+    async submitPopup(@Req() req, @RealIP() ip: string) {
+        let st = await this.formService.submitPopup({
+            firstName: req.body.name,
+            formType: FormType.PopUp,
+            businessEmail: req.body.businessEmail,
+            comment: req.body.message,
+            phNo: req.body.phNo,
+            reportId: req.body.reportId,
+            company: req.body.company
+        }, ip);
+
+
+        let report = await this.reportService.getReportById(req.body.reportId);
+
+        let formModel = req.body;
+        formModel['firstName'] = req.body.name;
+
+        formModel['Source'] = 1;
+        formModel['formType'] = FormType.PopUp;
+        formModel['comment'] = req.body.message;
+        formModel['title'] = report.title;
+        formModel['reportUrl'] = `https://vantagemarketresearch.com/industry-report/${report.slug}`;
+        formModel['ipAddress'] = ip;
+
+        this.formService.sendLeadToCRM(formModel);
+
+        if (st) {
+            st['formType'] = FormType.PopUp;
+            this.formService.sendPopupEmail(st.toJSON());
+        }
+
+        return st ? { success: true } : { success: false };
+    }
+
+    @Post('form/send-mail')
+    async sendmail(@Req() req) {
+        this.formService.sendPopupEmail({
+            firstName: req.body.ClientName,
+            formType: FormType.PopUp,
+            businessEmail: req.body.ClientEmail,
+            comment: req.body.ClientComment,
+            phNo: req.body.ClientPhone,
+            reportId: 0,
+            company: '',
+            ReportTitle: req.body.ReportTitle,
+            ReportUrl: req.body.ReportUrl
+        });
+    }
+}

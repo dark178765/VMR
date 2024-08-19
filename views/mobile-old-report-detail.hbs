@@ -1,0 +1,709 @@
+
+<section class="course-content course-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="report-image bg-image">
+                            <h1>{{keyword}} Market</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <span>#
+                    Pages:</span>
+                <p>{{numberOfPages}}</p>
+            </div>
+            <div class="col-4">
+                <span>Base Year: </span>
+                <p>2021</p>
+            </div>
+            <div class="col-4">
+                Published Date:
+                <p>{{updatedAt}}</p>
+            </div>
+            <div class="col-4">
+                <span>Format:</span>
+                <p><img src="https://cdn.vantagemarketresearch.com/assets/img/icon/pdf.svg" width="24" height="24"
+                        alt="PDF" title="PDF" />
+                    <img src="https://cdn.vantagemarketresearch.com/assets/img/icon/xls.svg" height="24" width="24"
+                        alt="XLS" title="XLS" />
+                    <img src="https://cdn.vantagemarketresearch.com/assets/img/icon/ppt.svg" height="24" width="24"
+                        alt="PPT" title="PPT" />
+                </p>
+            </div>
+            <div class="col-4">
+                <span>Report Code:</span>
+                <p>VMR-{{reportId}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="subs-title text-black">Segments Covered</h3>
+            <div class="col-12">
+                <table class="table center table-bordered">
+                    {{#each segments}}
+                    <tr>
+                        <th style="vertical-align: middle;"><span>By
+                                {{segment}}</span></th>
+                        <td style="vertical-align: middle;"><span>{{#comma subSegments
+                                'text'}}{{/comma}}</span></td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="subs-title text-black">Snapshot</h3>
+            <div class="col-12">
+                {{>summaryTable}}
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="overflow-links tab-buttons" style="display: flex; overflow: scroll;">
+                    <li><a href="/industry-report/{{slug}}"
+                            class="{{#if_eq descriptionTab true}}active{{/if_eq}}">Description</a></li>
+                    <li><a href="/included/{{slug}}" class="{{#if_eq include true}}active{{/if_eq}}">Inclusions</a>
+                    </li>
+                    <li><a href="/toc/{{slug}}" class="{{#if_eq tocTab true}}active{{/if_eq}}"
+                            style="width: max-content;">Table Of
+                            Content</a></li>
+                    <li><a href="/market-segmentation/{{slug}}" class="{{#if_eq marketSegmentTab true}}active{{/if_eq}}"
+                            style="width: max-content;">Market Segmentation</a>
+                    </li>
+                    {{!-- <li><a href="/methodology/{{slug}}"
+                            class="{{#if_eq methodologyTab true}}active{{/if_eq}}">Methodology</a></li> --}}
+                    <li><a href="/{{slug}}/request-sample" class="special">Request Sample</a></li>
+                    <li><a href="/{{slug}}/inquiry-before-buying" class="special">Buying Inquiry</a>
+                    </li>
+                </ul>
+
+                <div class="card overview-sec">
+                    <div class="card-body">
+                        {{#if_eq descriptionTab true}}
+                        <div class="reportDescription" style="text-align: justify;">
+                            {{reset_localindex}}
+                            {{#if_eq descriptionTab true}}
+                            {{#each templates}}
+                            <div class="row">
+
+                                {{#if_not_eq textType 'toc'}}
+                                {{#if_not_eq textType 'lot'}}
+                                {{#if_not_eq textType 'lof'}}
+                                <div>
+                                    {{#if_not_eq textType 'reportTitle'}}
+                                    {{#if_not_eq textType 'noOfPages'}}
+                                    {{#if_not_eq textType 'Price'}}
+                                    {{#if_not_eq textType 'amount'}}
+                                    <div class="col-md-12">
+                                        {{#if_not_eq textType 'segmentationWithGraph'}}
+                                        {{#if_not_eq mainContent undefined}}
+                                        {{#if_not_eq mainContent ''}}
+                                        <h4 class="text-left mt-0 font-weight-bold">
+                                            {{title}}
+                                        </h4>
+                                        {{/if_not_eq}}
+                                        {{/if_not_eq}}
+                                        {{/if_not_eq}}
+                                        {{#if_eq textType 'segmentationWithGraph'}}
+                                        {{#if_not_eq subSegment undefined}}
+                                        {{#if_not_eq subSegment ''}}
+                                        <h4 class="text-left mt-0 font-weight-bold">
+                                            {{title}}
+                                        </h4>
+                                        {{/if_not_eq}}
+                                        {{/if_not_eq}}
+                                        {{/if_eq}}
+                                        {{#if_not_eq mainContent null}}
+                                        {{#if_not_eq noBind true}}
+                                        <div class="mb-2">
+                                            <p>{{{mainContent}}}</p>
+                                        </div>
+                                        {{/if_not_eq}}
+                                        {{/if_not_eq}}
+                                    </div>
+                                    {{/if_not_eq}}
+                                    {{/if_not_eq}}
+                                    {{/if_not_eq}}
+                                    {{/if_not_eq}}
+                                    {{#if_eq textType 'imageWithValue'}}
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{!-- <div class="img-main display-none ">
+                                                    <img src="/assets/images/reports/keyInsights.webp"
+                                                        alt="vantage Market img">
+                                                    <span class="title11">{{historicalData_2020}}</span>
+                                                    <span class="title22">{{#if_eq ../baseYear
+                                                        null}}{{baseYearData_2020}}{{/if_eq}}{{#if_not_eq
+                                                        ../baseYear
+                                                        null}}{{../baseYear}}{{/if_not_eq}}</span>
+
+                                                    <span class="title33">{{currentYearDate_2028}}</span>
+                                                    <span class="title44">{{projectedYearData_2028}}</span>
+                                                    <span class="title55">{{#if_eq annualmarketsize_2028
+                                                        undefined}}{{../excelData.annualmarketsize_2028}}{{/if_eq}}{{#if_not_eq
+                                                        annualmarketsize_2028
+                                                        undefined}}{{annualmarketsize_2028}}{{/if_not_eq}}</span>
+                                                    <span class="title66">{{#if_eq annualmarketsize_2020
+                                                        undefined}}{{../excelData.annualmarketsize_2020}}{{/if_eq}}{{#if_not_eq
+                                                        annualmarketsize_2020
+                                                        undefined}}{{annualmarketsize_2020}}{{/if_not_eq}}</span>
+                                                    <span class="title77">{{CAGR_2021_2028}}</span>
+                                                </div> --}}
+                                                {{!-- <div class="display-show mb-4">
+                                                    <div class="">
+                                                        <table class="market-table">
+                                                            <tr class="market-tr">
+                                                                <th class="market-th">Years</th>
+                                                                <th class="market-th">Parameters</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="market-td">Historical Data
+                                                                    (Actual
+                                                                    Data)</td>
+                                                                <td class="market-td">
+                                                                    {{historicalData_2020}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="market-td">Base Year Data
+                                                                </td>
+                                                                <td class="market-td">
+                                                                    {{baseYearData_2020}}</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="market-td">Current Year Date
+                                                                </td>
+                                                                <td class="market-td">
+                                                                    {{currentYearDate_2028}}
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="market-td">Projected year
+                                                                    data
+                                                                </td>
+                                                                <td class="market-td">
+                                                                    {{projectedYearData_2028}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="market-td">Annual Market Size
+                                                                    (2028)</td>
+                                                                <td class="market-td">
+                                                                    {{annualMarketSize_2028}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="market-td">Annual Market Size
+                                                                    (2021)
+                                                                </td>
+                                                                <td class="market-td">
+                                                                    {{annualMarketSize_2020}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="market-td">CAGR (2021 - 2028)
+                                                                </td>
+                                                                <td class="market-td">
+                                                                    {{CAGR_2021_2028}}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    {{/if_eq}}
+                                    {{#if_eq textType 'description'}}
+                                    {{!-- <div class="container mb-5">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="img-main">
+                                                    <img src="/assets/images/reports/YearlyInfographic.svg"
+                                                        alt="vantage Market img">
+                                                    <span class="barValue1">{{#if_eq revenue_2020
+                                                        undefined}}{{../excelData.revenue_2020}}{{/if_eq}}{{#if_not_eq
+                                                        revenue_2020
+                                                        undefined}}{{revenue_2020}}{{/if_not_eq}}
+                                                    </span>
+                                                    <span class="barValue2">{{#if_eq revenue_2028
+                                                        undefined}}{{../excelData.revenue_2028}}{{/if_eq}}{{#if_not_eq
+                                                        revenue_2028
+                                                        undefined}}{{revenue_2028}}{{/if_not_eq}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    {{/if_eq}}
+                                    {{#if_eq textType 'reginalAnalysis'}}
+                                    <div class="mb-5">
+                                        <div class="container map-main-top">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h5>{{keyword}}
+                                                        Market Size, 2021 (USD Billion)</h5>
+                                                    <div class="map-section">
+
+                                                        <div class="map-main">
+                                                            <div class="inner-main-map">
+                                                                <div class="map1">
+                                                                    <div class='pin'></div>
+                                                                    <div class='pulse'></div>
+
+                                                                </div>
+                                                                <div class="content-main">
+                                                                    North America
+                                                                    {{#if_eq
+                                                                    excelData.infographics_for_region
+                                                                    'North America'}}
+                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                    {{/if_eq}}
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="map-main2">
+                                                            <div class="inner-main-map">
+                                                                <div class="map2">
+                                                                    <div class='pin'></div>
+                                                                    <div class='pulse'></div>
+
+                                                                </div>
+                                                                <div class="content-main">
+                                                                    Europe
+                                                                    {{#if_eq
+                                                                    excelData.infographics_for_region
+                                                                    'Europe'}}
+                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                    {{/if_eq}}
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="map-main3">
+                                                            <div class="inner-main-map">
+                                                                <div class="map3">
+                                                                    <div class='pin'></div>
+                                                                    <div class='pulse'></div>
+
+                                                                </div>
+                                                                <div class="content-main">
+                                                                    Asia Pacific
+                                                                    {{#if_eq
+                                                                    excelData.infographics_for_region
+                                                                    'Asia Pacific'}}
+                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                    {{/if_eq}}
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="map-main4">
+                                                            <div class="inner-main-map">
+                                                                <div class="map4">
+                                                                    <div class='pin'></div>
+                                                                    <div class='pulse'></div>
+
+                                                                </div>
+                                                                <div class="content-main">
+                                                                    South America
+                                                                    {{#if_eq
+                                                                    excelData.infographics_for_region
+                                                                    'South America'}}
+                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                    {{/if_eq}}
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="map-main5">
+                                                            <div class="inner-main-map">
+                                                                <div class="map5">
+                                                                    <div class='pin'></div>
+                                                                    <div class='pulse'></div>
+
+                                                                </div>
+                                                                <div class="content-main">
+                                                                    Middle East Africa
+                                                                    {{#if_eq
+                                                                    excelData.infographics_for_region
+                                                                    'Middle East Africa'}}
+                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                    {{/if_eq}}
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/if_eq}}
+                                    {{#if_eq textType 'segmentationWithGraph'}}
+                                    <div>
+                                        <ul style="list-style: none;">
+                                            <li>
+                                                {{#split_each subSegment ','}}
+                                                <ul>
+                                                    <li>{{.}}</li>
+                                                </ul>
+                                                {{/split_each}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {{#if_not_eq subSegment undefined}}
+                                    {{#if_not_eq subSegment.length undefined}}
+                                    {{#if_not_eq subSegment.length 0}}
+                                    {{!-- <div class="mb-5">
+                                        <div class="container map-main-top">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mt-1 mb-4">
+                                                        <div class="col-md-8" style="margin: auto;">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div>
+                                                                        <canvas class="chartContainer"
+                                                                            id="chart_{{localindex}}"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    {{/if_not_eq}}
+                                    {{/if_not_eq}}
+                                    {{/if_not_eq}}
+                                    {{/if_eq}}
+
+
+                                </div>
+                                {{/if_not_eq}}
+                                {{/if_not_eq}}
+                                {{/if_not_eq}}
+
+
+                            </div>
+                            {{/each}}
+                            {{/if_eq}}
+                        </div>
+
+                        {{/if_eq}}
+
+
+                        {{#if_eq include true}}
+                        <div>{{>includestable}}</div>
+                        {{#metasection 'indexmeta'}}
+                        <meta name="robots" content="noindex">
+                        <meta name="googlebot" content="noindex">
+                        {{/metasection}}
+                        {{/if_eq}}
+
+
+                        {{#if_eq tocTab true}}
+                        <div>{{{toc}}}</div>
+                        {{#metasection 'indexmeta'}}
+                        <meta name="robots" content="noindex">
+                        <meta name="googlebot" content="noindex">
+                        {{/metasection}}
+                        {{/if_eq}}
+                        {{#if_eq marketSegmentTab true}}
+                        {{> marketsegmentation marketSeg}}
+                        {{#metasection 'indexmeta'}}
+                        <meta name="robots" content="noindex">
+                        <meta name="googlebot" content="noindex">
+                        {{/metasection}}
+                        {{/if_eq}}
+                        {{#if_eq methodologyTab true}}
+                        {{> newmethodology methodology}}
+                        {{#metasection 'indexmeta'}}
+                        <meta name="robots" content="noindex">
+                        <meta name="googlebot" content="noindex">
+                        {{/metasection}}
+                        {{/if_eq}}
+
+
+                    </div>
+                </div>
+                <div class="card content-sec" id="Course_Content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5 class="subs-title">FAQ</h5>
+                            </div>
+                            <div class="col-sm-6 text-sm-end">
+                                <h6>Frequently Asked Question</h6>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <h6 class="cou-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse1"
+                                    aria-expanded="false">What is
+                                    the global demand for {{keyword}}
+                                    in terms of revenue?</a>
+                            </h6>
+                            <div id="collapse1" class="card-collapse collapse" style="">
+                                <ul>
+                                    <li>
+                                        <p>The global {{keyword}} valued at {{excelData.revenue_2020}}
+                                            in 2020 and is expected to reach {{excelData.revenue_2028}} in 2028
+                                            growing at a CAGR of {{excelData.revenue_CAGR}}%.</p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <h6 class="cou-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse2"
+                                    aria-expanded="false">Which
+                                    are the prominent players
+                                    in the market?</a>
+                            </h6>
+                            <div id="collapse2" class="card-collapse collapse" style="">
+                                <ul>
+                                    <li>
+                                        <p>The prominent players in the market are {{excelData.company}}.</p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <h6 class="cou-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse3"
+                                    aria-expanded="false">At what CAGR is the market projected to grow within
+                                    the forecast period?</a>
+                            </h6>
+                            <div id="collapse3" class="card-collapse collapse" style="">
+                                <ul>
+                                    <li>
+                                        <p>The market is project to grow at a CAGR of
+                                            {{excelData.revenue_CAGR}}%
+                                            between 2021 and 2028.</p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <h6 class="cou-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse4"
+                                    aria-expanded="false">What are
+                                    the driving factors fueling the growth of the market?</a>
+                            </h6>
+                            <div id="collapse4" class="card-collapse collapse" style="">
+                                <ul>
+                                    <li>
+                                        <p>The driving factors of the {{keyword}} include
+                                        <ul style="list-style: disc;" class="pl-lg-5 text-justify">
+                                            <li class="pl-0 pt-0 pb-0">
+                                                {{excelData.driver_1}}
+                                            </li>
+                                            <li class="pl-0 pt-0 pb-0">
+                                                {{excelData.driver_2}}
+                                            </li>
+                                        </ul>
+                                        </p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <h6 class="cou-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#collapse5"
+                                    aria-expanded="false">Which region accounted for the
+                                    largest share in the market?</a>
+                            </h6>
+                            <div id="collapse5" class="card-collapse collapse" style="">
+                                <ul>
+                                    <li>
+                                        <p>{{excelData.leading_region}} was the leading regional segment of
+                                            the {{keyword}} in 2020.
+                                        </p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="position: fixed; bottom:0px;z-index:9;width: 100%;">
+    <div class="row" style="height: 50px;">
+        <div class="col-6" style="padding-right: 0px;">
+            <a href="/{{slug}}/request-sample"
+                style="width: 100%;height: 100%; padding-top: 17px;border-radius: 0px;font-weight:bold;"
+                class="btn btn-primary">Request Sample</a>
+        </div>
+        <div class="col-6" style="padding-left: 0px;">
+            <a href="/buy-now/{{slug}}/0"
+                style="width: 100%;background: blue;height: 100%; padding-top: 17px; border-radius: 0px;font-weight:bold;"
+                class="btn btn-primary">Buy Now
+            </a>
+        </div>
+    </div>
+</div>
+<style>
+    .tab-buttons li {
+        margin-right: 5px;
+    }
+
+    .center-video iframe,
+    .center-video object,
+    .center-video embed {
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .center-video {
+        text-align: center;
+    }
+
+    .cookie-consent {
+        bottom: 55px !important;
+        font-size: 10px !important;
+    }
+
+    .market-tr {
+        background-color: bisque;
+    }
+
+    .market-tr th {
+        color: black;
+    }
+</style>
+
+{{#if_eq descriptionTab true}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the global demand for {{keyword}} in terms of revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The global {{keyword}} valued at {{Revenue_2021}} in 2020 and is expected to reach {{excelData.revenue_2028}} in 2028 growing at a CAGR of {{excelData.CAGR_Revenue}} <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which are the prominent players in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The prominent players in the market are {{Players}}. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "At what CAGR is the market projected to grow within the forecast period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The market is project to grow at a CAGR of {{CAGR_Revenue}} between 2021 and 2028. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the driving factors fueling the growth of the market.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The driving factors of the {{keyword}} include <ul style='list-style: disc;' class='pl-lg-5 text-justify'><li class='pl-0 pt-0 pb-0'>{{driver_1}}</li><li class='pl-0 pt-0 pb-0'>{{driver_2}}</li></ul> <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which region accounted for the largest share in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{Largest_Region}} was the leading regional segment of the {{keyword}} in 2020. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{category.title}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{keyword}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "{{keyword}} Market Market - Global Industry Assessment & Forecast",
+            "image": "https://cdn.vantagemarketresearch.com/assets/img/logo.webp",
+            "mpn": "{{reportId}}",
+            "description": "{{keyword}} Market - Global Industry Assessment & Forecast",
+            "productID": "{{reportId}}",
+            "brand": 
+            {
+                    "@type": "Organization",
+                    "legalName": "Vantage Market Research"
+            },
+            "review": 
+                {
+                    "@type": "Review",
+                    "reviewRating": 
+                    {
+                            "@type": "Rating",
+                            "ratingValue": "4.9",
+                            "bestRating": "5"
+                    },
+                    "author": 
+                    {
+                            "@type": "Organization",
+                            "name": "Vantage Market Research"
+                    }
+                },
+
+            "aggregateRating": 
+                {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.9",
+                            "reviewCount": "45"
+                }
+                        
+    }
+
+    </script>
+{{/if_eq}}

@@ -1,0 +1,70 @@
+<div id="methodology_Main">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-left m-0 card-text"
+                style="text-decoration: none;line-height: 1.7; border-bottom: 1px solid;">
+                Research Methodology: {{keyword}} Market by
+                {{excelData.segmentation1}} by
+                {{excelData.segmentation2}} by
+                {{excelData.segmentation3}} by Region – Global
+                Market Assessment, 2021 - 2028
+            </h4>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="map-main-top" style="margin-top: 10px;">
+                <p>{{{methodology.mainDescription}}}</p>
+               
+            </div>
+            <div style="margin-top: 10px;">
+                <h4>Secondary Research</h4>
+                <div>
+                    <p>{{{methodology?.secondaryResearch}}}</p>
+                  
+                </div>
+                {{#if_not_eq methodology.secondaryResearch undefined}}
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-12" style="margin: auto 0;">
+                        <img class="img img-fluid" style="height: 38%;
+                        width: 40%;" src="{{methodology.secondaryImg}}">
+                    </div>
+                </div>
+                {{/if_not_eq}}
+            </div>
+
+            <div style="margin-top: 10px;">
+                <h4>Primary Research:</h4>
+                <div>
+                    <p>{{{methodology.primaryResearch}}}</p>
+                  
+                </div>
+                {{#if_not_eq methodology.primaryImg undefined}}
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-12">
+                        <img class="img img-fluid" src="{{{methodology.primaryImg}}}">
+                    </div>
+                </div>
+                {{/if_not_eq}}
+            </div>
+
+            <div style="margin-top: 10px;">
+                <h4>Data Triangulation and Market Size Estimations</h4>
+                <div >
+                    <p>
+                        {{{methodology.sizeEstimation}}}
+                    </p>
+              
+                </div>
+                {{#if_not_eq methodology.sizeEstimationImg undefined}}
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-12" style="margin: auto 0;">
+                        <img class="img img-fluid" style="height: 38%;
+                        width: 40%;" src="{{methodology.sizeEstimationImg}}">
+                    </div>
+                </div>
+                {{/if_not_eq}}
+            </div>
+        </div>
+    </div>
+</div>

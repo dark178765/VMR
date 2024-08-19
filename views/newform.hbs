@@ -1,0 +1,129 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="breadcrumb-list">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Request Sample</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{keyword}} Market</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="customModalContainer"></div>
+<div class="page-banner bottom"
+    style="background-image: url(https://cdn.vantagemarketresearch.com/report/cover/{{getUrl keyword false}}-Market.webp), url(https://cdn.vantagemarketresearch.com/category/cover/{{getUrl category.title false}}.webp);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <h1 class="mb-0">{{camelCase keyword}} Market</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="settings-widget profile-details">
+                    <div class="settings-menu p-0">
+                        <div class="profile-heading" style="padding-bottom: 0px;">
+                            <h3>{{camelCase formTitle}}</h3>
+                            <div class="alert alert-info"><i class="fa fa-info-circle"></i> Your personal information is
+                                safe with us. We dont sell your information to third party.</div>
+                        </div>
+                        <h2 style="font-size: 19px;color: #392C7D;text-align: center;line-height: 30px;text-decoration: underline;">Vantage Market Research is the preferred growth partner for 8 out of the top 10 {{camelCase keyword}} companies.</h2>
+                        <div class="checkout-form personal-address add-course-info">
+                            <div id="form"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                {{!-- {{#if_not_eq reportID undefined}}
+                <input type="hidden" id="reportID" value="{{reportID}}" />
+                <div id="buynowcontrol"></div>
+                <script defer src="/assets/js/component/buynowsection.js"></script>
+                {{/if_not_eq}} --}}
+                <div class="card-body include-sec">
+                    {{>customizationoffered}}
+                    <style>
+                        .card-body {
+                            margin-top: 10px;
+                            padding: 1.5rem;
+                            background: #fff;
+                            border: 1px solid #e9ecef;
+                            border-radius: 10px;
+                        }
+                    </style>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script defer src="/assets/js/component/reactform.js"></script>
+
+<style>
+    .vm {
+        color: red;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .info-box {
+        background-color: inherit;
+    }
+
+    .info-box h3 {
+        color: #fff !important;
+    }
+
+    .contact .info-box i {
+        color: #fff !important;
+        border-color: #fff !important;
+    }
+
+    .info-box p {
+        color: #fff !important;
+    }
+
+    .red {
+        background-color: red;
+        color: #fff;
+    }
+
+    .green {
+        background-color: green;
+        color: #fff;
+    }
+
+    .input-group i {
+        display: flex;
+    }
+
+    .page-banner h1 {
+        background: rgba(16, 16, 16, 0.64);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9px);
+        -webkit-backdrop-filter: blur(9px);
+        border: 1px solid rgba(16, 16, 16, 0.3);
+        ;
+    }
+</style>
+<link href="/assets/css/buynowsection.css" rel="stylesheet" />
+{{#if_not_eq removeNoIndex true}}
+{{#metasection 'noindex'}}
+<meta name="robots" content="noindex">
+<script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_hC0yIvLqBvYJHaENNnPATLzDCjiHZFyDR8jiLaS6ZsH', { api_host: 'https://app.posthog.com' })
+</script>
+{{/metasection}}
+{{/if_not_eq}}

@@ -1,0 +1,280 @@
+<input type="hidden" id="leadID" />
+<input type="hidden" id="popupFormType" />
+<div id="modalForm">
+    <input type="hidden" value="{{rptId}}" id="popup_reportId" />
+    <div id="pmessage" class="alert alert-success" style="display: none;">
+        <i class="fa fa-check"></i> Your form has submitted successfully. Our representative will contact you soon.
+    </div>
+    <div id="pform">
+        <div class="row form">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" id="name" message="Name is required"
+                        placeholder="Your full name" required />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Email <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="Avoid using free email like gmail, yahoo, hotmail etc."></i></label>
+                    <span style="font-size: 12px;font-weight: bold;display:none;color: red;" id="badEmailSpan">Incorrect
+                        Email</span>
+                    <input type="email" class="form-control" id="email" required message="Email is required"
+                        placeholder="Your professional email" onkeyup="checkFreeEmail(this)"
+                        onchange="verifyEmail(this)" />
+                    <span id="freeEmailMessage"
+                        style="font-size: 11px;font-weight: bold;color: blue;display:none;">Business email to prioritize
+                        your request.</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" class="form-control" id="company" placeholder="Your company name" required
+                        message="Company is required" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Phone # with country code" required
+                        message="Phone number is required" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" id="message"
+                        placeholder="Describe your requirements, that will help us to sending you the sample with the information you wanted."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div style="display: flex;align-items: center;cursor: pointer;">
+                    <i class="fa fa-refresh" onclick="refreshCaptcha()" title="Refresh Captcha"></i>
+                    <img class="img-fluid" id="captchaImage" height="100" width="200" />
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Captcha</label>
+                    <input type="text" class="form-control" id="captcha" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label required message="Please Accept Terms & Conditions"><input type="checkbox" value="true"> I Accept
+                    Terms &
+                    Condition <a href="/terms-of-services" target="_blank" style="color:blue;">TnC</a></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <i class="fa fa-info-circle"></i> <small style="font-style: italic;">Your personal information will
+                        be
+                        kept confidential. <a href="/privacy-policy" target="_blank">Privacy Policy</a></small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" onclick="submit(this)">Send Me Sample</button>
+                <button class="btn btn-outline-secondary ml-2" data-bs-dismiss="modal">Don't Bother Me</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    const freeEmailDomain = ['gmail', 'yahoo', 'hotmail', 'live', '163', 'outlook']
+    let badEmail = false;
+    let checkingBadEmail = false;
+
+    function checkFreeEmail(ctl) {
+        if ($(ctl).val().indexOf('@') > -1) {
+            let domain = $(ctl).val().split('@').pop();
+            if (domain.indexOf('.') > -1 && freeEmailDomain.indexOf(domain.split('.').shift().toLowerCase()) > -1) {
+                $('#freeEmailMessage').show();
+            } else {
+                $('#freeEmailMessage').hide();
+            }
+        }
+    }
+
+    function verifyEmail(ctl) {
+        checkingBadEmail = true;
+        $.ajax({
+            url: '/verify-email',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify({ email: $(ctl).val() }),
+            success: function (sc) {
+                badEmail = !sc || sc === 'false';
+                if (badEmail) {
+                    $('#badEmailSpan').show();
+                } else {
+                    $('#badEmailSpan').hide();
+                }
+                checkingBadEmail = false;
+            },
+            error: function (err) {
+                console.log(err)
+                checkingBadEmail = false;
+            }
+        })
+    }
+
+    function validateForm(formID) {
+
+        let allinputs = $('#' + formID + ' input');
+        let allSelect = $('#' + formID + ' select');
+        let textArea = $('#' + formID + ' textarea');
+        let allLabeles = $('#' + formID + ' label');
+
+        let validationError = false;
+
+        //$('span[class="vm"]').remove();
+
+        $('.invalid-feedback').remove();
+
+        allinputs.each((ind, item) => {
+            if ($(item).attr('required') && $(item).val() == '') {
+                $(item).addClass('is-invalid');
+                //$(item).after(`<span class="vm">${$(item).attr('message')}</span>`);
+                validationError = true;
+            } else {
+                $(item).removeClass('is-invalid');
+                $(item).addClass('is-valid');
+            }
+        });
+
+        allSelect.each((ind, item) => {
+            if ($(item).attr('required') && $(item).val() == '') {
+                //$(item).after(`<span class="vm">${$(item).attr('message')}</span>`);
+                $(item).addClass('is-invalid');
+                validationError = true;
+            } else {
+                $(item).removeClass('is-invalid');
+                $(item).addClass('is-valid');
+            }
+        });
+
+        if ($(textArea).attr('required') && $(textArea).val() == '') {
+            //$(textArea).after(`<span class="vm">${$(textArea).attr('message')}</span>`);
+            $(textArea).addClass('is-invalid');
+            validationError = true;
+        } else {
+            $(textArea).removeClass('is-invalid');
+            $(textArea).addClass('is-valid');
+        }
+
+        allLabeles.each((ind, item) => {
+            if ($(item).attr('required') && ($(item).find('input').val() == '' || !$(item).find('input').prop('checked'))) {
+                $(item).after(`<span class="invalid-feedback" style="display:block;">${$(item).attr('message')}</span>`);
+                validationError = true;
+            }
+        });
+
+        //validate email
+        let email = $('#' + formID + ' input[type=email]');
+        const validateEmail = (email) => {
+            return String(email)
+                .toLowerCase()
+                .match(
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                );
+        };
+
+        if (!validateEmail($(email).val()) || badEmail) {
+            //$(email).after(`<span class="vm">Invlid Email</span>`);
+            $(email).removeClass('is-valid');
+            $(email).addClass('is-invalid');
+            validationError = true;
+        } else {
+            $(email).removeClass('is-invalid');
+            $(email).addClass('is-valid');
+        }
+
+        return validationError;
+    }
+    function submit(ctl) {
+        $(ctl).text('Processing....');
+        $(ctl).attr('disabled', true);
+        $('#badEmailSpan').hide();
+
+        if (!validateForm('modalForm')) {
+            fetch('/form/submit-popup', {
+                credentials: 'same-origin',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: $("#name").val(),
+                    businessEmail: $("#email").val(),
+                    phNo: $("#phone").val(),
+                    message: $("#message").val(),
+                    reportId: $('#popup_reportId').val(),
+                    company: $('#company').val(),
+                    captcha: $('#captcha').val(),
+                    formType: $('#popupFormType').val() === '' ? 7 : $('#popupFormType').val(),
+                    encode
+                })
+            }).then(res => res.json())
+                .then(res => {
+
+                    $(ctl).text('Send Me Sample');
+                    $(ctl).attr('disabled', false);
+
+                    if (res.success) {
+                        savedFormValues = true;
+                        $('#pform').hide(500);
+                        $('#pmessage').show(500);
+
+                        $('#leadID').val(res.id);
+                        if ($('#popupFormType').val() !== '') {
+                            loadMore();
+                        }
+
+                        myModal.hide();
+
+                    } else if (res.success == false && res.message == 'Invalid Captcha') {
+                        $('#captcha').after('<span class="invalid-feedback" style="display: block;">Invalid Captcha</span>');
+                        $('#captcha').removeClass('is-valid');
+                        $('#captcha').addClass('is-invalid');
+                    } else if (res.success == false && res.emailError) {
+                        $('#badEmailSpan').show();
+                    }
+                });
+        } else {
+            $(ctl).text('Send Me Sample');
+            $(ctl).attr('disabled', false);
+        }
+    }
+</script>
+{{#script_section 'Captcha'}}
+<script>
+    var encode = '';
+    function refreshCaptcha() {
+        fetch('/refresh-captcha/7').then(res => res.json()).then(res => {
+            $('#captchaImage').attr('src', res.captcha);
+            encode = res.encode;
+        }).catch(err => {
+            if (err) {
+                if (confirm('Do you like to redirect to <b>Request Sample</b> Form?')) {
+                    window.location.href = '{{slug}}/request-sample';
+                }
+            }
+        });
+    }
+    refreshCaptcha();
+</script>
+{{/script_section}}

@@ -1,0 +1,159 @@
+<link href="/css/blogs.css" rel="stylesheet" />
+<main id="blog-main" class="m-80 p-60">
+
+    <div class="">
+
+        <img src="/assets/images/blogs/Blog_3.webp" alt="about-us" class="img-fluid">
+    </div>
+    <div class="container-fluid" id="searchApp">
+        <div class="row">
+            <div class="col-md-12">
+                <section id="blog-section-main pt-0">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>Latest Market Research Blogs</h2>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-12">
+                                <div class="custom-form">
+                                    <form>
+                                        <input type="text" placeholder="Enter any text to search blogs.."
+                                            v-model="searchText" @keyup="autocomplete()">
+                                        <input type="button" value="Search" class="search-button">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <aside class="related-articles cc" v-if="searchText == ''">
+                            <div class="row">
+                                {{#each blogs}}
+                                <div class="col-md-4 mb-3 card-group">
+                                    <div class="card post tag-mongodb tag-scaling tag-aggregation">
+                                        <div class="card-body p-0">
+                                            <a href="/blog/{{slug}}" data-cover="" class="loaded">
+                                                <img src="/assets/images/blogs/Blog_600x400.webp" class="img-fluid"
+                                                    alt="Blog_{{_id}}">
+                                                <span class="publish-date">
+                                                    <time datetime="2017-09-14">{{formatdate createdAt 'MMM DD, YYYY'}}</time>
+                                                </span>
+                                            </a>
+                                            <figcaption class="p-3">
+                                                <h2><a href="/blog/{{slug}}">{{substring title 150}}</a>
+                                                </h2>
+                                                <p>{{substring description 300}}</p>
+
+                                            </figcaption>
+                                        </div>
+
+                                        <div class="card-footer pt-0 pb-0">
+                                            <figure class="author-avatar mb-2">
+                                                <a class="read-more btn btn-danger text-white text-center mt-2 mb-0"
+                                                    href="/blog/{{slug}}">Read More</a>
+
+                                            </figure>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </aside>
+                        <aside class="related-articles cc" v-if="searchText !== ''">
+                            <div class="row">
+
+                                <div class="col-md-4 mb-3 card-group" v-for="sr in searchResult">
+                                    <div class="card post tag-mongodb tag-scaling tag-aggregation">
+                                        <div class="card-body p-0">
+                                            <a :href="'/blog/' + sr.slug" data-cover="" class="loaded">
+                                                <img src="/assets/images/blogs/Blog_600x400.webp" class="img-fluid"
+                                                    :alt="'Blog_'+sr._id">
+                                                <span class="publish-date">
+                                                    <time datetime="2017-09-14">\{{sr.createdAt}}</time>
+                                                </span>
+                                            </a>
+                                            <figcaption class="p-3">
+                                                <h2><a :href="'/blog/' + sr.slug">\{{sr.title}}</a>
+                                                </h2>
+                                                <p>\{{sr.description}}</p>
+
+                                            </figcaption>
+                                        </div>
+
+                                        <div class="card-footer pt-0 pb-0">
+                                            <figure class="author-avatar mb-2">
+                                                <a class="read-more btn btn-danger text-white text-center mt-2 mb-0"
+                                                    :href="'/blog/' + sr.slug">Read More</a>
+
+                                            </figure>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var searchApp = new Vue({
+        el: '#searchApp',
+        data: {
+            searchResult: [],
+            isSearching: false,
+            searchText: ''
+        },
+        methods: {
+            autocomplete: function () {
+                if (this.searchText.length > 3) {
+                    this.isSearching = true;
+                    fetch('/search-blog/' + this.searchText, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application-json; charset=utf-8'
+                        }
+                    }).then(res => res.json())
+                        .then(res => {
+                            res.forEach((item) => {
+                                item.description = item.description.replace(/(<([^>]+)>)/gi, "").substring(0, 300);
+                            });
+                            this.searchResult = res;
+                            this.isSearching = false;
+                        });
+                }
+            },
+            search: function () {
+
+            }
+        }
+    })
+</script>
+<style>
+    .search-button {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        border: 0;
+        background: none;
+        font-size: 16px;
+        padding: 0 20px;
+        background: #e14073;
+        color: #fff;
+        transition: .3s;
+        border-radius: 50px;
+        box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    }
+</style>
+{{#metasection 'indexmeta'}}
+<meta name="robots" content="index">
+{{/metasection}}

@@ -1,0 +1,92 @@
+<table class="pd table table-responsive" style="width: 100%;">
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/forecast.png" class="me-2"
+                alt="Forecast Years" height="24" width="24"><strong>Forecast
+                Years:</strong>
+        </td>
+        <td>{{math Current_Year '+' 1}} - {{Forecast_Year}}</td>
+
+    </tr>
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/predictive-chart.png" class="me-2"
+                alt="Historical Years" height="24" width="24"><strong>Historical
+                Years:</strong>
+        </td>
+        <td>{{math History_CurrentYear '+' 1}} - {{math History_ForecastYear '+' 1}}</td>
+
+    </tr>
+    {{#if_not_eq Revenue_2021 'NA'}}
+    {{#if_not_eq Revenue_2021 null}}
+    {{#if_not_eq Revenue_2021 ''}}
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/money-growth.png" class="me-2"
+                alt="Revenue 2021" height="24" width="24"><strong>Revenue
+                2021:</strong></td>
+        <td>{{Revenue_Current}}</td>
+    </tr>
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/banknote.png" class="me-2"
+                alt="Revenue 2028" height="24" width="24"><strong>Revenue 2028:</strong>
+        </td>
+        <td>{{Revenue_Forecast}}</td>
+    </tr>
+
+
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/business-and-finance.png"
+                class="me-2" height="24" width="24" alt="Revenue CAGR"><strong>Revenue CAGR
+                <span>(2021 - 2028)</span>:</strong></td>
+        <td>{{CAGR_Revenue}}</td>
+
+    </tr>
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+
+    {{#if_not_eq Volume_2021 undefined}}
+    {{#if_not_eq Volume_2021 'NA'}}
+    {{#if_not_eq Volume_2021 null}}
+    {{#if_not_eq Volume_2021 ''}}
+    <tr>
+        <td><img style="height: 24px;" src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/volume.svg"
+                class="me-2" height="24" width="24" alt="Volume (2021)"><strong>Volume (2021)</strong>:
+        </td>
+        <td>{{Volume_2021}}</td>
+    </tr>
+    <tr>
+        <td><img style="height: 24px;" src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/volume.svg"
+                class="me-2" height="24" width="24" alt="Volume (2028)"><strong>Volume (2028)</strong>:
+        </td>
+        <td>{{Volume_2028}}</td>
+    </tr>
+    <tr>
+        <td><img style="height: 24px;" src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/volume.svg"
+                class="me-2" height="24" width="24" alt="Volume CAGR"><strong>Volume CAGR (2022 -
+                2028)</strong>:</td>
+        <td>{{CAGR_Volume}}</td>
+    </tr>
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/location.png" class="me-2"
+                height="24" width="24" alt="Fastest Growing Region">
+            <strong>Fastest Growing Region <span>(2022 -
+                    2028)</span></strong>
+        </td>
+        <td>{{Fastest_Region}}</td>
+    </tr>
+    {{#if_not_eq Largest_Region undefined}}
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/placeholder.png" height="24"
+                width="24" class="me-2" alt="Largest Region">
+            <strong>Largest Region (2021):</strong>
+        </td>
+        <td>
+            {{Largest_Region}}
+        </td>
+    </tr>
+    {{/if_not_eq}}
+</table>

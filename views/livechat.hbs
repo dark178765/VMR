@@ -1,0 +1,22 @@
+<script>
+    let qr = document.URL.split('?');
+    if(qr.length == 1)
+        window.location.href = 'https://www.vantagemarketresearch.com';
+
+    let vl = qr[1].split('&');
+    let obj = {};
+    for(var i=0;i<vl.length;i++) {
+        let acv = vl[i].split('=');
+        obj[acv[0]] = acv.length > 1 ? acv[1] : '';
+    }
+
+    if(!obj.src)
+        window.location.href = 'https://www.vantagemarketresearch.com';
+
+    let ru = document.referrer.replace('https://', '').split('/');
+
+    window.location.href = obj['src'] === 'buy-now' ? `https://www.vantagemarketresearch.com/buy-now/${ru[ru.length - 1]}/0` : `https://www.vantagemarketresearch.com/${ru[ru.length - 1]}/inquiry-before-buying`
+</script>
+{{#metasection 'noindex'}}
+<meta name="robots" content="noindex">
+{{/metasection}}

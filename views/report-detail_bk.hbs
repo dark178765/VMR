@@ -1,0 +1,1111 @@
+<link href="/css/report-detail.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred"></script>
+
+<main id="report-details-main">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12 blog-post-inner">
+                <div class="card mb-4">
+                    <div class="main-title-section">
+
+                        <div class="img-section">
+                            <div class="report-title">
+                                <h1 class="card-title">{{keyword}} Market</h1>
+                                <div class="card-body">
+                                    <h4 class="card-text">
+                                        {{title}}
+                                    </h4>
+                                </div>
+                                <div class="card-footer  row">
+                                    <div
+                                        class="post-date-and-category col-md-9 col-sm-12 col-lg-9 col-xxl-9 col-xs-12 col-12">
+                                        <ul>
+                                            <li>
+                                                <i class="fa fa-calendar"> </i>
+                                                <time class="entry-date published updated"
+                                                    datetime="{{actualCreatedAt}}">
+                                                    {{createdAt}} | Base Year:
+                                                    {{baseYear}} |
+                                                    Number of Pages:
+                                                    {{numberOfPages}}</time>
+                                                | Region : Global | Format:
+                                                <i class="fa fa-file-pdf-o" style="color: red;" title="PDF"></i> <i
+                                                    class="fa fa-file-excel-o" style="color: green;" title="Excel"></i>
+                                                <i class="fa fa-file-powerpoint-o" style="color: blue;"
+                                                    title="Power Point Presentation (PPT)"></i> | Report ID:
+                                                {{reportId}}
+                                            </li>
+
+                                        </ul>
+                                        <div class="pt-4">
+                                            <ul>
+                                                <li class="mr-0">
+                                                    <span>Home</span>&nbsp;<i class="fa fa-angle-double-right"></i>
+                                                </li>
+                                                <li class="mr-0">
+                                                    <span>{{excelData.category}}</span>&nbsp;<i
+                                                        class="fa fa-angle-double-right"></i>
+                                                </li>
+                                                <li class="mr-0">
+                                                    <span>{{keyword}} Market</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-12 col-lg-3 col-xxl-3 col-xs-12 col-12">
+                                        <ul class="social-bookmark float-end p-0">
+                                            <li><a class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twitter"><i class="fa fa-twitter"></i></a>
+                                            </li>
+                                            <li><a class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a class="linkedin"><i class=" fa fa-envelope"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-lg-9 col-xxl-9 col-xs-12 col-12 blog-post-inner" id="right_win">
+                <div class="container nav-tabs-main p-0">
+                    <div class="row">
+                        <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+                            <div class="card">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist"
+                                        data-background-color="orange">
+                                        <li class="nav-item">
+                                            <a class="btn btn-dark{{#if_eq descriptionTab true}} active{{/if_eq}}"
+                                                href="/industry-report/{{slug}}" role="tab">Description</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="btn btn-light ml-2{{#if_eq tocTab true}} active{{/if_eq}}"
+                                                href="/toc/{{slug}}" role="tab">Table of
+                                                Content</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="btn btn-warning ml-2{{#if_eq marketSegmentTab true}} active{{/if_eq}}"
+                                                href="/market-segmentation/{{slug}}" routerLinkActive="active"
+                                                role="tab">
+                                                Market
+                                                Segmentation</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="btn btn-success ml-2{{#if_eq methodologyTab true}} active{{/if_eq}}"
+                                                href="/methodology/{{slug}}" role="tab">Methodology</a>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+
+                                <div class="card-body tab-contant-section">
+                                    <div class="tab-content p-4">
+                                        <div id="report_description"
+                                            class="tab-pane{{#if_eq descriptionTab true}} active{{/if_eq}}" id="home1"
+                                            role="tabpanel" id="description-section">
+                                            {{reset_localindex}}
+                                            {{#if_eq descriptionTab true}}
+                                            {{#each templates}}
+                                            <div class="row">
+
+                                                {{#if_not_eq textType 'toc'}}
+                                                {{#if_not_eq textType 'lot'}}
+                                                {{#if_not_eq textType 'lof'}}
+                                                <div>
+                                                    {{#if_not_eq textType 'reportTitle'}}
+                                                    {{#if_not_eq textType 'noOfPages'}}
+                                                    {{#if_not_eq textType 'Price'}}
+                                                    {{#if_not_eq textType 'amount'}}
+                                                    <div class="col-md-12">
+                                                        {{#if_not_eq textType 'segmentationWithGraph'}}
+                                                        {{#if_not_eq mainContent undefined}}
+                                                        {{#if_not_eq mainContent ''}}
+                                                        <h4 class="text-left mt-0 font-weight-bold">
+                                                            {{title}}
+                                                        </h4>
+                                                        {{/if_not_eq}}
+                                                        {{/if_not_eq}}
+                                                        {{/if_not_eq}}
+                                                        {{#if_eq textType 'segmentationWithGraph'}}
+                                                        {{#if_not_eq subSegment undefined}}
+                                                        {{#if_not_eq subSegment ''}}
+                                                        <h4 class="text-left mt-0 font-weight-bold">
+                                                            {{title}}
+                                                        </h4>
+                                                        {{/if_not_eq}}
+                                                        {{/if_not_eq}}
+                                                        {{/if_eq}}
+                                                        {{#if_not_eq mainContent null}}
+                                                        {{#if_not_eq noBind true}}
+                                                        <div class="mb-2">
+                                                            <p>{{{mainContent}}}</p>
+                                                        </div>
+                                                        {{/if_not_eq}}
+                                                        {{/if_not_eq}}
+                                                    </div>
+                                                    {{/if_not_eq}}
+                                                    {{/if_not_eq}}
+                                                    {{/if_not_eq}}
+                                                    {{/if_not_eq}}
+                                                    {{#if_eq textType 'imageWithValue'}}
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="img-main display-none ">
+                                                                    <img src="/assets/images/reports/keyInsights.webp"
+                                                                        alt="vantage Market img">
+                                                                    <span class="title11">{{historicalData_2020}}</span>
+                                                                    <span class="title22">{{#if_eq ../baseYear
+                                                                        null}}{{baseYearData_2020}}{{/if_eq}}{{#if_not_eq
+                                                                        ../baseYear
+                                                                        null}}{{../baseYear}}{{/if_not_eq}}</span>
+
+                                                                    <span
+                                                                        class="title33">{{currentYearDate_2028}}</span>
+                                                                    <span
+                                                                        class="title44">{{projectedYearData_2028}}</span>
+                                                                    <span class="title55">{{#if_eq annualmarketsize_2028
+                                                                        undefined}}{{../excelData.annualmarketsize_2028}}{{/if_eq}}{{#if_not_eq
+                                                                        annualmarketsize_2028
+                                                                        undefined}}{{annualmarketsize_2028}}{{/if_not_eq}}</span>
+                                                                    <span class="title66">{{#if_eq annualmarketsize_2020
+                                                                        undefined}}{{../excelData.annualmarketsize_2020}}{{/if_eq}}{{#if_not_eq
+                                                                        annualmarketsize_2020
+                                                                        undefined}}{{annualmarketsize_2020}}{{/if_not_eq}}</span>
+                                                                    <span class="title77">{{CAGR_2021_2028}}</span>
+                                                                </div>
+                                                                <div class="display-show mb-4">
+                                                                    <div class="">
+                                                                        <table class="market-table">
+                                                                            <tr class="market-tr">
+                                                                                <th class="market-th">Years</th>
+                                                                                <th class="market-th">Parameters</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="market-td">Historical Data
+                                                                                    (Actual
+                                                                                    Data)</td>
+                                                                                <td class="market-td">
+                                                                                    {{historicalData_2020}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="market-td">Base Year Data
+                                                                                </td>
+                                                                                <td class="market-td">
+                                                                                    {{baseYearData_2020}}</td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td class="market-td">Current Year Date
+                                                                                </td>
+                                                                                <td class="market-td">
+                                                                                    {{currentYearDate_2028}}
+                                                                                </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td class="market-td">Projected year
+                                                                                    data
+                                                                                </td>
+                                                                                <td class="market-td">
+                                                                                    {{projectedYearData_2028}}
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="market-td">Annual Market Size
+                                                                                    (2028)</td>
+                                                                                <td class="market-td">
+                                                                                    {{annualMarketSize_2028}}
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="market-td">Annual Market Size
+                                                                                    (2021)
+                                                                                </td>
+                                                                                <td class="market-td">
+                                                                                    {{annualMarketSize_2020}}
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="market-td">CAGR (2021 - 2028)
+                                                                                </td>
+                                                                                <td class="market-td">
+                                                                                    {{CAGR_2021_2028}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    {{/if_eq}}
+                                                    {{#if_eq textType 'description'}}
+                                                    <div class="container mb-5">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="img-main">
+                                                                    <img src="/assets/images/reports/YearlyInfographic.svg"
+                                                                        alt="vantage Market img">
+                                                                    <span class="barValue1">{{#if_eq revenue_2020
+                                                                        undefined}}{{../excelData.revenue_2020}}{{/if_eq}}{{#if_not_eq
+                                                                        revenue_2020
+                                                                        undefined}}{{revenue_2020}}{{/if_not_eq}}
+                                                                    </span>
+                                                                    <span class="barValue2">{{#if_eq revenue_2028
+                                                                        undefined}}{{../excelData.revenue_2028}}{{/if_eq}}{{#if_not_eq
+                                                                        revenue_2028
+                                                                        undefined}}{{revenue_2028}}{{/if_not_eq}}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{/if_eq}}
+                                                    {{#if_eq textType 'reginalAnalysis'}}
+                                                    <div class="mb-5">
+                                                        <div class="container map-main-top">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <h5>{{keyword}}
+                                                                        Market Size, 2021 (USD Billion)</h5>
+                                                                    <div class="map-section">
+
+                                                                        <div class="map-main">
+                                                                            <div class="inner-main-map">
+                                                                                <div class="map1">
+                                                                                    <div class='pin'></div>
+                                                                                    <div class='pulse'></div>
+
+                                                                                </div>
+                                                                                <div class="content-main">
+                                                                                    North America
+                                                                                    {{#if_eq
+                                                                                    excelData.infographics_for_region
+                                                                                    'North America'}}
+                                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                                    {{/if_eq}}
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div class="map-main2">
+                                                                            <div class="inner-main-map">
+                                                                                <div class="map2">
+                                                                                    <div class='pin'></div>
+                                                                                    <div class='pulse'></div>
+
+                                                                                </div>
+                                                                                <div class="content-main">
+                                                                                    Europe
+                                                                                    {{#if_eq
+                                                                                    excelData.infographics_for_region
+                                                                                    'Europe'}}
+                                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                                    {{/if_eq}}
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="map-main3">
+                                                                            <div class="inner-main-map">
+                                                                                <div class="map3">
+                                                                                    <div class='pin'></div>
+                                                                                    <div class='pulse'></div>
+
+                                                                                </div>
+                                                                                <div class="content-main">
+                                                                                    Asia Pacific
+                                                                                    {{#if_eq
+                                                                                    excelData.infographics_for_region
+                                                                                    'Asia Pacific'}}
+                                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                                    {{/if_eq}}
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="map-main4">
+                                                                            <div class="inner-main-map">
+                                                                                <div class="map4">
+                                                                                    <div class='pin'></div>
+                                                                                    <div class='pulse'></div>
+
+                                                                                </div>
+                                                                                <div class="content-main">
+                                                                                    South America
+                                                                                    {{#if_eq
+                                                                                    excelData.infographics_for_region
+                                                                                    'South America'}}
+                                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                                    {{/if_eq}}
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="map-main5">
+                                                                            <div class="inner-main-map">
+                                                                                <div class="map5">
+                                                                                    <div class='pin'></div>
+                                                                                    <div class='pulse'></div>
+
+                                                                                </div>
+                                                                                <div class="content-main">
+                                                                                    Middle East Africa
+                                                                                    {{#if_eq
+                                                                                    excelData.infographics_for_region
+                                                                                    'Middle East Africa'}}
+                                                                                    <small><b>({{excelData.percentage_shareofregion}})</b></small>
+                                                                                    {{/if_eq}}
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{/if_eq}}
+                                                    {{#if_eq textType 'segmentationWithGraph'}}
+                                                    <div>
+                                                        <ul style="list-style: none;">
+                                                            <li>
+                                                                {{#split_each subSegment ','}}
+                                                                <ul>
+                                                                    <li>{{.}}</li>
+                                                                </ul>
+                                                                {{/split_each}}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    {{#if_not_eq subSegment undefined}}
+                                                    {{#if_not_eq subSegment.length undefined}}
+                                                    {{#if_not_eq subSegment.length 0}}
+                                                    <div class="mb-5">
+                                                        <div class="container map-main-top">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row mt-1 mb-4">
+                                                                        <div class="col-md-8" style="margin: auto;">
+                                                                            <div class="card">
+                                                                                <div class="card-body">
+                                                                                    <div>
+                                                                                        <canvas class="chartContainer"
+                                                                                            id="chart_{{localindex}}"></canvas>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{/if_not_eq}}
+                                                    {{/if_not_eq}}
+                                                    {{/if_not_eq}}
+                                                    {{/if_eq}}
+
+
+                                                </div>
+                                                {{/if_not_eq}}
+                                                {{/if_not_eq}}
+                                                {{/if_not_eq}}
+
+
+                                            </div>
+                                            {{/each}}
+                                            {{/if_eq}}
+
+                                            <div class="row mt-1 mb-4">
+                                                <div class="col-md-12" style="margin: auto;">
+                                                    <div style="display: block;">
+                                                        <img src="/assets/images/reports/Key_Why_2.webp"
+                                                            alt="Advantage and key features">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade show{{#if_eq tocTab true}} active{{/if_eq}}"
+                                            id="profile1" role="tabpanel">
+                                            {{#if_eq tocTab true}}
+                                            <div>{{{toc}}}</div>
+                                            {{/if_eq}}
+                                        </div>
+                                        <div class="tab-pane fade show{{#if_eq marketSegmentTab true}} active{{/if_eq}}"
+                                            role="tabpanel">
+                                            {{#if_eq marketSegmentTab true}}
+                                            {{> marketsegmentation marketSeg}}
+                                            {{/if_eq}}
+                                        </div>
+                                        <div class="tab-pane fade show{{#if_eq methodologyTab true}} active{{/if_eq}}"
+                                            role="tabpanel">
+                                            {{#if_eq methodologyTab true}}
+                                            {{> methodology methodology}}
+                                            {{/if_eq}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section id="faq" class="faq section-bg">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>Frequently Asked Questions</h2>
+                        </div>
+
+                        <div class="faq-list">
+                            <ul id="accordion1">
+                                <li data-aos="fade-up" class="panel">
+                                    <i class="fa fa-question-circle  icon-help"></i>
+                                    <a data-bs-toggle="collapse" data-toggle="collapse" data-bs-target="#faq-list-1"
+                                        href="#faq-list-1" data-parent="#accordion1">What is
+                                        the global demand for {{keyword}}
+                                        in terms of revenue? <i class="fa fa-angle-down icon-show"></i>
+                                        <i class="fa fa-angle-up icon-close"></i>
+                                    </a>
+                                    <div id="faq-list-1" class="collapse" data-bs-parent=".faq-list">
+                                        <p class="p-4">
+                                            The global {{keyword}} valued at {{excelData.revenue_2020}}
+                                            in 2020 and is expected to reach {{excelData.revenue_2028}} in 2028
+                                            growing at a CAGR of {{excelData.revenue_CAGR}}%
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li data-aos="fade-up" data-aos-delay="100">
+                                    <i class="fa fa-question-circle  icon-help"></i>
+                                    <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" data-toggle="collapse"
+                                        href="#faq-list-2" data-parent="#accordion1"> Which
+                                        are the prominent players
+                                        in the market? <i class="fa fa-angle-down icon-show"></i><i
+                                            class="fa fa-angle-up icon-close"></i></a>
+                                    <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                                        <p class="p-4">
+                                            The prominent players in the market are {{excelData.company}}.
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li data-aos="fade-up" data-aos-delay="200">
+                                    <i class="fa fa-question-circle  icon-help"></i> <a data-bs-toggle="collapse"
+                                        data-bs-target="#faq-list-3" class="collapse" data-toggle="collapse"
+                                        href="#faq-list-3" data-parent="#accordion1">
+                                        At what CAGR is the market projected to grow within the forecast period? <i
+                                            class="fa fa-angle-down icon-show"></i><i
+                                            class="fa fa-angle-up icon-close"></i></a>
+                                    <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                                        <p class="p-4">
+                                            The market is project to grow at a CAGR of
+                                            {{excelData.revenue_CAGR}}%
+                                            between 2021 and 2028.
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li data-aos="fade-up" data-aos-delay="300">
+                                    <i class="fa fa-question-circle  icon-help"></i>
+                                    <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapse"
+                                        data-toggle="collapse" href="#faq-list-4" data-parent="#accordion1">What are
+                                        the driving factors
+                                        fueling the growth of the market. <i class="fa fa-angle-down icon-show"></i><i
+                                            class="fa fa-angle-up icon-close"></i></a>
+                                    <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                                        <p class="p-4">
+                                            The driving factors of the {{keyword}} include
+                                        <ul style="list-style: disc;" class="pl-lg-5 text-justify">
+                                            <li class="pl-0 pt-0 pb-0">
+                                                {{excelData.driver_1}}
+                                            </li>
+                                            <li class="pl-0 pt-0 pb-0">
+                                                {{excelData.driver_2}}
+                                            </li>
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li data-aos="fade-up" data-aos-delay="400">
+                                    <i class="fa fa-question-circle  icon-help"></i>
+                                    <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapse"
+                                        data-toggle="collapse" href="#faq-list-5" data-parent="#accordion1">Which
+                                        region accounted for the
+                                        largest share in the market? <i class="fa fa-angle-down icon-show"></i><i
+                                            class="fa fa-angle-up icon-close"></i></a>
+                                    <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                        <p class="p-4">
+                                            {{excelData.leading_region}} was the leading regional segment of
+                                            the
+                                            {{keyword}} in 2020.
+                                        </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-lg-3 col-xxl-3 col-xs-12 col-12 side-bar-section">
+                <!-- Categories Widget -->
+                <div class="card">
+                    <div class="card-body sidebar-box">
+                        <div class="row">
+                            <div class="col-lg-12 report-btn-main">
+                                <div>
+                                    <a href="/pricing/{{slug}}" type="button" rel="nofollow"
+                                        class="btn btn-block sample-button anchor"><i aria-hidden="true"
+                                            class="fa fa-shopping-cart "></i>
+                                        Proceed To Buy
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Widget -->
+                <div class="card my-4" id="target">
+                    <div class="card-body sidebar-box">
+                        <div class="row">
+                            <div class="col-lg-12 report-btn-main">
+                                <div>
+                                    <a type="button" class="btn btn-block sample-button anchor" rel="nofollow"
+                                        href="/{{slug}}/request-sample"><i aria-hidden="true"
+                                            class="fa fa-file-text"></i>
+                                        Request Sample Report
+                                    </a>
+                                </div>
+                                <div>
+                                    <a type="button" class="btn btn-block customize-button anchor" rel="nofollow"
+                                        href="/{{slug}}/customization-request"><i class="customize-icon fa fa-list"
+                                            aria-hidden="true"></i> Customization
+                                        Request</a>
+                                </div>
+                                <div>
+                                    <a type="button" class="btn btn-block request-button anchor" rel="nofollow"
+                                        href="/{{slug}}/contact-analyst"><i class="request-icon fa fa-share-alt"
+                                            aria-hidden="true"></i>Speak To
+                                        Analyst</a>
+                                </div>
+                                <div>
+                                    <a type="button" class="btn btn-block queries-button anchor" rel="nofollow"
+                                        href="/{{slug}}/inquiry-before-buying"><i
+                                            class="queries-icon fa fa-question-circle  icon-help"
+                                            aria-hidden="true"></i>
+                                        Inquiry Before Buying</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="side-box">
+                    <h5 class="card-header">Our Companies</h5>
+                </div>
+                <div class="card my-4 side-box">
+                    <div class="row">
+                        <div class="col-lg-12 report-btn-main">
+                            <div class="card-body">
+                                <div>
+                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="/assets/images/clients/3m.webp" class="img-fluid" alt="3M">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/abb.webp" class="img-fluid" alt="ABB">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/accenture.webp" class="img-fluid"
+                                                    alt="accenture">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/basf.webp" class="img-fluid"
+                                                    alt=" basf">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/bridgestone.webp" class="img-fluid"
+                                                    alt="bridgestone">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/deloitte.webp" class="img-fluid"
+                                                    alt="vantage Market deloitte">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/dow.webp" class="img-fluid"
+                                                    alt="vantage Market dow">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/basf.webp" class="img-fluid"
+                                                    alt=" basf">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/fujifilm.webp" class="img-fluid"
+                                                    alt="fujifilm">
+                                            </div>
+
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/ge.webp" class="img-fluid" alt="ge">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/honywell.webp" class="img-fluid"
+                                                    alt="honywell">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/hyundai.webp" class="img-fluid"
+                                                    alt="hyundai">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/ibm.webp" class="img-fluid" alt=" ibm">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/intel.webp" class="img-fluid"
+                                                    alt="intel">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/leica.webp" class="img-fluid"
+                                                    alt="leica">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/mahindra.webp" class="img-fluid"
+                                                    alt="mahindra">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/mcKinsey&Co.webp" class="img-fluid"
+                                                    alt="mcKinsey&Co">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/michelin.webp" class="img-fluid"
+                                                    alt="michelin">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/microsoft.webp" class="img-fluid"
+                                                    alt="microsoft">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/mitsubishi.webp" class="img-fluid"
+                                                    alt="mitsubishi">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/panasonic.webp" class="img-fluid"
+                                                    alt="panasonic">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/pepsico.webp" class="img-fluid"
+                                                    alt="pepsico">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/pfizer.webp" class="img-fluid"
+                                                    alt="pfizer">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/philips.webp" class="img-fluid"
+                                                    alt="philips">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/pwc.webp" class="img-fluid" alt="pwc">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/rockwell.webp" class="img-fluid"
+                                                    alt="rockwell">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/saint-gobain.webp" class="img-fluid"
+                                                    alt="saint gobain">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/schneider.webp" class="img-fluid"
+                                                    alt="schneider">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/selo.webp" class="img-fluid"
+                                                    alt="selo">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/shell.webp" class="img-fluid"
+                                                    alt="shell">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/siemens.webp" class="img-fluid"
+                                                    alt="siemens">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/sony.webp" class="img-fluid"
+                                                    alt="sony">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/symantec.webp" class="img-fluid"
+                                                    alt="symantec">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/tata.webp" class="img-fluid"
+                                                    alt="tata">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/texas-instruments.webp"
+                                                    class="img-fluid" alt="texas instruments">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="/assets/images/clients/total.webp" class="img-fluid"
+                                                    alt="total">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+</main><!-- End #main -->
+
+{{!-- <div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="position-relative">
+                    <img src="https://vmr-images.s3.amazonaws.com/new-0d18bf4f-a929-4f27-b6ba-e75099a10c67.webp"
+                        class="img img-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn modal-btn float-end mr-2" href="/{{slug}}/inquiry-before-buying">
+                                <i class="queries-icon fa fa-question-circle  icon-help" aria-hidden="true"></i>
+                                Inquiry Before Buying </a>
+                            <a class="btn modal-btn float-end mr-2" href="/{{slug}}/contact-analyst">
+                                <i class="request-icon fa fa-share-alt" aria-hidden="true"></i>
+                                Speak To Analyst </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+<div class="modal modal-wide" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" id="pModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Request Free Sample of {{keyword}} Market</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="formPart">
+                    <div class="col-md-6 d-none d-sm-block" style="text-align: center;">
+                        <p class="popupMessage">We will be happy to help you!! Please provide your requirement. We will
+                            send you the sample
+                            as per your requirement.</p>
+                        <img src="/assets/images/DialogImage.png" style="width: 67%" />
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        {{> popupform}}
+                    </div>
+                </div>
+                <div class="row" id="divMessage" style="display: none;">
+                    <div class="col-md-12">
+                        <p>Thanks for your intrest. Our sales representative contact you soon. Meanwhile if you have any
+                            queries. You can contact us</p>
+                        <p>This modal is goig to close in <span id="modalClose"></span> seconds.</p>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: flex;">
+    <a href="/{{slug}}/request-sample" class="btn btn-success mobile-buttons">Request Sample</a>
+    <a href="/pricing/{{slug}}" class="btn btn-info mobile-buttons ml-2" style="left: 37%;">Buy Now</a>
+</div>
+
+<style>
+    @media only screen and (max-width: 600px) {
+        .mobile-buttons {
+            position: fixed;
+            bottom: 2px;
+        }
+
+        .segment-tree {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        .mobile-buttons {
+            display: none;
+        }
+    }
+
+    .even-table tr:nth-child(even) {
+        background-color: lightblue;
+    }
+
+    .even-table td {
+        font-weight: 400;
+    }
+
+    .blog-post-inner p {
+        color: #000 !important;
+        font-weight: 400;
+    }
+
+    .blog-post-inner p span {
+        color: #000 !important;
+        font-weight: 400;
+    }
+
+    .blog-post-inner li {
+        color: #000 !important;
+        font-weight: 400;
+    }
+
+    .modal-body {
+        background-color: #0a374c;
+        color: #fff;
+    }
+
+    .popupMessage {
+        color: yellow;
+        padding: 20px;
+    }
+
+    .modal.modal-wide .modal-dialog {
+        max-width: 75%;
+        width: 75%;
+    }
+
+    .modal-wide .modal-body {
+        overflow-y: auto;
+    }
+</style>
+<script>
+    let leavingMessageShown = false;
+    let message = 'We will be happy to help you!! Please provide your requirement. We will send you the sample as per your requirement.';
+    $(document).ready(function () {
+        setTimeout(() => {
+            //if (!cookie()) {
+            $('.modal').modal('show');
+            $('.popupMessage').text(message);
+            //}
+        }, 15000);
+
+        $('.market-table').addClass('table table-bordered even-table');
+        $('.market-table').removeClass('market-table');
+        $('html').bind('mouseleave', function () {
+            if (!leavingMessageShown) {
+                $('.popupMessage').text('Please let us know what you did not find in this report. That will give us the oppurtunity to improve. We insure you that you will get the exact information you want.');
+                $('.modal').modal('show');
+                leavingMessageShown = true;
+            }
+        });
+    });
+
+    var xx = {{{ json segmentation }}};
+
+    console.log('Map Values', xx);
+
+    Chart.defaults.global.tooltips.enabled = false;
+    for (var i = 0; i < xx.length; i++) {
+        let randomColors = [];
+
+        xx[i].pieChartLabels.forEach((it, id) => {
+            randomColors.push(getRandomColor());
+        });
+
+        const data = {
+            labels: xx[i].pieChartLabels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: xx[i].pieChartData,
+                backgroundColor: randomColors,
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                legend: {
+                    position: "right",
+                    align: "middle"
+                },
+                plugins: {
+                    tooltip: {
+                        enabled: false
+                    },
+                    deferred: {
+                        // defaults
+                        delay: 500
+                    }
+                }
+            }
+        };
+
+        const myChart = new Chart(
+            document.getElementById('chart_' + i),
+            config
+        );
+    }
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    function cookie() {
+        if (document.cookie.indexOf('showDialog=true;') > -1) {
+            document.cookie = "showDialog=true;";
+            return false;
+        }
+        return true;
+    }
+</script>
+
+{{#if_eq descriptionTab true}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the global demand for {{keyword}} in terms of revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The global {{keyword}} valued at {{excelData.revenue_2020}} in 2020 and is expected to reach {{excelData.revenue_2028}} in 2028 growing at a CAGR of {{excelData.revenue_CAGR}}% <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which are the prominent players in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The prominent players in the market are {{excelData.company}}. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "At what CAGR is the market projected to grow within the forecast period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The market is project to grow at a CAGR of {{excelData.revenue_CAGR}}% between 2021 and 2028. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the driving factors fueling the growth of the market.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The driving factors of the {{keyword}} include <ul style='list-style: disc;' class='pl-lg-5 text-justify'><li class='pl-0 pt-0 pb-0'>{{excelData.driver_1}}</li><li class='pl-0 pt-0 pb-0'>{{excelData.driver_2}}</li></ul> <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which region accounted for the largest share in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{excelData.leading_region}} was the leading regional segment of the {{keyword}} in 2020. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    }
+  ]
+}
+</script>
+
+{{!--
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "{{title}}",
+      "image": [
+        "https://www.vantagemarketresearch.com/assets/images/logo/logo.png"
+       ],
+      "description": "{{metadescription}}",
+      "brand": {
+        "@type": "Brand",
+        "name": "Vantage Market Research"
+      },
+      "review": {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "4.6",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Amy Johnson"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.4",
+        "reviewCount": "1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.vantagemarketresearch.com/industry-report/{{slug}}",
+        "priceCurrency": "USD",
+        "price": "{{pricingOptions.singleUser}}",
+        "priceValidUntil": "2020-11-20",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script> --}}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{excelData.category}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{keyword}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      }]
+    }
+    </script>
+{{/if_eq}}
+{{#metasection 'indexmeta'}}
+<meta name="robots" content="index">
+{{/metasection}}

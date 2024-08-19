@@ -1,0 +1,110 @@
+<table class="table table-bordered even-table" style="border-collapse: collapse;">
+    <tbody>
+        <tr class="market-tr">
+            <th class="market-th">Parameter</th>
+            <th class="market-th">Details</th>
+        </tr>
+        <tr>
+            <td class="market-td" style="text-align: center;">Market Size Provided for Years</td>
+            <td class="market-td">{{History_CurrentYear}} - {{Forecast_Year}}</td>
+        </tr>
+        <tr>
+            <td class="market-td" style="text-align: center;">Base Year</td>
+            <td class="market-td">{{Base_Year}}</td>
+        </tr>
+
+        <tr>
+            <td class="market-td" style="text-align: center;">Historic Years</td>
+            <td class="market-td">{{History_CurrentYear}} - {{History_ForecastYear}}</td>
+        </tr>
+
+        <tr>
+            <td class="market-td" style="text-align: center;">Forecast Years</td>
+            <td class="market-td">{{math Current_Year '+' 1}} - {{Forecast_Year}}</td>
+        </tr>
+        <tr>
+            <td class="market-td" style="text-align: center;">Segments Covered</td>
+            <td class="market-td">
+                <ul>
+                    {{#each segments}}
+                    <li>{{segment}}
+                        <ul>
+                            {{#each subSegments}}
+                            <li>{{text}}</li>
+                            {{/each}}
+                        </ul>
+                    </li>
+                    {{/each}}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="market-td" style="text-align: center;">Regions & Counties Covered</td>
+            <td class="market-td">
+                <ul>
+                    <li> North America
+                        <ul>
+                            <li> U.S.</li>
+                            <li> Canada</li>
+                            <li> Mexic</li>
+                        </ul>
+                    </li>
+                    <li>Eurpe
+                        <ul>
+                            <li>U.K</li>
+                            <li>France</li>
+                            <li>Germany</li>
+                            <li>Italy</li>
+                            <li>Spain</li>
+                            <li>Rest Of Europe
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Asia Pacific
+                        <ul>
+                            <li>China</li>
+                            <li>Japan</li>
+                            <li>India</li>
+                            <li>Suth Korea</li>
+                            <li>South East Asia</li>
+                            <li>Rest Of Asia Pacific</li>
+                        </ul>
+                    </li>
+                    <li>Latin America
+                        <ul>
+                            <li>Brazil</li>
+                            <li>Argentina</li>
+                            <li>Rest Of Latin America</li>
+                        </ul>
+                    </li>
+                    <li>Middle East &amp; Africa
+                        <ul>
+                            <li>GCC Cuntries</li>
+                            <li>South Africa</li>
+                            <li>Rest Of Middle East &amp; Africa</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="market-td " style="text-align: center;">Companies Covered</td>
+            <td class="market-td">
+                <ul>
+                    {{#each player}}
+                    <li>{{.}}</li>
+                    {{/each}}
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="market-td" style="text-align: center;">Report Coverage</td>
+            <td class="market-td">Market growth drivers, restraints, opportunities, Porter’s five forces analysis, PEST
+                analysis, value chain analysis, regulatory landscape, technology landscape, patent analysis, market
+                attractiveness analysis by segments and North America, company market share analysis, and COVID-19
+                impact analysis
+            </td>
+        </tr>
+    </tbody>
+</table>

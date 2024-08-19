@@ -1,0 +1,56 @@
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="breadcrumb-list">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item">Case Study</li>
+                            <li class="breadcrumb-item">{{caseStudy.Keyword}}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+<!-- Breadcrumb -->
+<div class="page-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <h1 class="mb-0">{{camelCase caseStudy.Summary}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {{{caseStudy.Description}}}
+            </div>
+        </div>
+        <div class="row">
+            <a class="btn btn-dark" href="/contact-us">Request Case Study</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .page-banner {
+        background: url(/assets/img/SuccessStory/cover/{{getUrl caseStudy.Keyword false}}.webp);
+    }
+</style>
+{{#metasection 'noindex'}}
+<meta name="robots" content="noindex">
+{{/metasection}}

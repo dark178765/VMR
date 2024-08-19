@@ -1,0 +1,156 @@
+{{#if marketSegmentDescription}}
+<div class="row">
+    <div class="col-md-12">
+        <div class="mb-5">
+            <div class="container">
+                <p>
+                    {{{marketSegmentDescription.mainContent}}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+{{reset_localindex}}
+
+{{#each marketSegregationWitSubSegments}}
+<div class="row">
+    <div class="col-md-12">
+        {{#if_eq textType 'segmentationWithGraph'}}
+        <div class="mb-5">
+            <div class="container map-main-top">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-2">
+                            {{#if_not_eq title undefined}}
+                            {{#if_not_eq title ''}}
+                            <h4 class="text-left mt-0">
+                                {{{title}}}
+                            </h4>
+                            {{/if_not_eq}}
+                            {{/if_not_eq}}
+                        </div>
+                        <div class="mb-2">
+                            {{#if_not_eq mainContent undefined}}
+                            {{#if_not_eq mainContent ''}}
+                            <p>
+                                {{{description}}}
+                            </p>
+                            {{/if_not_eq}}
+                            {{/if_not_eq}}
+                        </div>
+                        {{#if_eq textType 'segmentationWithGraph'}}
+                        <div>
+                            <ul style="list-style: none;">
+                                <li>
+                                    {{#split_each subSegment ','}}
+                                    <ul>
+                                        <li>{{.}}</li>
+                                    </ul>
+                                    {{/split_each}}
+                                </li>
+                            </ul>
+                        </div>
+                        {{#if_not_eq subSegment undefined}}
+                        {{#if_not_eq subSegment.length undefined}}
+                        {{#if_not_eq subSegment.length 0}}
+                        <div class="mb-5">
+                            <div class="container map-main-top">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row mt-1 mb-4">
+                                            <div class="col-md-12" style="margin: auto;">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div style="display: block;">
+                                                            <canvas class="chartContainer"
+                                                                id="chart_{{localindex}}"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/if_not_eq}}
+                        {{/if_not_eq}}
+                        {{/if_not_eq}}
+                        {{/if_eq}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if_eq}}
+    </div>
+</div>
+{{/each}}
+{{#if segmentation}}
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-deferred"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script>
+    var xx = {{{ json segmentation }}};
+
+    Chart.defaults.global.tooltips.enabled = false;
+    for (var i = 0; i < xx.length; i++) {
+        let randomColors = [];
+
+        xx[i].pieChartLabels.forEach((it, id) => {
+            randomColors.push(getRandomColor());
+        });
+
+        const data = {
+            labels: xx[i].pieChartLabels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: xx[i].pieChartData,
+                backgroundColor: randomColors,
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                legend: {
+                    position: "right",
+                    align: "middle"
+                },
+                plugins: {
+                    tooltip: {
+                        enabled: false
+                    },
+                    deferred: {
+                        // defaults
+                        delay: 500
+                    }
+                }
+            }
+        };
+
+        const myChart = new Chart(
+            document.getElementById('chart_' + i),
+            config
+        );
+    }
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    function cookie() {
+        if (document.cookie.indexOf('showDialog=true;') > -1) {
+            document.cookie = "showDialog=true;";
+            return false;
+        }
+        return true;
+    }
+</script>
+{{/if}}

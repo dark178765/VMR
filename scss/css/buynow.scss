@@ -1,0 +1,281 @@
+.card0 {
+    margin: 40px 12px 15px 12px;
+    border: 0;
+}
+
+.card1 {
+    margin: 0;
+    padding: 15px;
+    padding-top: 25px;
+    padding-bottom: 0px;
+    background: #263238;
+    // height        : 100%
+}
+
+.bill-head {
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.line {
+    border-right: 1px grey solid;
+}
+
+.bill-date {
+    color: #bdbdbd;
+}
+
+.red-bg {
+    margin-top: 25px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #398cbf;
+    padding-left: 20px !important;
+    padding: 25px 10px 25px 15px;
+}
+
+#total {
+    margin-top: 0px;
+    padding-left: 7px;
+}
+
+#total-label {
+    margin-bottom: 0px;
+    color: #ffffff;
+    padding-left: 7px;
+}
+
+#heading1 {
+    color: #ffffff;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+#heading2 {
+    font-size: 27px;
+    color: #398cbf;
+}
+
+.card2 {
+    padding: 25px;
+    margin: 0;
+    height: 100%;
+}
+
+.form-card .pay {
+    font-weight: bold;
+}
+
+.form-card input,
+.form-card textarea {
+    padding: 10px 8px 10px 8px;
+    border: none;
+    border: 1px solid lightgrey;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2c3e50;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: none;
+    font-weight: bold;
+    border: 1px solid gray;
+    outline-width: 0;
+}
+
+.btn-info {
+    color: #ffffff !important;
+}
+
+.radio-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.radio {
+    display: inline-block;
+    width: 204;
+    height: 64;
+    border-radius: 0;
+    background: lightblue;
+    box-sizing: border-box;
+    border: 2px solid lightgrey;
+    cursor: pointer;
+    margin: 8px 25px 8px 0px;
+}
+
+.radio:hover {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.radio.selected {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.4);
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+.payment-btn {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 35px;
+    border-radius: 25px;
+    transition: 0.5s;
+    margin-top: 10px;
+    border: 2px solid #e14073;
+    background-color: #e14073;
+    color: #fff;
+}
+
+.payment-btn:hover {
+    background-color: #e14073;
+}
+
+.payment-card {
+    margin-right: 10px;
+    color: #27305f;
+    cursor: pointer;
+}
+
+.payment-card:hover {
+    background-color: #c16628ab;
+    color: #fff;
+}
+
+.card-heading h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #128ab7;
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+    margin: 12px 0 10px;
+}
+
+.bg-white-custom {
+    background-color: #fff;
+}
+
+.btn-primary {
+    border-color: #e14073;
+}
+
+.btn-primary,
+.btn-primary:hover {
+    background-color: #e14073;
+}
+
+.card-active {
+    background-color: #c16628ab;
+    color: #fff;
+}
+
+.bs4-order-tracking {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: #c7c7c7 none repeat scroll 0 0;
+    padding-left: 0;
+    margin-top: 30px;
+}
+
+.bs4-order-tracking li {
+    list-style-type: none;
+    font-size: 13px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+    color: #c7c7c7 none repeat scroll 0 0;
+    text-align: center;
+    z-index: 1;
+}
+
+.bs4-order-tracking li:first-child:before {
+    margin-left: 15px !important;
+    padding-left: 11px !important;
+    text-align: left !important;
+}
+
+.bs4-order-tracking li:last-child:before {
+    margin-right: 5px !important;
+    padding-right: 11px !important;
+    text-align: right !important;
+}
+
+.bs4-order-tracking li>div {
+    color: #fff;
+    width: 29px;
+    text-align: center;
+    line-height: 29px;
+    display: block;
+    font-size: 12px;
+    background: #c7c7c7 none repeat scroll 0 0;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.bs4-order-tracking li:after {
+    content: "";
+    width: 150%;
+    height: 2px;
+    background: #c7c7c7 none repeat scroll 0 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    z-index: -1;
+}
+
+.bs4-order-tracking li:first-child:after {
+    left: 50%;
+}
+
+.bs4-order-tracking li:last-child:after {
+    left: 0 !important;
+    width: 0 !important;
+}
+
+.bs4-order-tracking li.active {
+    font-weight: 700;
+    color: #e14073;
+    z-index: 1;
+}
+
+.bs4-order-tracking li.active:after,
+.bs4-order-tracking li.active>div {
+    background: #e14073;
+}
+
+.card-timeline {
+    background-color: #fff;
+    z-index: 0;
+}
+
+.active-card {
+    border: 2px solid #e14073;
+}
+
+.billing-summary {
+    color: #fff;
+}
+
+.text-theme-color {
+    color: #e14073;
+}

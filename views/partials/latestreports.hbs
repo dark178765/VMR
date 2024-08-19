@@ -1,0 +1,49 @@
+<div class="course-feature">
+    <div class="row">
+        {{#each recentReports}}
+        <div class="col-lg-4 col-md-6 d-flex">
+            <div class="course-box d-flex aos" data-aos="fade-up">
+                <div class="product">
+                    <div class="product-img">
+                        <a href="/industry-report/{{url}}">
+                            <img class="img-fluid lazyload" alt="{{reportTitle}} Market"
+                                data-src="https://cdn.vantagemarketresearch.com/report/thumbnail/{{getUrl reportTitle false}}-Market.webp"
+                                onerror="this.src='https://cdn.vantagemarketresearch.com/category/thumbnail/{{getUrl parentCategory.title false}}.webp'"
+                                width="369px" height="271px" style="width: 369px;height:271px;">
+                        </a>
+                        <div class="price">
+                            <h3>$ {{singleUser}} USD</h3>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title instructor-text" style="font-size: 1.3rem;font-weight:bold;"><a
+                                href="/industry-report/{{url}}">{{reportTitle}} Market
+                                Size, Share & Trends Analysis Report</a>
+                        </h3>
+                        <div class="course-group d-flex">
+                            <div class="course-group-img d-flex" style="align-items: center;">
+                                <a href="/category/{{category.slug}}"><img
+                                        data-src="https://cdn.vantagemarketresearch.com/category/icon/{{getUrl parentCategory.title false}}.svg"
+                                        alt="{{parentCategory.title}} Icon" class="img-fluid lazyload" width="40"
+                                        height="40"></a>
+                                <div class="course-name">
+                                    <h4><a href="/category/{{category.slug}}">{{category.title}}</a></h4>
+                                    <p>Vantage Market Research</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="all-btn all-category d-flex align-items-center">
+                            <a rel="noindex" href="/{{url}}/request-sample" class="btn btn-primary">REQUEST
+                                SAMPLE</a>
+                            <a rel="noindex" href="/buy-now/{{url}}/0" class="btn btn-primary">BUY NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

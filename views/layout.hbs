@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{metatitle}}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{metadescription}}" />
+    <meta name="keywords" content="{{metakeywords}}" />
+    <meta name="author" content="Vantage Market Research,{{host}}/">
+    <!-- <meta name="keywords"
+    content="Vantage Market Research Reports, Market Size and Forecasts, Industry Analysis, Custom Research and Consulting." /> -->
+    <!--<meta name="document-type" content="Public" />
+    <meta name="Page-Topic" content="Vantage Market Research Reports" />-->
+    <meta name="copyright" content="Vantage Market Research" />
+    <!--<meta name="classification" content="market research reports" />
+    <meta name="document-classification" content="Vantage Market Research Services" />-->
+    <meta content="US" name="geo.country" />
+
+    <link rel="preconnect" href="{{host}}/" />
+    <link rel="preconnect" href="https://cdn.vantagemarketresearch.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
+    <link rel="dns-prefetch" href="{{host}}/" />
+
+    <meta name="distribution" content="global" />
+    <meta name="coverage" content="global" />
+    <meta name="abstract" content="consulting services, market research reports, industry analysis, reports" />
+    <meta name="Audience" content="All, Business, Management, Research, Services" />
+    <meta name="msvalidate.01" content="C84675E7CCFDCC559E62BD6353C61620" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@vantagemarketr" />
+    <meta name="twitter:creator" content="@vantagemarketr" />
+    <meta property="twitter:description" content="{{metadescription}}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="Vantage Market Research" />
+
+    <meta property="og:title" content="{{metatitle}}" />
+    <meta property="og:description" content="{{metadescription}}" />
+    <meta property="og:image" content="{{host}}/assets/images/logo/logo.webp" />
+    <meta property="og:url" content="{{host}}">
+    <meta name="yandex-verification" content="947eb3cf65890166" />
+    <!--Meta From Application-->
+    {{#each _metasections}}
+    {{{.}}}
+    {{/each}}
+
+
+    {{!-- {{#if_eq host 'https://www.vantagemarketresearch.com'}}
+    <link rel="canonical"
+        href="{{#if_eq canonical undefined}}{{CURRENT_URL}}{{/if_eq}}{{#if_not_eq canonical undefined}}{{host}}{{canonical}}{{/if_not_eq}}" />
+    <link href="/favicon.ico" rel="icon">
+    {{/if_eq}} --}}
+
+
+    <link rel="canonical"
+        href="{{#if_eq canonical undefined}}{{CURRENT_URL}}{{/if_eq}}{{#if_not_eq canonical undefined}}{{host}}{{canonical}}{{/if_not_eq}}" />
+    <link href="/favicon.ico" rel="icon">
+
+
+    {{#if_eq host 'https://www.vmr.biz'}}
+    <link rel="canonical"
+        href="{{#if_eq canonical undefined}}{{CURRENT_URL}}{{/if_eq}}{{#if_not_eq canonical undefined}}https://www.vantagemarketresearch.com{{canonical}}{{/if_not_eq}}" />
+    <link href="/favicon.ico" rel="icon">
+    {{/if_eq}}
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon">
+
+    {{#if_eq host 'https://www.vantagemarketresearch.com'}}
+    {{> vantagemarketresearchcomanalytics}}
+    {{/if_eq}}
+
+
+    {{#if_eq host 'https://www.vmr.biz'}}
+    {{> vmrbizanalytics}}
+    {{/if_eq}}
+
+    <!-- Yandex.Metrika counter -->
+    {{!--
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(94767645, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/94767645" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript> --}}
+    <!-- /Yandex.Metrika counter -->
+</head>
+
+<body>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper" style="height: 100%;">
+
+
+        <!--Production React-->
+        <script defer src="https://cdn.vantagemarketresearch.com/assets/react/react.production.min.js"></script>
+        <script defer src="https://cdn.vantagemarketresearch.com/assets/react/react-dom.production.min.js"></script>
+
+
+
+        <!--
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script> -->
+
+        {{#if_not_eq canonical undefined}}
+        {{#if_eq canonical '/'}}
+        {{>refheaderhome}}
+        {{/if_eq}}
+        {{/if_not_eq}}
+
+        {{#if_eq canonical undefined}}
+        {{>refheaderinternal}}
+        {{/if_eq}}
+
+        {{>newheader}}
+        {{{body}}}
+        {{>footer}}
+
+
+        <!-- Start of LiveChat (www.livechat.com) code -->
+        <script defer>
+            window.__lc = window.__lc || {};
+            window.__lc.license = 14293647;
+            ; (function (n, t, c) { function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) } var e = { _q: [], _h: null, _v: "2.0", on: function () { i(["on", c.call(arguments)]) }, once: function () { i(["once", c.call(arguments)]) }, off: function () { i(["off", c.call(arguments)]) }, get: function () { if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function () { i(["call", c.call(arguments)]) }, init: function () { var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n) } }; !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e }(window, document, [].slice))
+        </script>
+        <noscript><a href="https://www.livechat.com/chat-with/14293647/" rel="nofollow">Chat with us</a>, powered by <a
+                href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+        <!-- End of LiveChat code -->
+    </div>
+    <!-- /Main Wrapper -->
+
+
+    {{>newsearch}}
+
+
+
+    <script>
+        $(document).ready(function () {
+            $(`.main-nav li`).removeClass('active');
+            $(`.main-nav a[href='${window.location.pathname}']`).parent().addClass('active');
+        })
+    </script>
+
+
+    <section id="justscriptloader"></section>
+    {{>loadscript}}
+    {{>reffooterhome}}
+    {{#each scriptsection}}
+    {{{.}}}
+    {{/each}}
+    {{>cookieconsent}}
+
+    <script src="/js/lazysizes.min.js"></script>
+</body>
+
+</html>

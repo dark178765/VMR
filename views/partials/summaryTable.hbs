@@ -1,0 +1,99 @@
+<table class="pd table table-responsive" style="width: 100%;">
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/forecast.png" class="me-2"
+                alt="Base Year" height="24" width="24"><strong>Base Year:</strong>
+        </td>
+        <td>{{Base_Year}}</td>
+
+    </tr>
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/forecast.png" class="me-2"
+                alt="Forecast Years" height="24" width="24"><strong>Forecast
+                Years:</strong>
+        </td>
+        <td>{{math Current_Year '+' 1}} - {{Forecast_Year}}</td>
+
+    </tr>
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/predictive-chart.png" class="me-2"
+                alt="Historical Years" height="24" width="24"><strong>Historical
+                Years:</strong>
+        </td>
+        <td>{{History_CurrentYear}} - {{History_ForecastYear}}</td>
+
+    </tr>
+    {{#if_not_eq Revenue_Current 'NA'}}
+    {{#if_not_eq Revenue_Current null}}
+    {{#if_not_eq Revenue_Current ''}}
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/money-growth.png" class="me-2"
+                alt="Revenue {{Current_Year}}" height="24" width="24"><strong>Revenue
+                {{Current_Year}}:</strong></td>
+        <td>{{Revenue_Current}}</td>
+    </tr>
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/banknote.png" class="me-2"
+                alt="Revenue {{Forecast_Year}}" height="24" width="24"><strong>Revenue {{Forecast_Year}}:</strong>
+        </td>
+        <td>{{Revenue_Forecast}}</td>
+    </tr>
+
+
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/business-and-finance.png"
+                class="me-2" height="24" width="24" alt="Revenue CAGR"><strong>Revenue CAGR
+                <span>({{math Current_Year '+' 1}} - {{Forecast_Year}})</span>:</strong></td>
+        <td>{{CAGR_Revenue}}</td>
+
+    </tr>
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+
+    {{#if_not_eq Volume_Current undefined}}
+    {{#if_not_eq Volume_Current 'NA'}}
+    {{#if_not_eq Volume_Current null}}
+    {{#if_not_eq Volume_Current ''}}
+    <tr>
+        <td><img style="height: 24px;" src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/volume.svg"
+                class="me-2" height="24" width="24" alt="Volume ({{Current_Year}})"><strong>Volume ({{Current_Year}})</strong>:
+        </td>
+        <td>{{Volume_Current}}</td>
+    </tr>
+    <tr>
+        <td><img style="height: 24px;" src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/volume.svg"
+                class="me-2" height="24" width="24" alt="Volume ({{Forecast_Year}})"><strong>Volume ({{Forecast_Year}})</strong>:
+        </td>
+        <td>{{Volume_Forecast}}</td>
+    </tr>
+    <tr>
+        <td><img style="height: 24px;" src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/volume.svg"
+                class="me-2" height="24" width="24" alt="Volume CAGR"><strong>Volume CAGR ({{Current_Year}} -
+                {{Forecast_Year}})</strong>:</td>
+        <td>{{CAGR_Volume}}</td>
+    </tr>
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+    {{/if_not_eq}}
+
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/location.png" class="me-2"
+                height="24" width="24" alt="Fastest Growing Region">
+            <strong>Fastest Growing Region <span>({{math Current_Year '+' 1}} -
+                    {{Forecast_Year}})</span></strong>
+        </td>
+        <td>{{Fastest_Region}}</td>
+    </tr>
+    {{#if_not_eq Largest_Region undefined}}
+    <tr>
+        <td><img src="https://cdn.vantagemarketresearch.com/assets/img/table-icons/placeholder.png" height="24"
+                width="24" class="me-2" alt="Largest Region">
+            <strong>Largest Region ({{Current_Year}}):</strong>
+        </td>
+        <td>
+            {{Largest_Region}}
+        </td>
+    </tr>
+    {{/if_not_eq}}
+</table>

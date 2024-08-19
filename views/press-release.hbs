@@ -1,0 +1,163 @@
+<link href="/css/pressrelease.css" rel="stylesheet" />
+<main id="blog-main" class="m-80 p-60">
+
+    <div class="">
+        <img src="/assets/images/press_release/pr_1.webp" alt="about-us" class="img-fluid">
+    </div>
+    <div class="container-fluid" id="searchApp">
+        <div class="row">
+            <div class="col">
+                <!-- ======= Contact Section ======= -->
+                <section id="blog-section-main" class=" pt-0">
+                    <div class="container">
+                        <div class="section-title p-60">
+                            <h2>Press release</h2>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-12">
+                                <div class="custom-form">
+                                    <form>
+                                        <input type="text" v-model="searchText" @keyup="autocomplete()"
+                                            placeholder="Enter any text to search records..">
+                                        <input type="button" value="Search" class="search-button">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row blog-inner-main" id="blog" v-if="searchText == ''">
+                            {{#each pr}}
+                            <div class="col-lg-12">
+                                <div class=" item p-3 card-hover">
+                                    <a class="btn p-1 text-left" href="/press-release/{{slug}}">
+                                        <h4 style="line-height: 35px;" class="text-primary-red">{{title}}
+                                        </h4>
+
+                                    </a>
+                                    <div class="p-1">
+                                        <p class="text-muted font-weight-bold">
+                                            <span>{{formatdate createdAt 'MMM DD, YYYY'}}
+                                            </span>
+                                            {{#if_not_eq report.keyword undefined}}
+                                            <span>|
+                                                {{report.keyword}}</span>
+                                            {{/if_not_eq}}
+
+                                        </p>
+                                        <p class="text-justify">
+                                            {{{substring description 600}}}
+                                        </p>
+
+                                        <div>
+                                            <a class="btn p-1 text-right text-primary-red" 
+                                                href="/press-release/{{slug}}">Read
+                                                More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+
+                        </div>
+                        <div class="row blog-inner-main" id="blog" v-if="searchText !== ''">
+
+                            <div class="col-lg-12" v-for="sr in searchResult">
+                                <div class=" item p-3 card-hover">
+                                    <a class="btn p-1 text-left" :href="'/press-release/' + sr.slug">
+                                        <h4 style="line-height: 35px;" class="text-primary-red">\{{sr.title}}
+                                        </h4>
+
+                                    </a>
+                                    <div class="p-1">
+                                        <p class="text-muted font-weight-bold">
+                                            <span>\{{sr.createdAt}}
+                                            </span>
+
+                                            <span>| \{{sr?.keyword || sr.urls}}</span>
+
+
+                                        </p>
+                                        <p class="text-justify">
+                                            \{{sr.description}}
+                                        </p>
+
+                                        <div>
+                                            <a class="btn p-1 text-right text-primary-red" 
+                                                :href="'/press-release/' + sr.slug">Read
+                                                More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </section><!-- End Contact Section -->
+            </div>
+        </div>
+
+    </div>
+
+</main><!-- End #main -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var searchApp = new Vue({
+        el: '#searchApp',
+        data: {
+            searchResult: [],
+            isSearching: false,
+            searchText: ''
+        },
+        methods: {
+            autocomplete: function () {
+                if (this.searchText.length > 3) {
+                    this.isSearching = true;
+                    fetch('/search-pressrelease/' + this.searchText, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application-json; charset=utf-8'
+                        }
+                    }).then(res => res.json())
+                        .then(res => {
+                            res.forEach((item) => {
+                                item.description = item.description.replace(/(<([^>]+)>)/gi, "").substring(0, 300);
+                                item.createdAt = moment(item.createdAt).format('MMM DD, YYYY');
+                            });
+                            this.searchResult = res;
+                            this.isSearching = false;
+                        });
+                }
+            },
+            search: function () {
+
+            }
+        }
+    })
+</script>
+<style>
+    .search-button {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        border: 0;
+        background: none;
+        font-size: 16px;
+        padding: 0 20px;
+        background: #e14073;
+        color: #fff;
+        transition: .3s;
+        border-radius: 50px;
+        box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    }
+</style>
+{{#metasection 'indexmeta'}}
+<meta name="robots" content="noindex">
+{{/metasection}}

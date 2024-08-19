@@ -1,0 +1,18 @@
+<script>
+    setTimeout(load_js, 4000); // Delay 4 seconds in loading function
+    function load_js()
+    {
+        console.log('Loading Script');
+        if($ === undefined) {
+            // Get the head tag
+            var head_ID = document.getElementById("justscriptloader"); 
+            // Create script element       
+            var script_element = document.createElement('script');
+            // Set the script type to JavaScript
+            script_element.type = 'text/javascript';
+            // External JS file
+            script_element.src = 'https://cdn.vantagemarketresearch.com/assets/js/jquery-3.6.0.min.js';
+            head_ID.appendChild(script_element);
+        }
+    }
+</script>

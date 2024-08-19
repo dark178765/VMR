@@ -1,0 +1,34 @@
+.about {
+    ul {
+        height: 105px;
+    }
+}
+
+// @media (max-width: 768px) {
+//     #header {
+//         .container,
+//         .container-sm {
+//             max-width: 720px;
+//         }
+//     }
+// }
+@media (max-width: 767px) {
+    #header {
+        .container,
+        .container-sm {
+            max-width: 540px;
+        }
+    }
+    .navbar {
+        li {
+            &:hover {
+                ul {
+                    display: block;
+                }
+            }
+            ul {
+                display: none;
+            }
+        }
+    }
+}

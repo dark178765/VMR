@@ -1,0 +1,98 @@
+<table class="table table-bordered even-table">
+    <tbody>
+        <tr class="market-tr">
+            <th class="market-th">Parameter</th>
+            <th class="market-th">Details</th>
+        </tr>
+        {{!-- <tr>
+            <td class="market-td" style="text-align: center;">Market Size Provided for Years</td>
+            <td class="market-td">2016-2028</td>
+        </tr>
+        <tr>
+            <td class="market-td" style="text-align: center;">Base Year</td>
+            <td class="market-td">2021</td>
+        </tr>
+
+        <tr>
+            <td class="market-td" style="text-align: center;">Historic Years</td>
+            <td class="market-td">2016-2020</td>
+        </tr>
+
+        <tr>
+            <td class="market-td" style="text-align: center;">Forecast Years</td>
+            <td class="market-td">2022-2028</td>
+        </tr> --}}
+        <tr>
+            <td class="market-td" style="text-align: center;">Segments Covered</td>
+            <td class="market-td">
+
+                {{#each segments}}
+                <div>
+                    <h3 class="bold">By {{segment}}</h3>
+                    {{#if_not_eq subSegments.length 0}}
+                    <ul>
+                        {{#each subSegments}}
+                        <li>{{text}}
+                            {{#if_not_eq subSegments.length 0}}
+                            <ul>
+                                {{#each subSegments}}
+                                <li>{{text}}
+                                    {{#if_not_eq subSegments.length 0}}
+                                    <ul>
+                                        {{#each subSegments}}
+                                        <li>{{text}}</li>
+                                        {{/each}}
+                                    </ul>
+                                    {{/if_not_eq}}
+                                </li>
+                                {{/each}}
+                            </ul>
+                            {{/if_not_eq}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                    {{/if_not_eq}}
+                </div>
+                <hr />
+                {{/each}}
+            </td>
+            {{!-- <td class="market-td">
+                <ul>
+                    {{#each segments}}
+                    <li>{{segment}} ({{#comma subSegments 'text'}}{{/comma}})</li>
+                    {{/each}}
+                </ul>
+            </td> --}}
+        </tr>
+        <tr>
+            <td class="market-td" style="text-align: center;">Regions & Countries Covered</td>
+            <td class="market-td">{{{regions_list}}}</td>
+        </tr>
+        <tr>
+            <td class="market-td " style="text-align: center;">Companies Covered</td>
+            <td class="market-td">{{{players_list}}}</td>
+        </tr>
+
+        <tr>
+            <td class="market-td" style="text-align: center;">Report Coverage</td>
+            <td class="market-td">Market growth drivers, restraints, opportunities, Porter’s five forces analysis, PEST
+                analysis, value chain analysis, regulatory landscape, technology landscape, patent analysis, market
+                attractiveness analysis by segments and North America, company market share analysis, and COVID-19
+                impact analysis
+            </td>
+        </tr>
+        <tr>
+            <td class="market-td" style="text-align: center;">
+                Pricing and purchase options
+            </td>
+            <td class="market-td">Avail of customized purchase options to meet your exact research needs. <a
+                    href="/buy-now/{{slug}}/0?src=table">Explore purchase options</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    .bold {
+        font-weight: bold;
+    }
+</style>

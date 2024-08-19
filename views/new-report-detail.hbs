@@ -1,0 +1,1445 @@
+<link rel="stylesheet" href="https://cdn.vantagemarketresearch.com/assets/css/report-detail.css" />
+
+<script src="https://cdn.vantagemarketresearch.com/assets/d3/d3.v5.min.js"></script>
+
+<div class="floating">
+    <a href="/{{slug}}/request-sample" target="_blank" class="btn btn-sm btn-primary">
+        Request Sample
+    </a>
+    <a href="/{{slug}}/inquiry-before-buying" target="_blank" class="btn btn-sm btn-primary">
+        Inquiry
+    </a>
+</div>
+
+<style>
+    .reportDescription h2 {
+        font-size: 20px !important;
+    }
+
+    .reportDescription h3 {
+        font-size: 18px !important;
+    }
+
+    .reportDescription h4 {
+        font-size: 16px !important;
+    }
+
+    .reportDescription h5 {
+        font-size: 14px !important;
+    }
+
+    .reportDescription h6 {
+        font-size: 12px !important;
+    }
+
+    .reportDescription h5 strong,
+    .reportDescription h6 strong {
+        font-weight: normal !important;
+    }
+
+    .button {
+        cursor: pointer;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        min-width: 100px;
+        padding: 14px 33px;
+        font-family: "Trebuchet MS", 'Inter', sans-serif;
+        font-size: 16px;
+        /* line-height: 26px; */
+        text-decoration: none;
+        color: #FFF;
+        text-shadow: 0 1px 2px rgb(0 0 0 / 75%);
+        background: #5e0d0c;
+        outline: none;
+        border-radius: 15px;
+        border: 1px solid #4c0300;
+        box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.25),
+            /* highlight */
+            inset 0 0 6px #a23227,
+            /* inner glow */
+            inset 0 80px 80px -40px #ac3223,
+            /* gradient */
+            1px 1px 3px rgba(0, 0, 0, 0.75);
+        position: fixed;
+        overflow: visible;
+        -webkit-transition: 500ms linear;
+        -moz-transition: 500ms linear;
+        -o-transition: 500ms linear;
+        transition: 500ms linear;
+        right: -81px;
+        top: 300px;
+        transform: rotate(270deg);
+    }
+
+    .button::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -7px;
+        left: -3px;
+        right: 0;
+        height: 23px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAXCAYAAACS5bYWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABFpJREFUeNrUV0tIo1cUvpkYjQ4xxSA6DxuNqG0dtaUKOgs3s6i0dFd3pSsXdjeIixakiGA34sZuXCkoONLFwJTK4GMYLYXg29gatTpiXurkbd7vv9/5ub+IxuhA7eiFQ5Kbc8/57ne/e87/ywRBYLdl3GG3aNwqsLJ0k0tLS+fmcnNzWUVFBVMoFGx2djarvLxcm5OTw+bm5iytra2xc4ExNjY27iqVyvvwK6CpeDzuCYVC1urq6qDA9UcfPp+PHR4esmAwKK6tr68/l5/8rgQ2Ozub1dbWyiYmJooaGxt/VqvV38jlchX9l0qlwoFA4DWS/RKLxRxFRUVf5+XlPcaaT2AP0sVPJBL2SCRiAPBpu93+vKamZo/Ae71eZjabWV1dXVqw7CKwp43ksrCw8Bhg7MJ/PLDZ5PHx8cz29vYT5JGD/bSYLgTrcDgYdk6siSc6NjZWDaAe4ZoHQL+cmZnRpZPnhWDpD8kw7uKo9ML/NMCsd2tr61vkzboMrEyv138M7TyLRqMWMBsX3sMgaZhMpp+AR5EJrCocDpuEGzKg4x8khs+CVWxubvZfR9JkMik4nU7BarUKLpeLmLsKuwIqTLynp4fqmIzASrqQT09Pf1VVVfX0KsWZ6uHBwQHTaDSsoKAgo6/H4xHLEcrVyRwuEisrKzs5XrrIVAVwiUVDKRRrL+YI32ewdVhMApuHWvcj6vids6J2u90MF4yBHUZNgKoEBaRBQalJqFSqtJfUYrGIlQX+ydXVVTN+u0tKSjQNDQ1axJVl2iTypebn55d7e3v/kqoDgZU1NTU9LCws/Py0M+2ekuGincxJ3yF+18jIyHJLS0slQJUWFxczrBeBE0vE5tHRkbixlZWVfSR8gTX/0P5gH7S1tX3Z3t7+BW8qAvwSfr8/jA0EIRM/qoFtampqbW9vTw+XA+ojUruVd3Z2tvb19T2TQFEim81GgVJoCvvj4+NLOJZgaWmpemdn5y3a6BbcnJDAw8HBwac6ne6eqCW5XDwB3qVSqM9/DAwMUNy/eVLabT7sI25qwgujThCBhWE+mAt2yNc4SQKSZrOQQE1HS22VJkmPAGTr7+//fX19fRk+Zgq0trbGeFAKEAQT98BSqKOj47vm5uaa/Px8JeIk4GcaHh6eWlxcfAU/A8xG67BxAX3fwdcbYUpSDJ06Z49Ak8ZC3OL8f3YiA4PBYKdLQ2AJ9OTk5GpXV9cQiCVh79M94QtlPLDUE/1gPNrd3f0W33W4cBoco48zQuy/IZYAMnGqlSc4c66L9JruQUaSARXeT8HGKzxAqFBekni6+h46+pMzGiJGMgTOJh1yU/KNEGDvZWvfBawkA9ppwGg0mrRa7SOI2g+gxOgbJIpdFpj72PnxSnPX8vqRxTURgBQWKisrH+GThOm+CtAzoK/9/Uiqq/6hoaHfdnd3jaOjo7/yY7yxbwqkWy3sQzpS2C6YirwvUJk0y7hurfyGRrnduPGvAAMASmo8wzeVwfsAAAAASUVORK5CYII=) no-repeat 0 0,
+            url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAAAXCAYAAABOHMIhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABiZJREFUeNrsWMtPlFcUvzPMwIDysLyRR4uATDHWCiVgSmRlios2DeiiXUFs0nRBd6arxqQhJDapkYXhP4BqDKTQhZaFNQSCaBEVJjwdHsNr5DUMDDPDzPT3u7nTDEgRKrKgc5KT+z3uufec33de99P4fD4RpL2RNgjB3kn35MkTeRERESFiYmLkGBoaKnQ6nWSNRvPPZFxr+vv7k6KioiIdDsfa8vLyQkFBgcP3Bnel3MDAQArWI0eFhISE87nb7bZ7PJ4VvLYuLi5O5+fnu9+kMNfq6+tLjIyMzMY6KeBEbK/XarXReI3lPDZMWcc4v7GxYV1dXR3Jy8ub2E5HPvJ6vRSSDH0ku1wuAfsEZOV1IEFHoeNFdHS0yMrK2knR0Lm5uR+hxLdQMjbwHTZbB41h8RGwCdc9MzMzneHh4bGJiYlf4SN8ijkfwqiIncCAAR7Iz2GPSShudjqdfeCeqampvwBQfFxc3JdYqwTv8gB8/F48A8BgKecE14V+L7ju2tpae05OzkuCCZvkPOj8mizmC6vVKtmPu+bx48cC3qI1mUyFUOyywWD4SHlELBaLJmCHNcwAghuAOujtuF4FqHO4nsX4EsAS3I4TJ04ME1h8PDE9PS09TYZoY2Pj1729vd6lpSVfkDYTPG0UkfNDRUWFgQ5Gb2Mh0N29e9eG/GQfHh4W8/PzwUy/ObQ/gMfVVlZW1iAiZdQxp3nv3LljRoL/5erVq1UIxzSiiVD9X4EDYATynCwAzGO858hCQRoaGmJFZNJz8YIcBc4BF966dau6sLAwBxVSJCUlCSThQwuU3W6XkYUok1Vzm5znQx5bbm9v77p+/frPeNSNRzZ/ISBwrG4ZR48eLamtrf2+uLjYSEG9Xi/wTISFhQlWGXohyzO/CJlVl23KQRLbABoaHx+/Z1lUZ/Hq1SsJFj3JT3hmHx8fnydPTEzMj46OziHPW2w22wxeD4Kfgadh/4YEzU8Az4DhffAn5eXlX1y6dKkEoCTspAQ9Mjs7+0BBo8Fms1lkZGTsOo0QLLRNkvnR+fEJzIMHD0xtbW39CL8JTFtSbAOvBIyLHIGVm9VzE2gKuDAMSSpcT6KXyT137lx2cnLyMXhcGDb3wq3XuWF3d/fCzZs3P0c4v5eSknJQbYLo7Ox0gC2lpaVZ3Be67Th/dnZWoAJKsJC3XA8fPhxoamp6hMb+BaaMgWcUMGtszZjiFDNmvcDI91pzG0iY4ARwkwrxkcHBwUdgNrRMbnrqoRbkVzDcvn3bl5qaWsmcgFH4G8XdEGUWFhak51AuISFBnkoCTyFbyWKxCJwIxlC0fq2rq7tcVFRkRKskjh8/Lr0+kBjCCDV/knfdv3//WX19/R8IRRNemxlu4AXwKqM+EJwdj1HbPYSwh3sCPAJDABm2LLchCjS+5/kirKGhwWk0GrMuXrxYQuX9hm/XXTMXMY+srKwI5ApZrbYmZh7deEJhAUKjLe/pLTzSsCuHrK+1tbUJVe3P6upq87Vr174rKysrYHVj/uW+OH3IfEuw4F3ee/fuPQfAvwOs5yyE4CnlFOu7BWrTCWlreO6FACpBZGwUw4BvkANLobReHb3kGZYGsGzTq/zlO8AT1ru6uoZbWlqeA6gINJAfnz59OlVLoX8Jtebm5raampqfcMvQYgTknz9//sKVK1c+y83NTdIEuCnaKMuNGzd+6+np6cCtSTkAw9D9X8Dyh+dbgaaAC1XAnUlPTy+qqqq6cPbs2UzkmWjNljiDJzpwHFnCkW2yo6NjCKW8H54wjlezKvRT09LSTsJrz5w6dSoN+Yp51ADAPUj8VoDbDq9pxrwuJcNIYQllJTIi/xopBw/VA7DJp0+f9hA78CgL5F5C8J2CpoCj8sfA6WCe/FPRhsRlZmbGIs8Y4FFO5CJgtrSsvrRVGW1V93b1myoGnKAKEcHgnwsWpg1lNI0fphwrmdqbckeU18WrnlOjqp5/j7W3BWvfQVPKa5SBkcrYCNVB65TRTlWZ1lXiXVU5xbtlDb2SPaLWYwrgHIcqPg6Vc7fbX69Yoyqfa7/AeiegbWOEVhmsVcWDwPn224iDJgla8Hd38Hd3ELQgaIeI/hZgAIPEp0vmQJdoAAAAAElFTkSuQmCC) no-repeat 50% 0,
+            url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAXCAYAAACFxybfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAodJREFUeNrsVb1rWlEUv2pN/GqspKRSKFYXWzEloIWif0Fn6dJChQ7OQil0qd3EzcEpg0OgdHDr4CQODk7VRlLMEIVqApX4We0zflR9/Z1Ui4T34ksaaAYP/Hzc673n/M6550PG8zz73yKjn0wm83fDYDAwo9HINBrNnwOQg4MDs0ql2lQqlfdAWont7ng8Pjw+Ps44nc4G1pI9EXWaSOzt7TGO42aH5Pv7+08ajUZ0MBiUeXEZd7vdL5VK5fX29rZ+5tQiEmdxKrlcjsEYczgcynK5/BKKv/IXFNz/XiqVXkHdjUuRIA9SqdRD8or/R8Ez9fr9fqHVakUR4c2z0REjIQuHw2ZcrPBXLCA0RHTezEdHjIQqkUhEr9I4HOILhQLf6/VoOUFEvDMiQiToDx1Cdz+bzZ6bUFarlel0OkkVUK/XWbvdPoVer5fh3ntsfwJ+CJ2XA4p0Op1bpBgJyxDehQQ6nQ5DZXHBYDBZq9V+EhFUndnr9drEqoc2bwJbwGPgtohuVSwWe2Gz2TZMJpNgRKi6qtUqg2EWj8dTgUDgo0KhWPN4PC70EvXOzs67fD6/S6kiRIKeZA1YJ2MiJNbdbvfTUCjkV6vVK2hcDF8GI2w0GrGTkxM2HA5PDxaLxSOfz/cWEfk81X0XIMMFgJJ/srBjCgk8IdcfuVyuZ36//7nFYtkQyAMumUzuRiKRD0jMFLa+AZOpYwqgB/ziBVqmVBKUO7eAB/R0WG/Z7XaTVqtdbTabHJL6EK2djBaBPHA0NSqpbUsiMUeEBgpF4Q5AbZrmSJ/yEWgBTaBNHl9kdkgmMUeG7qwAq9PqovceTA3zlxlgsuswyuXsGsiSxJLEkoSY/BZgAEjRodi+uBruAAAAAElFTkSuQmCC) no-repeat 100% 0;
+
+    }
+
+    .button:hover {
+        background: #a61715;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75), 0 0 40px #FFF;
+        box-shadow:
+            inset 1px 1px 0px rgba(255, 255, 255, 0.25),
+            /* highlight */
+            inset 0 0 6px #da3b2c,
+            /* inner glow */
+            inset 0 80px 80px -40px #dd4330,
+            /* gradient */
+            1px 1px 3px rgba(0, 0, 0, 0.75);
+        /* shadow */
+
+    }
+
+    .button:focus {
+        outline: none;
+        /*FF*/
+    }
+
+    .button:active {
+        box-shadow:
+            inset 1px 1px 0px rgba(255, 255, 255, 0.25),
+            /* highlight */
+            inset 0 0 6px #da3b2c,
+            /* inner glow */
+            inset 0 80px 80px -40px #dd4330,
+            /* gradient */
+            0px 1px 0px rgba(255, 255, 255, 0.25);
+        /* shadow */
+
+        -webkit-transition: 50ms linear;
+        -moz-transition: 50ms linear;
+        -o-transition: 50ms linear;
+        transition: 50ms linear;
+    }
+</style>
+
+<div id="customModalContainer"></div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="breadcrumb-list">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" aria-current="page"><a href="/all-reports">Reports</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                {{#if_not_contains Revenue_Current 'XX'}}{{metatitle}}{{/if_not_contains}}
+                                {{#if_contains Revenue_Current 'XX'}}{{keyword}} Market{{/if_contains}}
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+<!-- Course Content -->
+<section class="course-content course-sec">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="report-image bg-image">
+                            <img class="img-fluid"
+                                src="https://cdn.vantagemarketresearch.com/report/cover/{{getUrl keyword false}}-Market.webp"
+                                alt="{{normailzeString keyword}} Market"
+                                onerror="this.src='https://cdn.vantagemarketresearch.com/category/cover/{{getUrl category.title false}}.webp'">
+
+                            <h1 style="z-index: 10000;">{{keyword}} Market</h1>
+
+                        </div>
+
+                        <!-- Course -->
+                        <div class="card com-course">
+                            <div class="row g-0">
+                                <div class="col-lg-9 br-1 bb-1">
+                                    <div class="complete-sec">
+                                        <div class="card-body">
+                                            <h2 class="report-title">{{keyword}} Market - Global
+                                                Industry Assessment &
+                                                Forecast</h2>
+                                            <div class="instructor-wrap border-bottom-0 m-0">
+                                                <div class="about-instructor align-items-center">
+                                                    <div class="abt-instructor-img">
+                                                        <a href="/category/{{categoryUrl}}">
+                                                            <img src="https://cdn.vantagemarketresearch.com/category/icon/{{categoryIconFileName}}.svg"
+                                                                alt="img" class="img-fluid">
+                                                        </a>
+                                                    </div>
+                                                    <div class="instructor-detail"
+                                                        style="display: flex;align-items:center;">
+                                                        <h5><a
+                                                                href="/categories/{{category.slug}}">{{category.title}}</a>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="course-info d-flex align-items-center border-bottom-0 p-0 m-0 report-meta">
+                                                <div class="cou-info">
+                                                    <img src="https://cdn.vantagemarketresearch.com/assets/img/icon/icon-01.svg"
+                                                        alt="Number Of Pages" height="24" width="24"> <span>#
+                                                        Pages:</span>
+                                                    <p>{{numberOfPages}}</p>
+                                                </div>
+                                                <div class="cou-info">
+                                                    <span>Base Year: </span>
+                                                    <p>{{Base_Year}}</p>
+                                                </div>
+                                                <div class="cou-info">
+                                                    <img src="https://cdn.vantagemarketresearch.com/assets/img/icon/timer-icon.svg"
+                                                        alt="Date" height="24" width="24">
+                                                    <p>{{updatedAt}}</p>
+                                                </div>
+                                                <div class="cou-info">
+                                                    <span>Format:</span>
+                                                    <p><img src="https://cdn.vantagemarketresearch.com/assets/img/icon/pdf.svg"
+                                                            width="24" height="24" alt="PDF" title="PDF" />
+                                                        <img src="https://cdn.vantagemarketresearch.com/assets/img/icon/xls.svg"
+                                                            height="24" width="24" alt="XLS" title="XLS" />
+                                                        <img src="https://cdn.vantagemarketresearch.com/assets/img/icon/ppt.svg"
+                                                            height="24" width="24" alt="PPT" title="PPT" />
+                                                    </p>
+                                                </div>
+                                                <div class="cou-info">
+                                                    <span>Report Code:</span>
+                                                    <p>VMR-{{reportId}}</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <h5 class="subs-title text-black" style="margin-left: 20px;">Segments Covered
+                                        </h5>
+                                        <div class="card-body p-0">
+                                            <ul class="report-segments">
+                                                {{#each methodology.segments}}
+                                                <li><img src="/assets/img/reports/segment-icons/0.svg" class="me-2"
+                                                        height="24" width="24" alt="By {{segment}}" />
+                                                    <span>By
+                                                        {{segment}}</span> <span>{{#comma subSegments
+                                                        'text'}}{{/comma}}</span>
+                                                </li>
+                                                {{/each}}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 bb-1 buynow-container">
+                                    <div class="no-video">
+                                        <div class="card-body video-details">
+                                            <div class="course-fee" style="display: block;border: 1px solid #dfdfdf;">
+                                                <input type="hidden" id="reportID" value="{{rptId}}" />
+                                                <!--<div id="buynowcontrol"></div>
+
+                                                <script defer src="/assets/js/component/buynowsection.js"></script>-->
+                                                {{>newbuynow}}
+
+                                                {{#script_section 'tooltip'}}
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        $('[data-toggle="tooltip"]').tooltip();
+                                                    });
+                                                </script>
+                                                {{/script_section}}
+                                                <style>
+                                                    .no-list {
+                                                        list-style: none;
+                                                        list-style-type: none;
+                                                        padding-left: 0px;
+                                                        text-align: left;
+                                                    }
+
+                                                    .tooltip-inner {
+                                                        max-width: max-content;
+                                                    }
+                                                </style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blink-me" style="
+                                        padding: 25px;
+                                        padding-top: 0px;
+                                        text-align: center;">
+                                        USE CODE <span style="color: red;font-weight: bold;" title="click to copy"
+                                            onclick="copyCode(this)">JAN25</span> to GET 25% discount on
+                                        the report.
+
+                                        <script>
+                                            function copyCode(ctl) {
+                                                navigator.clipboard.writeText(ctl.innerText);
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-lg-6 col-md-6 br-1">
+                                    <div class="card-body include-sec">
+                                        <h5 class="subs-title text-black">Snapshot</h5>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                {{>summaryTable}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 br-1">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card-body include-sec bg-image-idea">
+                                                <h5 class="subs-title text-black">Customization Offered</h5>
+                                                <ul style="list-style: none;" class="margin-10">
+                                                    <li><img height="24" width="24"
+                                                            alt="Cross-segment Market Size and Analysis for Mentioned Segments"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Cross-segment Market Size and
+                                                        Analysis
+                                                        for Mentioned Segments</li>
+                                                    <li><img height="24" width="24"
+                                                            alt="Additional Company Profiles (Upto 5 With No Cost)"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Additional Company Profiles (Upto 5
+                                                        With
+                                                        No Cost)</li>
+                                                    <li><img height="24" width="24"
+                                                            alt="Additional Countries (Apart From Mentioned Countries)"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Additional Countries (Apart From
+                                                        Mentioned Countries)</li>
+                                                    <li><img height="24" width="24" alt="Country/Region-specific Report"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Country/Region-specific Report</li>
+                                                    <li><img height="24" width="24" alt="Go To Market Strategy"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Go To Market Strategy</li>
+                                                    <li><img height="24" width="24"
+                                                            alt="Region Specific Market Dynamics"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Region Specific Market Dynamics</li>
+                                                    <li><img height="24" width="24" alt="Region Level Market Share"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Region Level Market Share</li>
+                                                    <li><img height="24" width="24" alt="Import Export Analysis"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Import Export Analysis</li>
+                                                    <li><img height="24" width="24" alt="Production Analysis"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Production Analysis</li>
+                                                    <li style="display: flex; align-items: center;"><img height="24"
+                                                            width="24" alt="Other"
+                                                            src="https://cdn.vantagemarketresearch.com/assets/img/icons/check-mark.svg"
+                                                            style="width: 24px;" /> Others <a
+                                                            href="/{{slug}}/customization-request" target="_blank"
+                                                            class="btn btn-sm btn-primary custom"
+                                                            style="color: #000;">Request
+                                                            Customization</a> <a href="/{{slug}}/contact-analyst"
+                                                            target="_blank" class="btn btn-sm btn-primary custom"
+                                                            style="margin-left: 5px ;color: #000;">Speak To
+                                                            Analyst</a>
+
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Course -->
+
+
+                        {{#if_eq showChat true}}
+
+                        {{#script_section 'GPT_Script'}}
+                        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+                        <script>
+
+                            var typed = null
+
+                            let fetching = false;
+
+                            function fetchResponse() {
+                                fetching = true;
+                                $('#chatfooter').css('display', 'none');
+
+                                $('#chatResponse').html();
+                                $('#loader').show();
+
+                                let urlSegment = window.location.href.split('/');
+                                let url = urlSegment[urlSegment.length - 1];
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/bot-chat',
+                                    data: JSON.stringify({
+                                        question: $('.chat-input').val(),
+                                        url: url.split('?')[0]
+                                    }),
+                                    contentType: 'application/json; charset=utf-8',
+                                    success: function (res) {
+                                        //$('#chatResponse').html(res);
+                                        $('#loader').hide();
+                                        if (typed)
+                                            typed.destroy();
+
+                                        if (res == null || res === '' || res.generatedText === '') {
+                                            typed = new Typed('#chatResponse', {
+                                                strings: ['Sorry!!. You exhausted your attempts!']
+                                            });
+                                        } else {
+                                            document.cookie = 'chatID='
+                                            typed = new Typed('#chatResponse', {
+                                                strings: [res.generatedText.replace(/&/gmi, '&amp;')]
+                                            });
+                                        }
+
+                                        //setCookie('chatID', res.id, 30);
+
+                                        $('#chatID').val(res.id)
+                                        $('#chatfooter').css('display', '');
+                                        fetching = false;
+                                    },
+                                    error: function (err) {
+                                        console.log(err);
+                                        fetching = false;
+                                    }
+                                })
+                            }
+
+                            let originalTitle = '';
+
+                            function showModal() {
+                                $('#popupFormType').val(10);
+                                originalTitle = $('.modal-title').text();
+                                $('.modal-title').text('Get more information');
+
+                                var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+                                myModal.show();
+
+                                let myModalEl = document.getElementById('myModal');
+
+                                myModalEl.addEventListener('hidden.bs.modal', function (event) {
+                                    myModalEl.removeEventListener('hidden.bs.modal', () => { });
+                                    $('.modal-title').text(originalTitle);
+                                    $('#popupFormType').val("");
+                                });
+
+                            }
+
+                            function loadMore() {
+                                let urlSeg = window.location.href.split('/');
+                                $('#loader').show();
+                                $('#chatfooter').hide();
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/load-more',
+                                    contentType: 'application/json; charset=utf-8',
+                                    data: JSON.stringify({
+                                        id: $('#leadID').val(),
+                                        chatId: $('#chatID').val(),
+                                        url: urlSeg[urlSeg.length - 1]
+                                    }),
+                                    success: function (res) {
+                                        $('#loader').hide();
+                                        let existingHML = $('#chatResponse').html();
+
+                                        for (var i = 0; i < res.length; i++) {
+                                            existingHML += '<br/><br/>'
+                                                + res[i].generatedText.replace(/&/gmi, '&amp;');
+                                        }
+
+                                        $('#chatResponse').html(existingHML);
+                                        $('#chatfooter').hide();
+                                        $('.dummy-contnet').hide();
+                                    },
+                                    error: function (err) {
+                                        console.log(err)
+                                    }
+                                })
+                            }
+
+                            $(document).ready(function () {
+                                $('.chat-input').keyup(function (e) {
+                                    if (e.keyCode == 13 && !fetching) {
+                                        fetchResponse();
+                                    }
+                                })
+                            });
+
+                            //cookie thing
+                            function setCookie(name, value, days) {
+                                var expires = "";
+                                if (days) {
+                                    var date = new Date();
+                                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                                    expires = "; expires=" + date.toUTCString();
+                                }
+                                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+                            }
+                            function getCookie(name) {
+                                var nameEQ = name + "=";
+                                var ca = document.cookie.split(';');
+                                for (var i = 0; i < ca.length; i++) {
+                                    var c = ca[i];
+                                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                                }
+                                return null;
+                            }
+                            function eraseCookie(name) {
+                                document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                            }
+                        </script>
+                        {{/script_section}}
+                        {{/if_eq}}
+                        <div>
+                            <ul class="overflow-links tab-buttons">
+                                <li><a href="/industry-report/{{slug}}"
+                                        class="{{#if_eq descriptionTab true}}active{{/if_eq}}">Description</a></li>
+                                <li><a href="/included/{{slug}}"
+                                        class="{{#if_eq include true}}active{{/if_eq}}">Inclusions</a>
+                                </li>
+                                <li><a href="/toc/{{slug}}" class="btntoc {{#if_eq tocTab true}}active{{/if_eq}}">Table
+                                        Of
+                                        Content</a></li>
+                                <li><a href="/market-segmentation/{{slug}}"
+                                        class="{{#if_eq marketSegmentTab true}}active{{/if_eq}}">Market Segmentation</a>
+                                </li>
+                                {{!-- <li><a href="/methodology/{{slug}}"
+                                        class="{{#if_eq methodologyTab true}}active{{/if_eq}}">Methodology</a></li> --}}
+                                <li><a href="/{{slug}}/request-sample" target="_blank" class="special blink"
+                                        rel="noindex noopener">Request Sample</a></li>
+                                <li><a href="/{{slug}}/inquiry-before-buying" target="_blank"
+                                        class="special buying-inquiry" rel="noindex noopener">Buying Inquiry</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <style>
+                            .overflow-links li a.special {
+                                background: #ED7389;
+                                color: #000;
+                                border-color: #ED7389;
+                            }
+
+                            .overflow-links li a.special:hover {
+                                background: #fff;
+                                color: #000;
+                                border-color: #0d355a;
+                                border-width: 1px;
+                            }
+
+                            .btntoc {
+                                border: 2px solid #e9ab2e;
+                                background: #e9ab2e;
+                                color: #000;
+                                font-weight: bold;
+                            }
+                        </style>
+
+                        <div class="row">
+                            <!-- Overview -->
+                            <div class="col-md-9">
+                                <div class="card overview-sec" style="border-right: 0px;">
+                                    <div class="card-body">
+                                        {{#if_eq descriptionTab true}}
+                                        <div class="reportDescription">
+                                            <img style="position: absolute; left:-10000px;"
+                                                alt="{{keyword}} Market Share" class="image"
+                                                src="https://www.vantagemarketresearch.com/{{getUrl keyword false}}-Market-Share.jpg" />
+                                            {{{cleanhtml reportDescription}}}
+                                        </div>
+
+                                        {{/if_eq}}
+
+
+                                        {{#if_eq include true}}
+                                        <div>{{>includestable}}</div>
+                                        {{#metasection 'indexmeta'}}
+                                        <meta name="robots" content="noindex">
+                                        <meta name="googlebot" content="noindex">
+                                        {{/metasection}}
+                                        {{/if_eq}}
+
+
+                                        {{#if_eq tocTab true}}
+                                        <div>{{{toc}}}</div>
+                                        {{#script_section 'TOCClick'}}
+                                        <script>
+                                            $(document).ready(function () {
+                                                $('.toc .click').click(function (e) {
+                                                    //$(this).toggleClass('active');
+                                                    $(this).find('.nested').toggleClass('active');
+                                                });
+                                            })
+                                        </script>
+                                        {{/script_section}}
+                                        {{#metasection 'indexmeta'}}
+                                        <meta name="robots" content="noindex">
+                                        <meta name="googlebot" content="noindex">
+                                        {{/metasection}}
+                                        {{/if_eq}}
+                                        {{#if_eq marketSegmentTab true}}
+                                        {{> newmarketsegmentation marketSeg}}
+                                        {{#metasection 'indexmeta'}}
+                                        <meta name="robots" content="noindex">
+                                        <meta name="googlebot" content="noindex">
+                                        {{/metasection}}
+                                        {{/if_eq}}
+                                        {{#if_eq methodologyTab true}}
+                                        {{> newmethodology methodology}}
+                                        {{#metasection 'indexmeta'}}
+                                        <meta name="robots" content="noindex">
+                                        <meta name="googlebot" content="noindex">
+                                        {{/metasection}}
+                                        {{/if_eq}}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-3" style="padding-left: 0px;">
+                                {{>reportimg}}
+                                <hr />
+                                <div id="related" style="margin-top: 25px;"></div>
+                                <script defer src="/assets/js/component/related.js"></script>
+                            </div>
+                        </div>
+
+                        <div class="row le">
+                            {{#if_not_eq pr null}}
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="news-header">
+                                        <img src="https://cdn.vantagemarketresearch.com/assets/img/logo.webp"
+                                            style="width: 200px;height: 65px; margin-right: 5px;" /> Vantage Market
+                                        Research | {{formatdate pr.createdAt 'DD-MMM-YYYY'}}
+                                    </div>
+                                    <div class="card-header">
+                                        <a style="color: blue;" href="/press-release/{{pr.slug}}">{{pr.title}}</a>
+                                    </div>
+                                    {{!-- <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{{substring pr.description 0 300}}}...
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    {{!-- <div class="card-footer"
+                                        style="border-top: none !important; background-color:inherit;">
+                                        <a class="btn btn-sm btn-light" href="/press-release/{{pr.slug}}"
+                                            style="width: fit-content;color:#000;">Read More</a>
+                                    </div> --}}
+                                </div>
+                            </div>
+                            {{/if_not_eq}}
+                            {{!-- <div class="col-md-6" id="gb" style="display: none;">
+                                <a target="_blank" class="gblinkl">
+                                    <div class="card">
+                                        <div class="news-header">
+                                            <img src="https://www.globenewswire.com/content/logo/color.svg"
+                                                style="width: 200px;" /> Globe News Wire | <span class="gbpd"></span>
+                                        </div>
+                                        <div class="card-header">
+                                            <a style="color: blue;" class="gblink" target="_blank"></a>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div> --}}
+                        </div>
+                        <style>
+                            .news-header {
+                                padding: 15px;
+                                padding-left: 25px;
+                                font-weight: bold;
+                                background-color: #dfdfdf;
+                            }
+                        </style>
+                        {{#script_section 'GlobeNewsWire'}}
+                        <script>
+                            /*fetch('/get-globe-news?keyword={{keyword}} Market', {
+                                method: 'GET',
+                                contentType: 'application/json; charset=utf-8'
+                            }).then(res => res.json()).then(res => {
+                                //console.log(res);
+                                if (res && res.publishedDate) {
+                                    $('.gbpd').html(res.publishedDate)
+                                    $('.gblink').text(res.text.replace(/&amp;/gmi, '&').replace('| Vantage Market Research', ''));
+                                    $('.gblinkl').attr('href', res.url);
+                                    $('.gblink').attr('href', res.url);
+                                    $('#gb').show();
+                                } else {
+                                    $('#gb').hide();
+                                }
+                            })*/
+                        </script>
+                        {{/script_section}}
+
+                        <!-- Course Content -->
+                        <div class="card content-sec" id="Course_Content">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 class="subs-title">FAQ</h5>
+                                    </div>
+                                    <div class="col-sm-6 text-sm-end">
+                                        <h6>Frequently Asked Question</h6>
+                                    </div>
+                                </div>
+                                {{>faq}}
+                            </div>
+                        </div>
+                        <!-- /Course Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row related-report-list">
+            <div class="col-md-12">
+                <div class="card" style="box-shadow:-4px -3px 4px 0px #00000075;">
+                    <div class="card-title" style="padding-bottom: 0px;">
+                        <h5 class="subs-title"
+                            style="border-bottom: 1px solid #dfdfdf; padding: 15px;background:#5D3891; color:#fff;border-radius: 10px 10px 0 0;margin-bottom: 5px;">
+                            Related
+                            Reports</h5>
+                    </div>
+                    <div class="card-body" style="padding-top: 0px">
+                        <div id="relatedReports"></div>
+                    </div>
+                </div>
+            </div>
+            <script defer src="/assets/js/component/related-report.js"></script>
+            <style>
+                #relatedReports .col-md-6 {
+                    padding: 15px;
+                    display: flex;
+                    align-items: center;
+                }
+            </style>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Request Sample Report for {{keyword}} Market</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4" style="background: url('https://cdn.vantagemarketresearch.com/assets/img/popupbackground.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 0;"></div>
+                    <div class="col-md-8">
+                        {{> popupform}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #smallForm .form-control {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #dfe7f1;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        color: inherit;
+        text-indent: 0px;
+        height: 40px;
+    }
+
+    #smallForm .form-control.is-valid,
+    .was-validated .form-control:valid {
+        border-color: #198754;
+        padding-right: calc(1.5em + 0.75rem);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right calc(0.375em + 0.1875rem) center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    }
+
+    .flip {
+        height: 100%;
+    }
+
+    #smallForm {
+        height: 100%;
+    }
+
+    .flip .scene {
+        width: 100%;
+        height: 100%;
+        /*height: 300px;
+        border: 1px solid #CCC;
+        margin: 40px 0;*/
+        perspective: 600px;
+        padding-left: 10px;
+    }
+
+    .flip .card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transform-origin: center right;
+        transition: transform 1s;
+    }
+
+    .flip .card.is-flipped {
+        transform: translateX(-100%) rotateY(-180deg);
+    }
+
+    .flip .card__face {
+        /*position: absolute;*/
+        width: 100%;
+        height: 100%;
+        /*line-height: 260px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 40px;*/
+        backface-visibility: hidden;
+    }
+
+    .is-flipped .card__face--front {
+        visibility: hidden;
+    }
+
+    .flip .card__face--front {
+        /*background: red;*/
+    }
+
+    .flip .card__face--back {
+        /*background: blue;*/
+        transform: rotateY(180deg);
+        position: absolute;
+    }
+</style>
+
+<script>
+    /*var cards = document.getElementsByClassName('flip-card');
+    
+    for(var i=0;i< cards.length; i++) {
+        cards[i].addEventListener('click', function () {
+            this.classList.toggle('is-flipped');   
+        })
+    }*/
+
+    function flipit(s) {
+        if (s) {
+            $('.flip-card').addClass('is-flipped');
+        } else {
+            $('.flip-card').removeClass('is-flipped');
+        }
+    }
+</script>
+
+
+<style>
+    .modal-backdrop {
+        background-color: #0f0c20 !important;
+        opacity: 0.8 !important;
+    }
+
+    .floating {
+        display: none;
+    }
+
+
+    @media only screen and (max-width: 600px) {
+        .floating {
+            position: fixed;
+            top: 30%;
+            right: -40px;
+            display: flex !important;
+            flex-direction: column;
+            z-index: 9;
+            height: 253px;
+            justify-content: space-between;
+        }
+
+        .floating a {
+            rotate: -90deg;
+            margin-bottom: 90px;
+        }
+
+
+        .center-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 30px;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .center-video iframe,
+        .center-video object,
+        .center-video embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    }
+
+    .center-video {
+        text-align: center;
+    }
+</style>
+
+{{#if_not_eq video undefined}}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "{{keyword}} Video",
+      "description": "{{metadescription}}",
+      "embedUrl": "{{video.url}}",
+      "thumbnailUrl": "http://i1.ytimg.com/vi/{{getVideoID video.url}}/hqdefault.jpg",
+      "uploadDate": "{{formatdate video.createdDate 'YYYY-MM-DD'}}"
+    }
+    </script>
+{{/if_not_eq}}
+
+<div class="modal fade" id="imageDialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-header" style="background: #fff;">
+            <h5 class="modal-title">Vantage Point Interactive Dashboard</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-content">
+            <img class="img-responsive" src="" id="enlargeImage" />
+        </div>
+    </div>
+</div>
+
+{{#script_section 'AddModal'}}
+
+<script>
+    var imageMoal = new bootstrap.Modal(document.getElementById('imageDialog'), {
+        keyboard: true
+    });
+
+    function showImage(ctl) {
+        $('#enlargeImage').attr('src', $(ctl).attr('src'))
+        imageMoal.show();
+    }
+</script>
+<script>
+
+    let discountShown = false;
+
+    let shownDialog = false;
+
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+
+    $("button[data-bs-dismiss=modal]").click(function () {
+        myModal.hide();
+    });
+    //let discountModal = new bootstrap.Modal(document.getElementById('discount'));
+
+
+    /*setTimeout(() => {
+        if (!discountShown) {
+            showBlackFriday();
+        }
+    }, 15000);*/
+
+    /*$(window).scroll(function () {
+        let chartSection = $('.segmenttree');
+
+        if (chartSection && chartSection.length > 0) {
+            var y = $(this).scrollTop();
+            if (y > $('.segmenttree').offset().top) {
+                if (!shownDialog)
+                    myModal.show();
+                shownDialog = true;
+            }
+        }
+    });*/
+
+    document.addEventListener('scroll', (e) => {
+        let chartSection = document.getElementsByClassName('segmenttree');
+
+        if (chartSection.length == 0) {
+            chartSection = document.getElementsByClassName('dialog-show');
+        }
+
+        var y = document.documentElement.scrollTop;
+
+        if (chartSection && chartSection.length > 0) {
+            if (y > chartSection[0].offsetTop + 2000) {
+                if (!shownDialog)
+                    myModal.show();
+                shownDialog = true;
+            }
+        }
+
+        let tabbuttons = document.getElementsByClassName('tab-buttons');
+        if (y > tabbuttons[0].offsetTop) {
+            //$('.replaceHeader').css('display', '');
+            document.getElementsByClassName('replaceHeader')[0].style = 'display: block;';
+        } else {
+            document.getElementsByClassName('replaceHeader')[0].style = 'display: none;';
+        }
+
+        let trustImages = document.getElementById('tr-report');
+        let letop = document.getElementsByClassName('le');
+
+        if (y > trustImages.offsetTop + 900) {
+            if (y < letop[0].offsetTop - 500) {
+                document.getElementsByClassName('buynow-container')[0].style = 'position: fixed; top: 85px; right: 20px;';
+                //$('.buynow-container').theiaStickySidebar();
+            } else {
+                document.getElementsByClassName('buynow-container')[0].style = 'position: sticky; top: 85px; right: 20px;';
+            }
+        } else {
+            document.getElementsByClassName('buynow-container')[0].style = '';
+        }
+    })
+
+    $(document).ready(function () {
+        $('.fa-lock').css('cursor', 'pointer');
+        $('.fa-lock').click(function () {
+            myModal.show();
+        });
+    })
+</script>
+{{/script_section}}
+
+<style>
+    .bg-image {
+        position: relative;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+    }
+
+    .bg-image .mask {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        color: #fff;
+    }
+
+    .bg-image .mask .text {
+        height: 100%;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .bg-image .mask .text p {
+        margin: 0;
+    }
+</style>
+{{>replaceHeader}}
+{{#script_section 'ScrollHeader'}}
+<script>
+    /*$(document).ready(function () {
+        $(window).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y > $('.tab-buttons').offset().top) {
+                $('.replaceHeader').css('display', '');
+            } else {
+                $('.replaceHeader').css('display', 'none');
+            }
+        });
+    });*/
+</script>
+{{/script_section}}
+{{#if_eq descriptionTab true}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the global demand for {{keyword}} in terms of revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The global {{keyword}} valued at {{#if_contains Revenue_Current 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_Current 'XX'}}{{Revenue_Current}}{{/if_not_contains}} in {{Current_Year}} and is expected to reach {{#if_contains Revenue_Current 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_Forecast 'XX'}}{{Revenue_Forecast}}{{/if_not_contains}} in {{Forecast_Year}} growing at a CAGR of {{#if_contains CAGR_Revenue 'X'}}NA{{/if_contains}}{{#if_not_contains CAGR_Revenue 'X'}}{{CAGR_Revenue}}{{/if_not_contains}} <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which are the prominent players in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The prominent players in the market are {{Players}}. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "At what CAGR is the market projected to grow within the forecast period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The market is project to grow at a CAGR of {{#if_contains Revenue_Current 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_Forecast 'XX'}}{{Revenue_Forecast}}{{/if_not_contains}} between {{Current_Year}} and {{Forecast_Year}}. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the driving factors fueling the growth of the market.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The driving factors of the {{keyword}} include <ul style='list-style: disc;' class='pl-lg-5 text-justify'><li class='pl-0 pt-0 pb-0'>{{driver_1}}</li><li class='pl-0 pt-0 pb-0'>{{driver_2}}</li></ul> <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which region accounted for the largest share in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{Largest_Region}} was the leading regional segment of the {{keyword}} in 2020. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{category.title}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{keyword}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      }]
+    }
+    </script>
+
+<script type="application/ld+json">
+    {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "{{keyword}} Market - Global Industry Assessment & Forecast",
+            "image": "https://cdn.vantagemarketresearch.com/report/thumbnail/{{getUrl keyword false}}-Market.webp",
+            "mpn": "VMR-{{reportId}}",
+            "description": "{{substring (cleanhtml reportDescription) 0 300}}",
+            "productID": "VMR-{{reportId}}",
+            "brand": 
+            {
+                    "@type": "Brand",
+                    "name": "Vantage Market Research"
+            },
+            "offers": {
+            "@type": "Offer",
+            "url": "https://www.vantagemarketresearch.com/industry-report/{{slug}}",
+            "priceCurrency": "USD",
+            "price": {{pricingOptions.singleUser}},
+            "priceValidUntil": "{{getDate 'YYYY-MM-DD' 1 '01-01'}}",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "returnPolicyCategory": "https://schema.org/ProductReturnNotPermitted"
+            }
+        }                 
+    }
+</script>
+
+<script type="application/ld+json">
+         {
+          "@context":"https://schema.org/",
+          "@type":"Dataset",
+          "name":"{{keyword}} Market - Global Industry Assessment & Forecast",
+          "datePublished": "{{utcCreatedAt}}",
+          "dateModified": "{{utcUpdatedAt}}",
+          "description":"{{metadescription}}",
+         "url":"https://www.vantagemarketresearch.com/industry-report/{{slug}}?src=dataset-schema",
+          "sameAs":"https://www.vantagemarketresearch.com/industry-report/{{slug}}?src=dataset-schema",
+          "keywords":["{{keyword}} Market", "{{keyword}} Market Size", "{{keyword}} Market Share", "{{keyword}} Market", "{{keyword}} Market 2030"],
+    	  "license" : "https://www.vantagemarketresearch.com/privacy-policy",
+        "isAccessibleForFree": "False",
+          "creator":{
+             "@type":"Organization",
+             "url": "https://www.vantagemarketresearch.com/",
+             "name":"Vantage Market Research & Consulting Services",
+             "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://cdn.vantagemarketresearch.com/assets/img/logo.webp"
+    		 },
+             "contactPoint":{
+                "@type":"ContactPoint",
+                "contactType": "Sales Team",
+                "telephone":"+1 (877) 500-9070",
+                "email":"sales@vantagemarketresearch.com"
+             }
+          },
+          "temporalCoverage":"{{Current_Year}}-{{Forecast_Year}}",
+          "spatialCoverage": "Global",
+          "distribution": [{"@type":"DataDownload","encodingFormat":"PDF,CSV", "contentUrl": "https://www.vantagemarketresearch.com/{{slug}}/request-sample"}],
+          "isPartOf": "https://www.vantagemarketresearch.com"
+          }
+    </script>
+{{/if_eq}}
+
+{{#script_section 'smallform'}}
+<script defer src="/assets/js/component/smallform.js"></script>
+{{/script_section}}
+
+{{#script_section 'TOC_JS'}}
+<!-- /Pricing Plan -->
+<script>
+    window.mobileCheck = function () {
+        let check = false;
+        (function (a) { if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true; })(navigator.userAgent || navigator.vendor || window.opera);
+        return check;
+    };
+
+    $(document).ready(function () {
+        $('.header').addClass('header-page');
+        let url = window.location.href;
+        if (url.indexOf('/toc/') > -1 || url.indexOf('/market-segmentation/') > -1 || url.indexOf('/methodology/') > -1) {
+            scrollTo();
+        }
+
+    });
+
+    function scrollTo() {
+        if (!mobileCheck()) {
+            $('html, body').animate({
+                scrollTop: $(".tab-buttons").offset().top - 180
+            }, 1000);
+        } else {
+            $('html, body').animate({
+                scrollTop: $(".tab-buttons").offset().top + 200
+            }, 1000);
+        }
+    }
+
+    function hideDiscountFloat() {
+        $('#DiscountFloat').hinde();
+    }
+
+    function showBlackFriday() {
+        discountShown = true;
+        var discountDialog = new bootstrap.Modal(document.getElementById('discount'));
+        discountDialog.show();
+    }
+</script>
+{{/script_section}}
+<style>
+    .overview-sec ul {
+        margin: 0px !important;
+    }
+</style>
+
+
+<style>
+    @media(max-width: 600px) {
+        .glow-on-hover {
+            display: none !important;
+        }
+    }
+
+    .glow-on-hover {
+        width: 220px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+    }
+
+    .glow-on-hover:before {
+        content: '';
+        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 20s linear infinite;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        border-radius: 10px;
+    }
+
+    .glow-on-hover:active {
+        color: #000
+    }
+
+    .glow-on-hover:active:after {
+        background: transparent;
+    }
+
+    .glow-on-hover:hover:before {
+        opacity: 1;
+    }
+
+    .glow-on-hover:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #111;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+    }
+
+    @keyframes glowing {
+        0% {
+            background-position: 0 0;
+        }
+
+        50% {
+            background-position: 400% 0;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    .reportDescription h2,
+    .reportDescription h3,
+    .reportDescription h4 {
+        font-size: 1.3rem;
+    }
+
+    .reportDescription a {
+        color: blue !important;
+    }
+</style>
+
+{{#if_eq host 'https://www.vmr.biz'}}
+{{#metasection 'noindex'}}
+<meta name="robots" content="noindex">
+{{/metasection}}
+{{/if_eq}}
+
+{{#if_eq host 'https://www.vantagemarketresearch.com'}}
+{{#metasection 'index'}}
+<meta name="robots" content="index">
+<meta name="googlebot" content="index">
+{{/metasection}}
+{{/if_eq}}
+
+<style>
+    @keyframes pulse {
+        100% {
+            box-shadow: 0 0 0 20px rgba(193, 244, 246, 0);
+        }
+    }
+
+    .blink {
+        animation: 1.2s cubic-bezier(0.8, 0, 0, 1) 0s infinite normal none running pulse;
+        box-shadow: red 0px 0px 0px 0px;
+        background-color: #FF6633 !important;
+        border-color: #FF6633 !important;
+        color: #fff !important;
+        font-weight: bold !important;
+    }
+
+    .buying-inquiry {
+        background-color: #88139c !important;
+        border-color: #88139c !important;
+        color: #fff !important;
+        font-weight: bold !important;
+    }
+
+    .custom-card::after {
+        opacity: 0;
+    }
+
+    body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
+
+<script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', (e) => {
+        if (e.keyCode === 17 || e.keyCode === 123) { e.preventDefault(); }
+    })
+</script>
+
+
+{{#script_section 'owl'}}
+<script src="/assets/js/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.owl-carousel').owlCarousel({
+            nav: false,
+            loop: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            items: 1
+        });
+    })
+</script>
+<style>
+    .owl-stage {
+        display: flex;
+    }
+
+    .owl-stage-outer {
+        overflow: hidden;
+    }
+
+    .owl-dots {
+        display: none;
+    }
+</style>
+{{/script_section}}

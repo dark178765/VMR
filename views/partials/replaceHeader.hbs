@@ -1,0 +1,49 @@
+<div class="replaceHeader" style="display: none;">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="display: inline;">
+                <div style="display: flex;justify-content:space-between;align-items: center;">
+                    <div style="display: flex;align-items: center;">
+                        <a href="/">
+                            <img src="https://cdn.vantagemarketresearch.com/assets/img/vantage.webp"
+                                style="max-width: 75%;" class="img-fluid" alt="Vantage Market Research" />
+                        </a>
+                        <span style="margin-left: 20px; color:#fff;font-size:23px;">{{keyword}} Market</span>
+                    </div>
+                    <div style="display: flex;align-items: center;">
+                        {{>floatingbuynow}}
+                        <div>
+                            <div style="color: #fff;font-weight: bold;" class="blink-me">
+                                USE <span style="color: yellow;">JAN25</span> FOR 25% DISCOUNT
+                            </div>
+                            <div>
+                                <button type="button" onclick="window.location.href='/{{slug}}/request-sample'"
+                                    class="btn btn-sm special blink" style="margin-right: 2px;">Request Sample</button>
+                                <button type="button" onclick="window.location.href='/toc/{{slug}}'"
+                                    class="btn btn-sm btn-warning ml-2">Table Of Content</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .replaceHeader {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        padding: 18px;
+        z-index: 999;
+        background-color: #010733;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .replaceHeader {
+            display: none;
+        }
+    }
+</style>

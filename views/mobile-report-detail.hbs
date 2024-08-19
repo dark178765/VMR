@@ -1,0 +1,330 @@
+<section class="course-content course-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="report-image bg-image">
+                            <h1>{{keyword}} Market</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <span>#
+                    Pages:</span>
+                <p>{{numberOfPages}}</p>
+            </div>
+            <div class="col-4">
+                <span>Base Year: </span>
+                <p>2021</p>
+            </div>
+            <div class="col-4">
+                Published Date:
+                <p>{{updatedAt}}</p>
+            </div>
+            <div class="col-4">
+                <span>Format:</span>
+                <p><img src="https://cdn.vantagemarketresearch.com/assets/img/icon/pdf.svg" width="24" height="24"
+                        alt="PDF" title="PDF" />
+                    <img src="https://cdn.vantagemarketresearch.com/assets/img/icon/xls.svg" height="24" width="24"
+                        alt="XLS" title="XLS" />
+                    <img src="https://cdn.vantagemarketresearch.com/assets/img/icon/ppt.svg" height="24" width="24"
+                        alt="PPT" title="PPT" />
+                </p>
+            </div>
+            <div class="col-4">
+                <span>Report Code:</span>
+                <p>VMR-{{reportId}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="subs-title text-black">Segments Covered</h3>
+            <div class="col-12">
+                <table class="table center table-bordered">
+                    {{#each methodology.segments}}
+                    <tr>
+                        <th style="vertical-align: middle;"><span>By
+                                {{segment}}</span></th>
+                        <td style="vertical-align: middle;"><span>{{#comma subSegments
+                                'text'}}{{/comma}}</span></td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="subs-title text-black">Snapshot</h3>
+            <div class="col-12">
+                {{>summaryTable}}
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="overflow-links tab-buttons" style="display: flex; overflow: scroll;">
+                    <li><a href="/industry-report/{{slug}}"
+                            class="{{#if_eq descriptionTab true}}active{{/if_eq}}">Description</a></li>
+                    <li><a href="/included/{{slug}}" class="{{#if_eq include true}}active{{/if_eq}}">Inclusions</a>
+                    </li>
+                    <li><a href="/toc/{{slug}}" class="{{#if_eq tocTab true}}active{{/if_eq}}"
+                            style="width: max-content;">Table Of
+                            Content</a></li>
+                    <li><a href="/market-segmentation/{{slug}}" class="{{#if_eq marketSegmentTab true}}active{{/if_eq}}"
+                            style="width: max-content;">Market Segmentation</a>
+                    </li>
+                    {{!-- <li><a href="/methodology/{{slug}}"
+                            class="{{#if_eq methodologyTab true}}active{{/if_eq}}">Methodology</a></li> --}}
+                    <li><a href="/{{slug}}/request-sample" class="special">Request Sample</a></li>
+                    <li><a href="/{{slug}}/inquiry-before-buying" class="special">Buying Inquiry</a>
+                    </li>
+                </ul>
+
+                <div class="card overview-sec">
+                    <div class="card-body">
+                        {{#if_eq descriptionTab true}}
+                        <div class="reportDescription" style="text-align:justify;">
+                            {{{cleanhtml reportDescription}}}
+                        </div>
+
+                        {{/if_eq}}
+
+
+                        {{#if_eq include true}}
+                        <div>{{>includestable}}</div>
+                        {{#metasection 'indexmeta'}}
+                        <meta name="robots" content="noindex">
+                        <meta name="googlebot" content="noindex">
+                        {{/metasection}}
+                        {{/if_eq}}
+
+
+                        {{#if_eq tocTab true}}
+                        <div>{{{toc}}}</div>
+                        {{#metasection 'indexmeta'}}
+                        <meta name="robots" content="noindex">
+                        <meta name="googlebot" content="noindex">
+                        {{/metasection}}
+                        {{/if_eq}}
+                        {{#if_eq marketSegmentTab true}}
+                        {{> marketsegmentation marketSeg}}
+                        {{#metasection 'indexmeta'}}
+                        <meta name="robots" content="noindex">
+                        <meta name="googlebot" content="noindex">
+                        {{/metasection}}
+                        {{/if_eq}}
+                        {{#if_eq methodologyTab true}}
+                        {{> newmethodology methodology}}
+                        {{#metasection 'indexmeta'}}
+                        <meta name="robots" content="noindex">
+                        <meta name="googlebot" content="noindex">
+                        {{/metasection}}
+                        {{/if_eq}}
+                    </div>
+                </div>
+                {{#if_not_eq pr null}}
+                <div class="card" style="background-color: #003844;">
+                    <div class="card-header" style="color:#fff;font-size:1.2rem; background-color:inherit;">
+                        {{pr.title}}
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" style="color: #fff;;">
+                                {{{substring pr.description 0 300}}}...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="border-top: none !important; background-color:inherit;">
+                        <a class="btn btn-sm btn-light" href="/press-release/{{pr.slug}}"
+                            style="width: fit-content;color:#000;">Read More</a>
+                    </div>
+                </div>
+                {{/if_not_eq}}
+
+                <div class="card content-sec" id="Course_Content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5 class="subs-title">FAQ</h5>
+                            </div>
+                            <div class="col-sm-6 text-sm-end">
+                                <h6>Frequently Asked Question</h6>
+                            </div>
+                        </div>
+                        {{>faq}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div style="position: fixed; bottom:0px;z-index:9;width: 100%;">
+    <div class="row" style="height: 50px;">
+        <div class="col-6" style="padding-right: 0px;">
+            <a href="/{{slug}}/request-sample"
+                style="width: 100%;height: 100%; padding-top: 17px;border-radius: 0px;font-weight:bold;"
+                class="btn btn-primary">Request Sample</a>
+        </div>
+        <div class="col-6" style="padding-left: 0px;">
+            <a href="/buy-now/{{slug}}/0"
+                style="width: 100%;background: blue;height: 100%; padding-top: 17px; border-radius: 0px;font-weight:bold;"
+                class="btn btn-primary">Buy Now
+            </a>
+        </div>
+    </div>
+</div>
+<style>
+    .tab-buttons li {
+        margin-right: 5px;
+    }
+
+    .center-video iframe,
+    .center-video object,
+    .center-video embed {
+        /*position: absolute;*/
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .center-video {
+        text-align: center;
+    }
+
+    .cookie-consent {
+        bottom: 55px !important;
+        font-size: 10px !important;
+    }
+</style>
+
+{{#if_not_eq video undefined}}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "{{keyword}} Video",
+      "description": "{{metadescription}}",
+      "embedUrl": "{{video.url}}",
+      "thumbnailUrl": "http://i1.ytimg.com/vi/{{getVideoID video.url}}/hqdefault.jpg",
+      "uploadDate": "{{formatdate video.createdDate 'YYYY-MM-DD'}}"
+    }
+    </script>
+{{/if_not_eq}}
+
+{{#if_eq descriptionTab true}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the global demand for {{keyword}} in terms of revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The global {{keyword}} valued at {{#if_contains Revenue_2021 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_2021 'XX'}}{{Revenue_2021}}{{/if_not_contains}} in 2021 and is expected to reach {{#if_contains Revenue_2021 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_2028 'XX'}}{{Revenue_2028}}{{/if_not_contains}} in 2028 growing at a CAGR of {{#if_contains CAGR_Revenue 'X'}}NA{{/if_contains}}{{#if_not_contains CAGR_Revenue 'X'}}{{CAGR_Revenue}}{{/if_not_contains}} <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which are the prominent players in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The prominent players in the market are {{Players}}. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "At what CAGR is the market projected to grow within the forecast period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The market is project to grow at a CAGR of {{#if_contains Revenue_2021 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_2028 'XX'}}{{Revenue_2028}}{{/if_not_contains}} between 2021 and 2028. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the driving factors fueling the growth of the market.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The driving factors of the {{keyword}} include <ul style='list-style: disc;' class='pl-lg-5 text-justify'><li class='pl-0 pt-0 pb-0'>{{driver_1}}</li><li class='pl-0 pt-0 pb-0'>{{driver_2}}</li></ul> <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which region accounted for the largest share in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{Largest_Region}} was the leading regional segment of the {{keyword}} in 2020. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{category.title}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{keyword}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+   
+    {
+
+
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "{{keyword}} Market Growth, Size and Outlook",
+            "image": "https://cdn.vantagemarketresearch.com/report/thumbnail/{{getUrl keyword false}}-Market.webp",
+            "mpn": "VMR-{{reportId}}",
+            "description": "{{substring (cleanhtml reportDescription) 0 300}}",
+            "productID": "VMR-{{reportId}}",
+            "brand": 
+            {
+                    "@type": "Organization",
+                    "legalName": "Vantage Market Research"
+            },
+            "review": 
+                {
+                    "@type": "Review",
+                    "reviewRating": 
+                    {
+                            "@type": "Rating",
+                            "ratingValue": "4.9",
+                            "bestRating": "5"
+                    },
+                    "author": 
+                    {
+                            "@type": "Organization",
+                            "name": "Vantage Market Research"
+                    }
+                },
+
+            "aggregateRating": 
+                {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.9",
+                            "reviewCount": "45"
+                }
+                        
+    }
+
+    </script>
+{{/if_eq}}

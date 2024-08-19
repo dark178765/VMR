@@ -1,0 +1,54 @@
+<link href="/css/thanks.css" rel="stylesheet" />
+<div class="realoutercontainer">
+    <div class="outercontainer">
+        <div class="outercontainer2">
+            <div class="outercontainer3">
+                <div class="outercontainer4">
+
+                    {{#if_eq success true}}
+                    <h1>Payment Success !</h1>
+                    {{#if_eq paymentThrough 'wire'}}
+                    <p class="mb-0">
+                        We got your wire transafer request for {{reportTitle}}. Our sales representative will contact you
+                        soon.
+                    </p>
+                    {{/if_eq}}
+                    {{#if_not_eq paymentThrough 'wire'}}
+                    <p class="mb-0">
+                        We successfully got your payment for {{reportTitle}}. Our sales representative will contact you
+                        soon.
+                    </p>
+                    {{/if_not_eq}}
+                    {{/if_eq}}
+                    {{#if_eq success false}}
+                    <h1>Oops Payment Failed !</h1>
+                    <p class="mb-0">
+                        We failed to get your payment for {{reportTitle}}. Please contact us as soon as possible.
+                    </p>
+                    {{/if_eq}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="common-rectangleGrid original">
+        <!-- Background -->
+        <div class="backgroundContainer">
+            <div class="grid">
+                <div class="background"></div>
+            </div>
+        </div>
+        <!-- rectangles -->
+        <div class="rectangleContainer">
+            <div class="grid">
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+                <div class="rectangle"></div>
+            </div>
+        </div>
+    </div>
+</div>

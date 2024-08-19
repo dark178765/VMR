@@ -1,0 +1,153 @@
+<script src="/d3/topojson.v2.min.js"></script>
+<script src="/d3/d3-geo-projection.v1.min.js"></script>
+<style>
+    #chart {
+        height: 500px;
+        width: 100%;
+        text-align: center;
+    }
+
+    #chart svg {
+        width: 900px;
+        height: 100%
+    }
+
+    #chart path {
+        fill: none;
+    }
+
+    #chart .graticule {
+        fill: none;
+        stroke: #bbb;
+        stroke-width: .5px;
+        stroke-opacity: .5;
+    }
+
+    #chart text {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 16px;
+    }
+</style>
+<div id="chart" class="overflow"></div>
+{{#if_contains Revenue_Current 'XX'}}
+
+<style>
+    #chart {
+        filter: blur(4px);
+    }
+</style>
+{{/if_contains}}
+<script>
+    (function () {
+
+        var width = 960;
+        var height = 500;
+
+        var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+        var graticule = d3.geoGraticule();
+        var svg = d3.select("#chart").append("svg");
+        var g = svg.append("g");
+
+        var largestRegion = '{{Largest_Region}}';
+        var fastestRegion = '{{Fastest_Region}}';
+
+        var largestRegionValue = '{{MSA_Largest_Region}}';
+        var fastestRegionValue = '{{Map_Revenue}}';
+
+        //https://bl.ocks.org/mbostock/3710082
+        var projection = d3.geoKavrayskiy7()
+            .scale(170)
+            .translate([width / 2, height / 2])
+            .precision(.1)
+            .rotate([-11, 0]);
+
+        var path = d3.geoPath().projection(projection);
+
+        svg.append("defs").append("path")
+            .datum({ type: "Sphere" })
+            .attr("id", "sphere")
+            .attr("d", path);
+
+        svg.append("use")
+            .attr("class", "stroke")
+            .attr('fill', '#fff')
+            .attr("xlink:href", "#sphere");
+
+        svg.append("path")
+            .datum(graticule)
+            .attr("class", "graticule")
+            .attr("d", path);
+
+
+        var data = "/world-continents.json";
+
+        d3.json(data).then(function (topology, error) {
+            var continents = topojson.feature(topology, topology.objects.continent).features;
+
+            continents = continents.map(c => {
+                if (c.properties.continent == "Asia") {
+                    c.properties.continent = 'Asia Pacific';
+                }
+
+                if (c.properties.continent == 'Africa') {
+                    c.properties.continent = 'Middle East & Africa';
+                }
+
+                if (c.properties.continent == 'Oceania') {
+                    c.properties.continent = '';
+                }
+                return c;
+            });
+
+            var centroids = continents.map(function (d) {
+                return projection(d3.geoCentroid(d))
+            });
+
+            svg.selectAll(".continent")
+                .data(continents)
+                .enter()
+                .append("path")
+                .attr("d", path)
+                .attr("title", function (d, i) {
+                    return d.properties.continent;
+                })
+                .style("fill", function (d, i) {
+                    if (d.properties.continent == fastestRegion || d.properties.continent == largestRegion) {
+                        return color(i);
+                    } else {
+                        return '#dfdfdf';
+                    }
+                });
+
+            svg.selectAll(".name").data(centroids)
+                .enter().append("text")
+                .attr("x", function (d) { return d[0]; })
+                .attr("y", function (d) { return d[1]; })
+                .style("fill", "black")
+                .attr("text-anchor", "middle")
+                .text(function (d, i) {
+                    return continents[i].properties.continent;
+                });
+
+            //Fastest OR Largest Region Values
+
+            svg.selectAll(".name").data(centroids)
+                .enter().append("text")
+                .attr("x", function (d) { return d[0]; })
+                .attr("y", function (d) { return d[1] + 18; })
+                .style("fill", "black")
+                .attr("text-anchor", "middle")
+                .text(function (d, i) {
+                    if (continents[i].properties.continent == largestRegion) {
+                        return largestRegionValue;
+                    } else if (continents[i].properties.continent == fastestRegion) {
+                        return fastestRegionValue;
+                    } else {
+                        return '';
+                    }
+                });
+
+        })
+    })();
+</script>

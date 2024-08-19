@@ -1,0 +1,72 @@
+<link href="/css/category-report-list.css" rel="stylesheet" />
+<!-- ======= REPORT  Section ======= -->
+<section id="report" class="report-section mt-80">
+    <div class="container">
+        <div class="row">
+            <div class="d-flex align-items-start" id="categorySection">
+                <div class="nav flex-column nav-pills me-3 nav-left-main" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    {{#each categories}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle removeActive" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                            aria-selected="true"> {{title}} </a>
+                        <div class="dropdown-menu removeShow" aria-labelledby="navbarDropdown">
+                            {{#each childCategories}}
+                            <a class="dropdown-item" href="/category/{{slug}}">
+                                {{title}}
+                            </a>
+                            {{/each}}
+                        </div>
+                    </li>
+                    {{/each}}
+                </div>
+                <div class="tab-content tab-content-main report-list-section" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        {{#each categoryReports}}
+                        <div id="repots_list" class="card mb-2 shadow p-3 bg-body rounded mt-0">
+                            <div class="card-body">
+                                <a class="text-444" href="/industry-report/{{reports.slug}}">
+                                    <p class="title-section mb-1 text-justify">
+                                        {{reports.title}}
+                                    </p>
+                                    <span class="anchor-text">[Read More]</span>
+                                </a>
+                                <div class="mt-2">
+                                    <p class="float-left">
+                                        <i class="fa fa-calendar"></i>: {{formatdate reports.createdAt 'MMM DD, YYYY'}} | Base
+                                        Year: {{reports.baseYear}}
+                                        | No of pages:
+                                        {{reports.template.noOfPages}}
+                                    </p>
+                                    <button class="btn btn-outline-primary float-right">$
+                                        {{reports.pricingOptions.singleUser}}</button>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('.removeActive').click(function () {
+            $('.removeActive').removeClass('active');
+            $('.removeShow').removeClass('show');
+            $(this).addClass('active');
+            $(this).next('.removeShow').addClass('show');
+        });
+        let url = window.location.href.split('/');
+
+        let lnk = $('a[href="/category/' + url[url.length - 1] + '"]').parent();
+        $(lnk).addClass('show');
+        $(lnk).prev('.removeActive').addClass('active');
+    });
+</script>
+{{#metasection 'indexmeta'}}
+<meta name="robots" content="index">
+{{/metasection}}

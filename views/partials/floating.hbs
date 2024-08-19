@@ -1,0 +1,180 @@
+<div class="fab-container">
+    <div class="drawer">
+      <div class="dr">
+          <span class="show-title"><a href="/{{slug}}/request-sample" target="_blank">Request Sample</a></span>
+          <div class="sub-button shadow">
+              <a href="google.com" target="_blank">
+                  <img src="/image/floating/information.svg" style="width: 25px; height: 25px;" />
+              </a>
+          </div>
+        </div>
+    </div>
+    <div class="drawer">
+        <div class="dr">
+          <span class="show-title"><a href="/buy-now/{{slug}}/0" target="_blank">Buy Now</a></span>
+          <div class="sub-button shadow">
+              <a href="/buy-now/{{slug}}/0" target="_blank" title="Buy Now">
+                  <img src="/image/floating/shopping-cart.svg" style="width: 25px; height: 25px;" title="Buy Now" />
+              </a>
+          </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+.show-title {
+    /*visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;*/
+
+    /*left: -200px;*/
+
+    /*padding: 11px;*/
+    /*position: relative;*/
+    /* background: #000; */
+    /*top: -7px;*/
+    /* border: 1px solid; */
+    /*border-radius: 0% 41% 50% 0px;
+    background: #fff;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;*/
+}
+
+.dr {
+    display: flex;
+    align-items: center;
+}
+
+.dr {
+  
+  position: relative;
+      background: #fff !important;
+    border-radius: 0px 15px 15px 0px;
+    border: 3px solid #dfdfdf;
+    border-left: none;
+}
+
+.fab-container .drawer:nth-child(1) .dr {
+  left: -146px;
+}
+
+.fab-container .drawer:nth-child(2) .dr {
+  left: -118px;
+}
+
+.drawer:nth-child(1):hover .dr {
+  /*opacity: 1;
+  visibility: visible;*/
+  transition: 1s;
+  left: -13px;
+  padding-left: 12px;
+}
+
+/*.drawer:nth-child(1) .show-title {
+  transition: 1s;
+  left: -208px;
+}*/
+
+.drawer:nth-child(2):hover .dr {
+  /*opacity: 1;
+  visibility: visible;*/
+  transition: 1s;
+  left: -41px;
+  padding-left: 12px;
+}
+
+.drawer:nth-child(3):hover .show-title {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fab-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  user-select: none;
+  position: fixed;
+  bottom: 35%;
+  left: 15px;
+  z-index: 9;
+}
+.fab-container {
+  height: 100%;
+}
+.fab-container .drawer:nth-child(1) {
+  transform: translateY(120px);
+  /*bottom: 25px;*/
+}
+
+.fab-container .drawer:nth-child(2) {
+  transform: translateY(-17px);
+ /*bottom: 88px;*/
+}
+.fab-container .drawer:nth-child(3) {
+  transform: translateY(-125px);
+  /*bottom: 150px;*/
+}
+.fab-container .sub-button:nth-child(4) {
+  /*transform: translateY(-150px);*/
+  /*bottom: 100px;*/
+}
+.fab-container .sub-button:nth-child(5) {
+  /*transform: translateY(-260px);*/
+}
+.fab-container .sub-button:nth-child(6) {
+  /*transform: translateY(-320px);*/
+}
+.fab-container .fab {
+  position: relative;
+  height: 70px;
+  width: 70px;
+  background-color: #4ba2ff;
+  border-radius: 50%;
+  z-index: 2;
+}
+.fab-container .fab::before {
+  content: " ";
+  position: relative;
+  bottom: 0;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  background-color: inherit;
+  border-radius: 0 0 10px 0;
+  z-index: -1;
+}
+.fab-container .fab .fab-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.fab-container .fab .fab-content .material-icons {
+  color: white;
+  font-size: 48px;
+}
+.fab-container .sub-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*bottom: 10px;
+  right: 10px;*/
+  height: 50px;
+  width: 50px;
+  /*background-color: #4ba2ff;*/
+  background-color: #ea6586;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  left: 12px;
+}
+.fab-container .sub-button {
+  cursor: pointer;
+}
+.fab-container .sub-button .material-icons {
+  color: white;
+  padding-top: 6px;
+}
+</style>

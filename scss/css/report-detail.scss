@@ -1,0 +1,91 @@
+.reportDescription p,  .reportDescription li {
+    text-align: justify;
+}
+
+.course-content {
+    padding-top: 0px;
+}
+
+@media only screen and (max-width: 800px) {
+    .segmenttree {
+        display: none;
+    }
+    .report-image h1 {
+        font-size: 21px;
+        bottom: 36px !important;
+    }
+}
+
+.report-image h1 {
+    position: relative;
+    bottom: 72px;
+    left: 10px;
+    width: fit-content;
+    border-radius: 0;
+    border: 0;
+    color: #fff;
+}
+
+.black-glass {
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.report-segments li {
+    list-style: none;
+    list-style-type: none;
+    display: flex;
+    margin: 10px 0;
+    padding-left: 5px;
+}
+
+.report-segments li span:nth-child(2) {
+    min-width: 214px;
+    font-weight: bold;
+}
+
+.report-segments li:nth-child(odd) {
+    background-color: #8080803b;
+}
+
+ul.report-segments {
+    border: 1px solid #8080803b;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+table.pd td {
+    padding-bottom: 10px;
+}
+
+.mask-img {
+    -webkit-mask-image: linear-gradient(0deg, rgba(0, 9, 36, 1) 22%, rgba(255, 255, 255, 1) 29%, rgba(5, 1, 4, 0.75) 93%);
+    mask-image: linear-gradient(0deg, rgba(0, 9, 36, 1) 22%, rgba(255, 255, 255, 1) 29%, rgba(5, 1, 4, 0.75) 93%);
+}
+
+.report-image img {
+    width: 100%;
+}
+
+h2.report-title {
+    font-weight: bold;
+}
+
+.productcart {
+    background: #0d355a;
+    border-radius: 20px;
+    margin: 0 10% 10%;
+    padding: 10px 30px 30px;
+}

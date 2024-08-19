@@ -1,0 +1,57 @@
+<link href="/css/blog.css" rel="stylesheet" />
+<main id="blog-main" class="m-80 p-60">
+
+    <div class="">
+        <img src="{{blogImage}}" alt="about-us" class="img-fluid">
+    </div>
+    <div id="blog-detilas-section-main mt-5">
+        <div class="container-fluid pl-5 pr-5">
+
+            <div class="row">
+                <div class="col-md-12 breadcrumb-custom">
+                    <div class="pt-4">
+                        <ul>
+                            <li class="mr-0">
+                                <span>
+                                    <a href="/">Home</a></span>&nbsp;<i
+                                    class="fa fa-angle-double-right"></i>
+                            </li>
+                            <li class="mr-0">
+                                <span>
+                                    <a href="/blogs">Blog</a>
+                                </span>&nbsp;<i class="fa fa-angle-double-right"></i>
+                            </li>
+                            <li class="mr-0">
+                                <h1 style="font-size: 14px;">Global {{metatitle}}</h1>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="page-title-wrapper pb-4">
+                        <h2 class="page-title">{{blog.title}}</h2>
+                    </div>
+                    <div class="mp-post-info pb-2">Posted by: Vantage Market Research | {{formatdate blog.createdAt 'MMM
+                        DD, YYYY'}}</div>
+                    <p class="text-justify">{{{blog.description}}}</p>
+
+                </div>
+                {{#if blog.reportTitle}}
+                <div class="col-md-12 browser_report mt-4">
+                    <p>Browse the full Report - <a href="/industry-report/{{blog.reportslug}}"
+                            target="_blank">{{blog.reportTitle}}</a>
+                    </p>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+</main><!-- End #main -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+{{#metasection 'indexmeta'}}
+<meta name="robots" content="index">
+{{/metasection}}

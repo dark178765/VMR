@@ -1,0 +1,83 @@
+<!-- Feather CSS -->
+<link rel="stylesheet" href="/assets/css/feather.css">
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="breadcrumb-list">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="/all-reports">Research Reports</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">{{#if_eq breadCrumb undefined}}Latest Market Research Reports{{/if_eq}}{{#if_not_eq breadCrumb undefined}}{{title}}{{/if_not_eq}}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+<div class="page-banner bottom" {{#if_not_eq breadCrumb
+    undefined}}style="background: url(/assets/img/category/category-cover/{{getUrl breadCrumb false}}.webp);"
+    {{/if_not_eq}}>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <h1 class="mb-0">{{#if_eq breadCrumb undefined}}Latest Market Research Reports{{/if_eq}}{{#if_not_eq breadCrumb undefined}}{{title}}{{/if_not_eq}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Course -->
+<section class="course-content">
+    <div class="container" style="min-height: 900px;">
+        <div id="allReports"></div>
+    </div>
+</section>
+<script defer src="/assets/js/component/allreports.js"></script>
+<!-- /Course -->
+<style>
+    .flex-center {
+        align-items: center;
+    }
+</style>
+<style>
+    .head-course-title h3 a {
+        font-weight: bold;
+    }
+
+    .course-name h4 a {
+        font-weight: normal;
+        font-size: 14px;
+    }
+
+    .subChilds {
+        margin-left: 25px;
+    }
+
+    .page-banner {
+        background: url(/assets/img/All-Reports.webp);
+        background-size: cover;
+        background-position: center;
+    }
+
+
+    .page-banner h1 {
+        background: rgba(16, 16, 16, 0.64);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9px);
+        -webkit-backdrop-filter: blur(9px);
+        border: 1px solid rgba(16, 16, 16, 0.3);
+        ;
+    }
+</style>
+{{#metasection 'noindex'}}
+<meta name="robots" content="index">
+{{/metasection}}

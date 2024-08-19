@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{metatitle}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{metadescription}}" />
+    <meta name="keywords" content="{{metakeywords}}" />
+    <meta name="author" content="Vantage Market Research,{{host}}/">
+    <meta name="copyright" content="Vantage Market Research" />
+    <meta content="US" name="geo.country" />
+
+    <link rel="preconnect" href="{{host}}/" />
+    <link rel="preconnect" href="https://cdn.vantagemarketresearch.com">
+
+    <link rel="dns-prefetch" href="{{host}}/" />
+
+    <meta name="distribution" content="global" />
+    <meta name="coverage" content="global" />
+    <meta name="abstract" content="consulting services, market research reports, industry analysis, reports" />
+    <meta name="Audience" content="All, Business, Management, Research, Services" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@vantagemarketr" />
+    <meta name="twitter:creator" content="@vantagemarketr" />
+    <meta property="twitter:description" content="{{metadescription}}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="Vantage Market Research" />
+
+    <meta property="og:title" content="{{metatitle}}" />
+    <meta property="og:description" content="{{metadescription}}" />
+    <meta property="og:image" content="{{host}}/assets/images/logo/logo.webp" />
+    <meta property="og:url" content="{{host}}">
+
+    <link rel="canonical"
+        href="{{#if_eq canonical undefined}}{{CURRENT_URL}}{{/if_eq}}{{#if_not_eq canonical undefined}}{{host}}{{canonical}}{{/if_not_eq}}" />
+    <link href="/favicon.ico" rel="icon">
+</head>
+
+<body style="margin:0px;">
+    <div style="display:flex;justify-content: space-between;padding:10px;">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <img src="https://cdn.vantagemarketresearch.com/assets/img/logo.webp" class="img-fluid"
+            alt="Vantage Market Research" height="50" width="214">
+    </div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/">Home</a>
+        <a href="/all-reports">Reports</a>
+        <a href="/off-the-shelf-research">Off-the-Shelf Research</a>
+        <a href="/consulting-and-advisory">Consulting & Advisory</a>
+        <a href="/consumer-survey">Consumer Survey Analysis</a>
+        <a href="/consumer-survey">Data Analytics</a>
+        <a href="/technology-solutions">Technology Solutions</a>
+    </div>
+    <div style="padding:10px;">
+        <div>
+            <h1>{{keyword}} Market</h1>
+            <h2>{{keyword}} Market - Global Industry Assessment & Forecast</h2>
+        </div>
+        <div>
+            <h3 class="subs-title text-black">Snapshot</h3>
+            <div class="col-12">
+                {{>summaryTable}}
+            </div>
+        </div>
+        <div>
+            <div style="display:flex;">
+                <a class="button-mobile" href="/included/{{slug}}">Inclusion</a>
+                <a class="button-mobile" href="/toc/{{slug}}">Table Of Content</a>
+            </div>
+            <div style="display:flex;margin-top: 5px;">
+                <a class="button-mobile" href="/market-segmentation/{{slug}}">Market Segmentation</a>
+                <a class="button-mobile button-primary-mobile" href="/{{slug}}/request-sample">Request Sample</a>
+            </div>
+            <a class="button-mobile button-primary-mobile" style="width: 93%;margin-top: 5px;"
+                href="/{{slug}}/inquiry-before-buying">Buying Inquiry</a>
+        </div>
+        <div style="line-height:25px; padding: 10px;text-align:justify;" class="description">
+            {{{cleanhtml reportDescription}}}
+        </div>
+        <div class="faq">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <button class="accordion">What is
+                the global demand for {{keyword}}
+                in terms of revenue?</button>
+            <div class="panel">
+                <p>The global {{keyword}} valued at {{Revenue_Current}}
+                    in 2020 and is expected to reach {{Revenue_Forecast}} in 2028
+                    growing at a CAGR of {{CAGR_Revenue}}.</p>
+            </div>
+
+            <button class="accordion">Which
+                are the prominent players
+                in the market?</button>
+            <div class="panel">
+                <p>The prominent players in the market are {{Players}}.</p>
+            </div>
+
+            <button class="accordion">At what CAGR is
+                the market projected to grow within the forecast period?</button>
+            <div class="panel">
+                <p>The market is project to grow at a CAGR of
+                    {{CAGR_Revenue}}
+                    between 2021 and 2028.</p>
+            </div>
+
+            <button class="accordion">What are
+                the driving factors
+                fueling the growth of the market?</button>
+            <div class="panel">
+                <p>The driving factors of the {{keyword}} include
+                <ul style="list-style: disc;" class="pl-lg-5 text-justify">
+                    <li class="pl-0 pt-0 pb-0">
+                        {{driver_1}}
+                    </li>
+                    {{#if driver_2}}
+                    <li class="pl-0 pt-0 pb-0">
+                        {{driver_2}}
+                    </li>
+                    {{/if}}
+                </ul>
+                </p>
+            </div>
+
+            <button class="accordion">Which
+                region accounted for the
+                largest share in the market?</button>
+            <div class="panel">
+                <p>{{Largest_Region}} was the leading regional segment of the {{keyword}} in 2020.</p>
+            </div>
+        </div>
+        <input type="hidden" id="reportID" value="{{rptId}}" />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="box-shadow:-4px -3px 4px 0px #00000075;">
+                    <div class="card-title" style="padding-bottom: 0px;">
+                        <h5 class="subs-title"
+                            style="border-bottom: 1px solid #dfdfdf; padding: 15px;background:#5D3891; color:#fff;border-radius: 10px 10px 0 0;margin-bottom: 5px;">
+                            Related
+                            Reports</h5>
+                    </div>
+                    <div class="card-body" style="padding-top: 0px">
+                        <div id="relatedReports"></div>
+                    </div>
+                </div>
+            </div>
+            <script defer src="https://cdn.vantagemarketresearch.com/assets/react/react.production.min.js"></script>
+            <script defer src="https://cdn.vantagemarketresearch.com/assets/react/react-dom.production.min.js"></script>
+            <script defer src="/assets/js/component/related-report.js"></script>
+            <style>
+                #relatedReports .col-md-6 {
+                    padding: 15px;
+                    display: flex;
+                    align-items: center;
+                }
+            </style>
+        </div>
+    </div>
+    <style>
+        .description img {
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid #dfdfdf;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        table td {
+            border: 1px solid #dfdfdf;
+            padding: 5px;
+        }
+
+        .description p,
+        .faq p,
+        .description ul li {
+            font-size: 18px;
+        }
+
+        .description ul li {
+            margin-bottom: 10px;
+
+        }
+
+        .description ul {
+            padding-left: 0px;
+        }
+
+        .faq button {
+            font-weight: bold;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        #mySidenav a {
+            color: #fff;
+        }
+
+        .button-mobile {
+            border: 1px solid #dfdfdf;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            background: #FF875A;
+            color: #fff;
+            font-weight: bold;
+            width: 50%;
+            text-align: center;
+            margin-right: 5px;
+            display: block;
+        }
+
+        .button-primary-mobile {
+            background: #e74765;
+            color: #fff;
+            border-color: #e74765;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+
+        .no-list li {
+            list-style-type: none;
+
+        }
+
+        .no-list li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .center-video iframe,
+        .center-video object,
+        .center-video embed {
+            /*position: absolute;*/
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .center-video {
+            text-align: center;
+        }
+    </style>
+
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+
+    <style>
+        footer li>a {
+            display: flex;
+            align-items: center;
+            height: 48px;
+        }
+    </style>
+
+    <footer style="background-color: #363636; padding:20px;color:#fff;">
+        <img style="width: 100%;" src="https://cdn.vantagemarketresearch.com/assets/img/Esomar_VMR.png"
+            class="img-responsive" alt="ESOMAR Member Vantage Market Research" height="150" width="400">
+        <div>
+            <h3 style="text-decoration: underline;">Contact Us</h3>
+            <div class="footer-contact-info">
+                <div class="footer-address" style="display: flex;align-items:center;">
+                    <img class="img-fluid" alt="Address Icon Footer"
+                        src="https://cdn.vantagemarketresearch.com/assets/img/address.svg" height="25px" width="25px">
+                    <p> 6218 Georgia Avenue NW Ste 1 - 564 Washington, DC 20011-5125, United States
+                    </p>
+
+                </div>
+                <div class="footer-address" style="display: flex;align-items:center;">
+                    <img class="img-fluid" alt="Address Icon Footer"
+                        src="https://cdn.vantagemarketresearch.com/assets/img/address.svg" height="25px" width="25px">
+                    <p> Kamdhenu Jasmine, Main Road, Pimple Saudagar, Pune, Maharashtra, 411027
+                    </p>
+
+                </div>
+                <p style="display:flex;">
+                    <img class="img-fluid" alt="Email Icon Footer"
+                        src="https://cdn.vantagemarketresearch.com/assets/img/email.svg" height="25px" width="25px">
+                    &nbsp;<a style="color:#fff;"
+                        href="mailto:sales@vantagemarketresearch.com">sales@vantagemarketresearch.com</a>
+                </p>
+                <p class="mb-0" style="display:flex;">
+                    <img alt="Phone Icon Footer" class="img-fluid"
+                        src="https://cdn.vantagemarketresearch.com/assets/img/phone.svg" height="25px" width="25px">
+                    &nbsp;
+                    <span>
+                        <a style="color:#fff; display: flex; align-items: center; height: 48px"
+                            href="tel:+1 (202) 380-9727">+1 (202) 380-9727</a><br />Toll Free Number:
+                        <a style="color:#fff;display: flex; align-items: center; height: 48px"
+                            href="tel:+1 (877) 500-9070">+1 (877) 500-9070</a>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div>
+            <h3 style="text-decoration: underline;">Vantage Market Research</h3>
+            <ul class="no-list" style="padding-left: 0px;line-height: 25px;">
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/all-reports">Research Study</a></li>
+                <li><a href="/contact-us">Contact Us</a></li>
+                <li><a href="/customer-faq">Custom FAQ</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 style="text-decoration: underline;">Products & Service</h3>
+            <ul class="no-list" style="padding-left: 0px;line-height: 25px;">
+                <li><a href="/off-the-shelf-research">Off-the-Shelf Research</a></li>
+                <li><a href="/consulting-and-advisory">Consulting & Advisory</a></li>
+                <li><a href="/consumer-survey">Consumer Survey</a></li>
+                <li><a href="/data-analytics">Data Analytics</a></li>
+                <li><a href="/technology-solutions">Technology & Solutions</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 style="text-decoration: underline;">Media</h3>
+            <ul class="no-list" style="padding-left: 0px;line-height: 25px;">
+                <li><a href="/press-releases">Pressrelease</a></li>
+                <li><a href="/blogs">Blogs</a></li>
+
+            </ul>
+        </div>
+        <div>
+            <h3 style="text-decoration: underline;">Industry Verticals</h3>
+            <ul class="no-list" style="padding-left: 0px;line-height: 25px;">
+
+                <li><a href="/categories/energy-and-power">
+                        Energy
+                        &amp;
+                        Power </a>
+                </li>
+                <li><a href="/categories/mining-metals-and-minerals">
+                        Mining Metals &amp; Minerals
+                    </a>
+                </li>
+                <li><a href="/categories/agriculture">
+                        Agriculture </a></li>
+                <li><a href="/categories/biotechnology-and-life-sciences">
+                        Biotechnology
+                    </a></li>
+                <li><a href="/categories/aerospace-and-defense">
+                        Aerospace
+                        &amp; Defense </a></li>
+                <li><a href="/categories/healthcare">
+                        Healthcare </a></li>
+                <li><a href="/categories/advanced-materials">
+                        Advanced Materials </a></li>
+                <li><a href="/categories/food-and-beverage">
+                        Food &amp; Beverage </a></li>
+
+                <li><a href="/categories/banking-financial-services-and-insurance">
+                        BFSI </a></li>
+                <li><a href="/categories/technology-and-media">
+                        Technology &amp; Media </a></li>
+                <li><a href="/categories/semiconductor-and-electronics">
+                        Semiconductor &amp;
+                        Electronics
+                    </a></li>
+                <li><a href="/categories/automotive-transportation-and-logistics">
+                        Automotive
+                        &amp; Logistics </a></li>
+                <li><a href="/categories/heavy-industry">
+                        Heavy
+                        Industry
+                    </a></li>
+                <li><a href="/categories/building-and-constructions">
+                        Building &amp; Construction
+                    </a>
+                </li>
+                <li><a href="/categories/consumer-goods-and-packaging">
+                        Consumer Goods &amp;
+                        Packaging
+                    </a>
+                </li>
+                <li><a href="/categories/chemicals">
+                        Chemicals </a></li>
+
+
+            </ul>
+        </div>
+        <div class="copyright-text">
+            <p class="mb-0">© 2023 <a href="/" style="text-decoration:none;color:#fff;">Vantage Market Research &amp;
+                    Consultancy
+                    Services</a>. All rights
+                reserved.
+            </p>
+        </div>
+
+    </footer>
+
+    {{#if_not_eq video undefined}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "{{keyword}} Video",
+      "description": "{{metadescription}}",
+      "embedUrl": "{{video.url}}",
+      "thumbnailUrl": "http://i1.ytimg.com/vi/{{getVideoID video.url}}/hqdefault.jpg",
+      "uploadDate": "{{formatdate video.createdDate 'YYYY-MM-DD'}}"
+    }
+    </script>
+    {{/if_not_eq}}
+
+    {{#if_eq descriptionTab true}}
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the global demand for {{keyword}} in terms of revenue?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The global {{keyword}} valued at {{#if_contains Revenue_Current 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_Current 'XX'}}{{Revenue_Current}}{{/if_not_contains}} in 2021 and is expected to reach {{#if_contains Revenue_Current 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_Forecast 'XX'}}{{Revenue_Forecast}}{{/if_not_contains}} in 2028 growing at a CAGR of {{#if_contains CAGR_Revenue 'X'}}NA{{/if_contains}}{{#if_not_contains CAGR_Revenue 'X'}}{{CAGR_Revenue}}{{/if_not_contains}} <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which are the prominent players in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The prominent players in the market are {{Players}}. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "At what CAGR is the market projected to grow within the forecast period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The market is project to grow at a CAGR of {{#if_contains Revenue_Current 'XX'}}NA{{/if_contains}}{{#if_not_contains Revenue_Forecast 'XX'}}{{Revenue_Forecast}}{{/if_not_contains}} between 2021 and 2028. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the driving factors fueling the growth of the market.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The driving factors of the {{keyword}} include <ul style='list-style: disc;' class='pl-lg-5 text-justify'><li class='pl-0 pt-0 pb-0'>{{driver_1}}</li><li class='pl-0 pt-0 pb-0'>{{driver_2}}</li></ul> <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which region accounted for the largest share in the market?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{Largest_Region}} was the leading regional segment of the {{keyword}} in 2020. <a href='https://www.vantagemarketresearch.com/industry-report/{{slug}}'>Read More</a>"
+      }
+    }
+  ]
+}
+</script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{category.title}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{keyword}}",
+        "item": "https:/www.vantagemarketresearch.com"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+
+    {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "{{keyword}} Market - Global Industry Assessment & Forecast",
+            "image": "https://cdn.vantagemarketresearch.com/report/thumbnail/{{getUrl keyword false}}-Market.webp",
+            "mpn": "VMR-{{reportId}}",
+            "description": "{{metadescription}}",
+            "productID": "VMR-{{reportId}}",
+            "brand": 
+            {
+                    "@type": "Brand",
+                    "name": "Vantage Market Research"
+            },
+            "offers": {
+        "@type": "Offer",
+        "url": "https://www.vantagemarketresearch.com/industry-report/{{slug}}",
+        "priceCurrency": "USD",
+        "price": {{pricingOptions.singleUser}},
+        "priceValidUntil": "{{getDate 'YYYY-MM-DD' 1 '01-01'}}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "returnPolicyCategory": "https://schema.org/ProductReturnNotPermitted"
+        }
+      }                 
+    }
+
+    </script>
+    <script type="application/ld+json">
+         {
+          "@context":"https://schema.org/",
+          "@type":"Dataset",
+          "name":"{{keyword}} Market - Global Industry Assessment & Forecast",
+          "datePublished": "{{utcCreatedAt}}",
+          "dateModified": "{{utcUpdatedAt}}",
+          "description":"{{metadescription}}",
+         "url":"https://www.vantagemarketresearch.com/industry-report/{{slug}}?src=dataset-schema",
+          "sameAs":"https://www.vantagemarketresearch.com/industry-report/{{slug}}?src=dataset-schema",
+          "keywords":["{{keyword}} Market", "{{keyword}} Market Size", "{{keyword}} Market Share", "{{keyword}} Market", "{{keyword}} Market 2030"],
+    	  "license" : "https://www.vantagemarketresearch.com/privacy-policy",
+            "isAccessibleForFree": "False",
+          "creator":{
+             "@type":"Organization",
+             "url": "https://www.vantagemarketresearch.com/",
+             "name":"Vantage Market Research & Consulting Services",
+             "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://cdn.vantagemarketresearch.com/assets/img/logo.webp"
+    		 },
+             "contactPoint":{
+                "@type":"ContactPoint",
+                "contactType": "Sales Team",
+                "telephone":"+1 (877) 500-9070",
+                "email":"sales@vantagemarketresearch.com"
+             }
+          },
+          "temporalCoverage":"{{Current_Year}}-{{Forecast_Year}}",
+          "spatialCoverage": "Global",
+          "distribution": [{"@type":"DataDownload","encodingFormat":"PDF,CSV", "contentUrl": "https://www.vantagemarketresearch.com/{{slug}}/request-sample"}],
+          "isPartOf": "https://www.vantagemarketresearch.com"
+          }
+    </script>
+    {{/if_eq}}
+
+
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+            margin-bottom: 10px;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+    <div style="position: fixed; bottom:0px;z-index:9;width: 100%;">
+        <div style="height: 50px;display:flex;align-items:center;">
+            <div class="col-6" style="padding: 18px;font-size:18px;width: 50%;background:green;text-align:center;">
+                <a href="/{{slug}}/request-sample" target="_blank"
+                    style="width: 100%;height: 100%; padding-top: 17px;border-radius: 0px;font-weight:bold;color:#fff;text-decoration:none;"
+                    class="btn btn-primary">Request Sample</a>
+            </div>
+            <div class="col-6" style="padding: 18px;font-size:18px;background:blue;width:50%;text-align:center;">
+                <a href="/buy-now/{{slug}}/0" target="_blank"
+                    style="width: 100%;color:#fff;;height: 100%; padding-top: 17px;text-decoration:none; border-radius: 0px;font-weight:bold;"
+                    class="btn btn-primary">Buy Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .cta-row {
+            height: auto;
+        }
+
+        .cta-div {
+            height: 100%;
+            background: #00a3bc;
+            display: grid;
+            border-radius: 0px;
+        }
+
+        .cta-button {
+            background: yellow;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            justify-self: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</body>
+
+</html>

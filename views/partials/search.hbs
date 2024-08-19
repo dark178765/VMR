@@ -1,0 +1,75 @@
+<section class="section-bg" id="search">
+    <div class="container">
+        <div class="row" id="search-text">
+            <div class="col-md-12 col-sm-12">
+                <form name="searchText">
+                    <input type="text" placeholder="Enter any text to search report.." @keyup="autocomplete()"
+                        v-model="searchText">
+                    <input type="button" value="Search" class="search-button">
+                </form>
+            </div>
+            <div class="position-relative">
+                <div v-if="reports.length > 0">
+                    <div class="col-md-12 col-sm-12  absolute-card" v-for="r in reports">
+                        <div class="card">
+                            <div class="card-body">
+                                <a class="text-gray" :href="'/industry-report/' + r.slug">
+                                    <p class="title-section">
+                                        \{{r.title}}
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .search-button {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        border: 0;
+        background: none;
+        font-size: 16px;
+        padding: 0 20px;
+        background: #e14073;
+        color: #fff;
+        transition: .3s;
+        border-radius: 50px;
+        box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var searchApp = new Vue({
+        el: '#search',
+        data: {
+            reports: [],
+            isSearching: false,
+            searchText: ''
+        },
+        methods: {
+            autocomplete: function () {
+                console.log(this.searchText);
+                if (this.searchText.length > 3) {
+                    fetch('{{searchUrl}}/' + this.searchText, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application-json; charset=utf-8'
+                        }
+                    }).then(res => res.json())
+                        .then(res => {
+                            this.reports = res;
+                        });
+                }
+            },
+            search: function () {
+
+            }
+        }
+    })
+</script>

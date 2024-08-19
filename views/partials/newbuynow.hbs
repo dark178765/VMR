@@ -1,0 +1,121 @@
+<style>
+    .whiteText {
+        color: '#fff';
+        font-style: 'italic';
+        font-size: '14px';
+        font-weight: 'bold';
+        padding-top;
+        : '10px'
+    }
+
+    .sigur {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .radiobtn label input[type="radio"]:checked {
+        border: 2px solid rgb(255, 255, 255);
+    }
+
+    .label-border {
+        border: 1px solid #fff !important;
+    }
+
+    .selected-price {
+        font-size: 25px;
+    }
+</style>
+<div class="buynowcontrol">
+    <div>
+        <div class="productcart">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="radiobtn">
+                        <label class="label-border">
+                            <div class="sigur">
+                                <input id="huey" type="radio" value="0" name="drone" checked='checked' />
+                                Standard License
+                                <div><img src="/assets/img/icon/pdf.svg" height="24" width="24" data-toggle="tooltip"
+                                        data-placement="top" title="Portable Desktop Format (PDF)" /> <img
+                                        src="/assets/img/icon/xls.svg" height="24" width="24" data-toggle="tooltip"
+                                        data-placement="top" title="Excel Data Sheet" /></div>
+                            </div>
+                            <span class="selected-price">$ {{pricingOptions.singleUser}} USD</span>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="radiobtn">
+                        <label>
+                            <div class="sigur">
+                                <input id="dewey" type="radio" value="1" name="drone" />Multi User License
+                                <div><img src="/assets/img/icon/pdf.svg" height="24" width="24"
+                                        title="Portable Desktop Format (PDF)" data-toggle="tooltip"
+                                        data-placement="right" /> <img src="/assets/img/icon/xls.svg" height="24"
+                                        width="24" data-toggle="tooltip" data-placement="top"
+                                        title="Excel Data Sheet" /> <img src="/assets/img/icon/ppt.svg" height="24"
+                                        width="24" title="Power Point (PPT)" data-toggle="tooltip"
+                                        data-placement="top" /></div>
+                            </div>
+                            <span>$ {{pricingOptions.multiUser}} USD</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="radiobtn">
+                        <label>
+                            <div class="sigur">
+                                <input id="dewey" type="radio" value="2" name="drone" />Enterprise License
+                                <div><img src="/assets/img/icon/pdf.svg" height="24" width="24"
+                                        title="Portable Desktop Format (PDF)" data-toggle="tooltip"
+                                        data-placement="right" /> <img src="/assets/img/icon/xls.svg" height="24"
+                                        width="24" data-toggle="tooltip" data-placement="top"
+                                        title="Excel Data Sheet" /> <img src="/assets/img/icon/ppt.svg" height="24"
+                                        width="24" title="Power Point (PPT)" data-toggle="tooltip"
+                                        data-placement="top" /></div>
+                            </div>
+                            <span>$ {{pricingOptions.cooperateUser}} USD</span>
+                        </label>
+                    </div>
+                </div>
+                {{!-- <div class="col-md-12">
+                    <div class="radiobtn">
+                        <label>
+                            <div class="sigur">
+                                <input id="de" type="radio" value="2" name="drone" />Data Sheet (Excel) <img
+                                    src="/assets/img/icon/xls.svg" height="24" width="24" title="Excel Data Sheet"
+                                    data-toggle="tooltip" data-placement="top" />
+                            </div>
+                            <span>$ 2000 USD</span>
+                        </label>
+                    </div>
+                </div> --}}
+            </div>
+
+            <div style="display: flex; justify-content: space-between;">
+                <button onclick="jsGoToBuynow()" class="addtocart" type="button"><i class="fa fa-shopping-cart"
+                        title="cart"></i> Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{#script_section 'BuyNowControl'}}
+<script>
+    function jsGoToBuynow() {
+        let urlSeg = window.location.href.split('/');
+        window.location.href = '/buy-now/' + urlSeg[urlSeg.length - 1] + '/' + $('.radiobtn input[type=radio]:checked').val()
+    }
+
+    $(document).ready(function () {
+        $('.radiobtn input[type=radio]').change(function () {
+            $('.radiobtn label').removeClass('label-border');
+
+            $('.radiobtn span').removeClass('selected-price');
+            $(this).parent().parent().children('span').addClass('selected-price');
+
+            $(this).parent().parent().addClass('label-border');
+        })
+    })
+</script>
+{{/script_section}}

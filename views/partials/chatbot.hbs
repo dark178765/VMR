@@ -1,0 +1,143 @@
+
+<section class="chat-bot-section">
+<div class="card-body" id="chatbotplaceholder" style="padding:0px;margin-top: 15px; margin-bottom: 15px;">
+<div class="custom-card">
+    <div class="card-info">
+        <div class="card-header" style="padding-left: 0px; background: #000;">
+            <h5 style="font-weight: bold;color: #fff;" class="card-title">AI (GPT) is here !!! Ask questions about {{keyword}} Market</h5>
+        </div>
+<div class="row">
+    <input type="hidden" id="chatID" />
+    <div class="col-md-12">
+        <div class="input-group">
+            <input type="text" class="form-control chat-input" placeholder="Type Your Question" />
+            <div class="input-group-text">
+                <button onclick="fetchResponse()">
+                    <i class="fa fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div id="chatResponse" style="margin-top: 15px;color:#fff;max-height:200px;overflow-y:scroll;"></div>
+
+        {{>loading}}
+        
+        <span id="chatfooter" style="color:#f7ba2b;display:none;max-height:200px; overflow-y: scroll;height: 200px;">
+            <button onclick="showModal()" class="btn btn-primary" style="margin-left:40%;margin-top: 15px; margin-bottom: 15px;">Show More...</button>
+            <div class="parent-dummy">
+                <div class="dummy-contnet">
+                    <p>
+                        More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                        More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                        More report information will load here after submitting the form. 
+                        More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                        More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                        More report information will load here after submitting the form. More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                        More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                        More report information will load here after submitting the form.
+                    </p> 
+                    <p>More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    </p>
+                    <p>More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    </p>
+                    <p>
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    More report information will load here after submitting the form. More report information will load here after submitting the form. 
+                    </p></div>
+            </div>
+        </span>
+    </div>
+</div>
+</div>
+</div>
+
+                        </div>
+                        </section>
+<style>
+.custom-card {
+ --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+ /*width: 190px;
+ height: 254px;*/
+ padding: 5px;
+ border-radius: 1rem;
+ overflow: visible;
+ background: #f7ba2b;
+ background: var(--background);
+ position: relative;
+ z-index: 1;
+}
+
+.custom-card::after {
+ position: absolute;
+ content: "";
+ top: 30px;
+ left: 0;
+ right: 0;
+ z-index: -1;
+ height: 100%;
+ width: 100%;
+ transform: scale(0.8);
+ filter: blur(25px);
+ background: #f7ba2b;
+ background: var(--background);
+ transition: opacity .5s;
+}
+
+.dummy-contnet {
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+}
+
+.card-info {
+    padding: 15px;
+ --color: #181818;
+ background: var(--color);
+ color: var(--color);
+ /*display: flex;*/
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 100%;
+ overflow: visible;
+ border-radius: .7rem;
+}
+
+.custom-card .title {
+ font-weight: bold;
+ letter-spacing: .1em;
+}
+
+/*Hover*/
+.custom-card:hover::after {
+ opacity: 0;
+}
+
+.custom-card:hover .card-info {
+ color: #f7ba2b;
+ transition: color 1s;
+}
+
+.parent-dummy {
+    overflow-y: scroll;
+    height: 100px;
+}
+</style>
+
+<script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_hC0yIvLqBvYJHaENNnPATLzDCjiHZFyDR8jiLaS6ZsH', { api_host: 'https://app.posthog.com' })
+</script>

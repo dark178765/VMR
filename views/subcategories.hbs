@@ -1,0 +1,42 @@
+<link href="/css/subcategories.css" rel="stylesheet" />
+<main id="blog-main">
+
+    <div class="banner-top-main p-60 mt-60" style="background: linear-gradient(rgb(0 0 0 / 49%), rgb(0 0 0)),url({{image}})">
+
+        <!-- <img [src]="image" alt="about-us" class="img-fluid banner-img"> -->
+        <div class="container">
+            <h1 class="title">{{parentTitle}}</h1>
+            <h3 class="secondary-title">“{{parentCaption}}“</h3>
+            <p id="parent_description" class="text-justify">
+                {{{substring parentDescription 300}}}
+            </p>
+            <a>Read
+                More</a>
+
+        </div>
+    </div>
+    <section>
+        <div class="container">
+
+            <div class="row">
+                {{#each docs}}
+                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-2">
+                    <a href="/category/{{childSlug}}">
+                        <div class="card p-3 shadow text-center border-0 cursor-pointer">
+                            <div class="card-body">
+                                <img src="{{childImage}}">
+                                <hr />
+                                <h2 class="card-title display-1" style="font-size:3.0vmin;">{{childTitle}}</h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+{{#metasection 'indexmeta'}}
+<meta name="robots" content="index">
+{{/metasection}}

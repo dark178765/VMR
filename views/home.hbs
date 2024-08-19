@@ -1,0 +1,1428 @@
+<link rel="stylesheet" href="/assets/css/home.css" />
+
+
+<!-- Home Banner -->
+<section class="d-flex" style="min-height: 600px">
+    <div class="video-container">
+        <!-- The video -->
+        <video class="lazy" autoplay muted loop id="myVideo" poster="/assets/video/video-photo.webp">
+            <source data-src="https://cdn.{{hostwithoutwww}}/video/VMR_New_Video.webm" type="video/mp4">
+        </video>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
+            if ("IntersectionObserver" in window) {
+                var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (video) {
+                        if (video.isIntersecting) {
+                            for (var source in video.target.children) {
+                                var videoSource = video.target.children[source];
+                                if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                                    videoSource.src = videoSource.dataset.src;
+                                }
+                            }
+
+                            video.target.load();
+                            video.target.classList.remove("lazy");
+                            lazyVideoObserver.unobserve(video.target);
+                        }
+                    });
+                });
+
+                lazyVideos.forEach(function (lazyVideo) {
+                    lazyVideoObserver.observe(lazyVideo);
+                });
+            }
+        });
+    </script>
+    <div class="container-fluid" style="position: absolute;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="home-slide-face aos" data-aos="fade-up">
+                    <div class="container-fluid text-justify video-text">
+                        <div class="content">
+                            <h2>Where Research Meets Technology</h2><br />
+                            <h2>A Tech-driven <i class="fa fa-plus-circle"></i>
+                                Tech-enabled Market
+                                Research Company</h2>
+                            <br />
+                            <h3>The Present & Future of
+                                Research is Here!</h3><br /><br />
+                            <h3>A One Stop Destination for All Your Research Needs</h3>
+                            <br />
+                            <button class="btn btn-dark" style="display:inline;background:#DADDD8;color:#000;"
+                                type="button" onclick="window.open('/off-the-shelf-research', '_blank')">Off-the-Shelf
+                                Research</button>
+                            <button type="button" onclick="window.open('/consulting-and-advisory', '_blank')"
+                                class="btn btn-dark" style="display:inline;background:#DADDD8;color:#000;">Consulting &
+                                Advisory</button>
+                            <button type="button" onclick="window.open('/consumer-survey', '_blank')"
+                                class="btn btn-dark" style="display:inline;background:#DADDD8;color:#000;">Consumer
+                                Survey Analysis</button>
+                            <button type="button" onclick="window.open('/data-analytics', '_blank')"
+                                class="btn btn-dark" style="display: inline;background:#DADDD8;color:#000;">Data
+                                Analytics</button>
+                            <button type="button" onclick="window.open('/technology-solutions', '_blank')"
+                                class="btn btn-dark" style="display:inline;background:#DADDD8;color:#000;">Technology
+                                Solutions</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- vison -->
+<section class="section vison">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="section-header aos" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <h2 style="color:#e44562">Vantage - The Story</h2>
+                    </div>
+                </div>
+                <div class="aos vision" data-aos="fade-up">
+                    <p>The Knowledge Process Industry otherwise known as Knowledge Solutions Industry has been
+                        undergoing fundamental transformations. There are technology developments happening around that
+                        are only partially being leveraged to optimize the Knowledge Process Industry. In addition to
+                        this,
+                        the conventional research process is trapped in the iron triangle of ‘cost’,
+                        ‘quality’,
+                        and ‘access to intelligence,
+                        data,
+                        & insights’.</p>
+                    <p>Post-2018,
+                        the spending on digital market research surpassed traditional market research. We certainly
+                        could not ignore the advent of the digital age. This is where we conceptualized the idea of
+                        revolutionizing the research process and creating this tech-driven and tech-enabled platform
+                        with a view to providing value-added information to our clients. We started with a vision of
+                        embedding technology with state-of-the-art research methodologies in our quest to gain the
+                        Vantage position amongst our peers and we take pride in the fact that we have been able to live
+                        with the vision that we started with i.e.,
+                        the amalgamation of technology and bright human minds. </p>
+                    <p>We imbibe the latest technology services into research to foster our clientele. With this in
+                        purview,
+                        we aim to transform the entire paradigm of the Knowledge Solution Industry !</p>
+                    <div class="d-flex" style="justify-content: space-around;"><a class="btn btn-dark btn-lg"
+                            style="display: inline;" href="/values">Vantage - The Values</a><a
+                            class="btn btn-dark btn-lg" style="display:inline;" href="/vision">Vantage - The Vision</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"><img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/vision.webp"
+                    alt="Concept of Vantage Market Research" class="img-fluid lazyload" /></div>
+        </div>
+    </div>
+</section><!-- /vison -->
+<section class="latest-blog lazyload" data-bg="https://cdn.vantagemarketresearch.com/assets/img/bg-banner-02.webp"
+    style="padding: 50px;">
+    <div class="container-fluid">
+        <div class="enroll-group" style="margin: 0px;">
+            <div class="row ">
+                <div class="col-lg-3 col-md-6">
+                    <div class="total-course d-flex align-items-center" style="justify-content: center;">
+                        <div class="blur-border">
+                            <div class="enroll-img "><img
+                                    data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/report.svg"
+                                    height="75px" width="75px" alt="Reports Icon" class="img-fluid lazyload"></div>
+                        </div>
+                        <div class="course-count">
+                            <h3><span class="counterUp">1400</span><span>+</span></h3>
+                            <p>Reports Published</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="total-course d-flex align-items-center" style="justify-content: center;">
+                        <div class="blur-border">
+                            <div class="enroll-img "><img
+                                    data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/consulting.svg"
+                                    height="75px" width="75" alt="Consulting Icon" class="img-fluid lazyload"></div>
+                        </div>
+                        <div class="course-count">
+                            <h3><span class="counterUp">60</span><span>+</span></h3>
+                            <p>Consulting Projects</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="total-course d-flex align-items-center" style="justify-content: center;">
+                        <div class="blur-border">
+                            <div class="enroll-img "><img
+                                    data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/clients-served.svg"
+                                    height="75px" width="75px" alt="Clients Served Icon" class="img-fluid lazyload">
+                            </div>
+                        </div>
+                        <div class="course-count">
+                            <h3><span class="counterUp">258</span><span>+</span></h3>
+                            <p>Clients Served</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="total-course d-flex align-items-center" style="justify-content: center;">
+                        <div class="blur-border">
+                            <div class="enroll-img "><img
+                                    data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/customer-retention.svg"
+                                    height="75px" width="75px" alt="Customer Retention Icon" class="img-fluid lazyload">
+                            </div>
+                        </div>
+                        <div class="course-count">
+                            <h3><span class="counterUp">82</span><span>%</span></h3>
+                            <p>Customer Retention Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{#script_section 'buttonclick'}}
+
+<script>function hideAllWings() {
+        $('.wing').removeClass('wing').addClass('wing-hide');
+
+    }
+
+    $(document).ready(function () {
+
+        $('button[data-show]').click(function () {
+
+            //hide all
+            $('.wing').removeClass('wing').addClass('wing-hide');
+
+            $('#' + $(this).attr('data-show')).show();
+            $('button[data-show]').removeClass('active');
+            $(this).addClass('active');
+            $('#' + $('button[data-show].active').attr('data-show')).addClass('wing')
+        });
+
+    }) </script> {{/script_section}}
+
+<style>
+    .wing-hide {
+        display: none !important;
+    }
+
+    .wing {
+        display: flex !important;
+    }
+</style>
+<section class="section master-skill">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <h2>Solutions & Services</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-12">
+                <button class="btn btn-sm btn-outline-primary active" data-show="marketresearch">Off-the-Shelf
+                    Research</button>
+                <button class="btn btn-sm btn-outline-primary" data-show="consulting">Consulting & Advisory</button>
+                <button class="btn btn-sm btn-outline-primary" data-show="consumer">Consumer Survey</button>
+                <button class="btn btn-sm btn-outline-primary" data-show="dataanalytics">Data Analytics</button>
+                <button class="btn btn-sm btn-outline-primary" data-show="technology">Technology Solutions</button>
+            </div>
+        </div>
+        <div class="row wing" id="marketresearch">
+            <div class="col-lg-7 col-md-7">
+                <div class="section-header aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <h3>Off-the-Shelf Research</h3>
+                    </div>
+                </div>
+                <div class="section-text aos aos-init aos-animate" data-aos="fade-up">
+                    <p class="p-text" style="display: inline;color:inherit;">Vantage Market Research provides
+                        off-the-shelf</p>
+                    <h1 style="color:inherit; display:inline;font-size: 1rem;font-weight:normal;">market research
+                        reports</h1>
+                    <p>on a
+                        variety of topics,
+                        including consumer goods, healthcare, technology, and many more. Our reports are designed to
+                        provide valuable insights that can help businesses make informed decisions about their marketing
+                        strategies, product development, and more.</p>
+                    <span><button class="btn btn-sm btn-outline-dark"
+                            onclick="window.open('/off-the-shelf-research', '_blank')">
+                            Read More <i class="fa fa-arrow-right"></i></button></span>
+                </div>
+                <div class="career-group aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Off-the-shelf-research-cover/Total-Addressable-Market-Expansion.svg"
+                                                alt="Total Addressable Market Expansion Icon"
+                                                class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Total Addressable Market (TAM) Expansion</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Off-the-shelf-research-cover/Industry-Trends.svg"
+                                                alt="Industry Trends Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Industry Trends</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Off-the-shelf-research-cover/Competitive-Analysis.webp"
+                                                alt="Competitive Analysis Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Competitor Analysis</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Off-the-shelf-research-cover/Segment-Analysis.webp"
+                                                alt="Segment Analysis Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Segment Analysis</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Off-the-shelf-research-cover/Market-Dynamics.svg"
+                                                alt="Market Dynamics Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Market Dynamics & Disruptions</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Off-the-shelf-research-cover/Detailed-Company-Profiling.svg"
+                                                alt="Detailed Company Profiling Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Detailed Company Profiling</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 d-flex">
+                <div class="career-img aos aos-init aos-animate" data-aos="fade-up">
+                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/market-research.webp"
+                        alt="Off-the-Shelf research" class="img-fluid lazyload" height="597" width="457"
+                        style="max-height: 597px;">
+                </div>
+            </div>
+        </div>
+        <div class="row wing-hide" id="consulting">
+            <div class="col-lg-7 col-md-12">
+                <div class="section-header aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <h3>Consulting & Advisory</h3>
+                    </div>
+
+                </div>
+                <div class="section-text aos aos-init aos-animate" data-aos="fade-up">
+                    <p class="p-text">Vantage Market Research has a specialized consulting & advisory wing. This
+                        consulting & advisory
+                        wing provides <strong style="color: #000;">clients like CIOs, IT, and other leaders
+                            with tools and
+                            expertise</strong> to support them
+                        through <strong style="color: #000;">all phases of the growth cycle</strong>.To stay ahead of
+                        the curve in a <strong style="#000">rapidly changing world</strong>,
+                        it is critical that you have <strong style="color: #000;">access to the latest strategies,
+                            insights, ideas, and
+                            data</strong>. Our
+                        team of experts will advise you on the <strong style="color: #000;">latest go-to-market
+                            strategies</strong>, and even facilitate the
+                        conversations that lead to building a pipeline of opportunities that will <strong
+                            style="color: #000;">drive growth</strong>.
+                    </p>
+                    <span><button class="btn btn-sm btn-outline-dark"
+                            onclick="window.open('/consulting-and-advisory', '_blank')">
+                            Read More <i class="fa fa-arrow-right"></i></button></span>
+                </div>
+                <div class="career-group aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Consulting-And-Advisory/Growth-Pipeline.svg"
+                                                alt="Growth Pipeline Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Growth Pipeline</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/opportunity-assessment.svg"
+                                                alt="Opportunity Assessment Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Opportunity Assesment</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/strategy-assessment.svg"
+                                                alt="o-to-Market Strategies Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p> Go-to-Market Strategies</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/strategy-assessment.svg"
+                                                alt="Stratagy Planning & Implementation Icon"
+                                                class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Stratagy Planning & Implementation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Consulting-And-Advisory/Monitoring-and-Optimization.svg"
+                                                alt="Monitoring & Optimization Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Monitoring & Optimization</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 d-flex">
+                <div class="career-img aos aos-init aos-animate" data-aos="fade-up">
+                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/consulting.webp"
+                        alt="consulting and advisory" class="img-fluid lazyload" style="max-height: 597px;">
+                </div>
+            </div>
+        </div>
+        <div class="row wing-hide" id="consumer">
+            <div class="col-lg-7 col-md-12">
+                <div class="section-header aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <h3>Consumer Survey</h3>
+                    </div>
+                </div>
+                <div class="section-text aos aos-init aos-animate" data-aos="fade-up">
+                    <p class="p-text">Vantage Market Research conducts consumer surveys to understand customer
+                        sentiment,
+                        product/service perceptions, and overall brand health. We design custom surveys tailored to each
+                        client's specific needs, and our team of experienced analysts provides in-depth analysis
+                        and actionable insights.</p>
+                    <span><button class="btn btn-sm btn-outline-dark"
+                            onclick="window.open('/consumer-survey', '_blank')">
+                            Read More <i class="fa fa-arrow-right"></i></button></span>
+
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 d-flex">
+                <div class="career-img aos aos-init aos-animate" data-aos="fade-up">
+                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/consumer-survey.webp"
+                        alt="Consumer Survey" class="img-fluid lazyload" style="max-height: 597px;">
+                </div>
+            </div>
+        </div>
+        <div class="row wing-hide" id="dataanalytics">
+            <div class="col-lg-7 col-md-12">
+                <div class="section-header aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <h3>Data Analytics</h3>
+                    </div>
+                </div>
+                <div class="section-text aos aos-init aos-animate" data-aos="fade-up">
+                    <p class="p-text">Vantage Market Research has extensive experience in helping companies leverage
+                        data analytics to
+                        achieve their business goals. Data analytics allows us to understand customer behaviour,
+                        preferences, and needs that can be used to improve marketing strategies, target new customers,
+                        and develop new products and services.</p>
+                    <span><button class="btn btn-sm btn-outline-dark"
+                            onclick="window.open('/data-analytics', '_blank')">
+                            Read More <i class="fa fa-arrow-right"></i></button></span>
+                </div>
+                <div class="career-group aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/public-data-intelligence.svg"
+                                                alt="Public Data Intelligence Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Public Data Intelligence</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/data-engineering.svg"
+                                                alt="Data Engineering Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Data Engineering</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/icon/machine-learning.svg"
+                                                alt="Artificial Intelligence (AI)/ Machine Learning (ML) Icon"
+                                                class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Artificial Intelligence (AI)/ Machine Learning (ML)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 d-flex">
+                <div class="career-img aos aos-init aos-animate" data-aos="fade-up">
+                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/data-analytics.webp"
+                        alt="data analytics" class="img-fluid lazyload" style="max-height: 597px;">
+                </div>
+            </div>
+        </div>
+        <div class="row wing-hide" id="technology">
+            <div class="col-lg-7 col-md-12">
+                <div class="section-header aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="section-sub-head">
+                        <h3>Technology Solutions</h3>
+                    </div>
+                </div>
+                <div class="section-text aos aos-init aos-animate" data-aos="fade-up">
+                    <p class="p-text">Vantage Market Research provides cutting-edge technology solutions that allow our
+                        clients to
+                        stay ahead of the competition. By using solutions such as big data analytics, web analytics, and
+                        customer surveys, we can help our clients make better-informed decisions about their marketing
+                        strategies, product development, and overall business operations.</p>
+                    <span><button class="btn btn-sm btn-outline-dark"
+                            onclick="window.open('/technology-solutions', '_blank')">
+                            Read More <i class="fa fa-arrow-right"></i></button></span>
+                </div>
+                <div class="career-group aos aos-init aos-animate" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Technology-And-Solutions-Cover/App-Development.webp"
+                                                alt="Web Application Development Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Web application/App Development</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Technology-And-Solutions-Cover/Mobile-Application.webp"
+                                                alt="Mobile Application Development Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Mobile Application Development</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Technology-And-Solutions-Cover/Custom-Dashboard.webp"
+                                                alt="Custom Dashboard Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Custom Dashboard</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Technology-And-Solutions-Cover/Cloud-Artchitecture.svg"
+                                                alt="Cloud Artchitecture Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Cloud Artchitecture (AWS, GCC, Auzure)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 d-flex">
+                            <div class="certified-group blur-border d-flex">
+                                <div class="get-certified d-flex align-items-center">
+                                    <div class="blur-box">
+                                        <div class="certified-img ">
+                                            <img data-src="https://cdn.vantagemarketresearch.com/assets/img/Technology-And-Solutions-Cover/Business-Digitalization.svg"
+                                                alt="Business Digitalization Icon" class="img-fluid lazyload">
+                                        </div>
+                                    </div>
+                                    <p>Business Digitalization</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 d-flex">
+                <div class="career-img aos aos-init aos-animate" data-aos="fade-up">
+                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/technology-solutions.webp"
+                        alt="technology solutions" class="img-fluid lazyload" style="max-height: 597px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Top Categories -->
+<section class="section how-it-works become-instructors lazyload" style="padding: 0px;"
+    data-bg="https://cdn.vantagemarketresearch.com/assets/img/bg-banner.webp">
+    <div class="container">
+        <div class="section-header aos" data-aos="fade-up">
+            <div class="section-sub-head">
+                <h2>Industry Verticals</h2>
+            </div>
+        </div>
+        <div class="category-carousel owl-carousel mentoring-course owl-theme aos owl-loaded owl-drag aos-init aos-animate"
+            data-aos="fade-up">
+            {{#each categories}}
+            <div class="feature-box text-center" onclick="window.open('/categories/{{slug}}', '_blank')"
+                style="cursor: pointer;">
+                <div class="feature-bg lazyload"
+                    data-bg="https://cdn.vantagemarketresearch.com/category/thumbnail/{{CategoryImage}}"
+                    style="background-size: cover;">
+                    <div class="feature-header">
+                        <div class="feature-cont">
+                            <div class="feature-text"><a href="/categories/{{slug}}" target="_blank">{{title}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+<!-- /Top Categories -->
+
+<script>
+    document.addEventListener('lazybeforeunveil', function (e) {
+        var bg = e.target.getAttribute('data-bg');
+        if (bg) {
+            e.target.style.backgroundImage = 'url(' + bg + ')';
+        }
+    });
+</script>
+
+<!-- Feature Course -->
+<section class="section new-course lazyload"
+    data-bg="https://cdn.vantagemarketresearch.com/assets/img/new_background4.webp">
+    <div class="container">
+        <div class="section-header aos" data-aos="fade-up">
+            <div class="section-sub-head">
+                <span>What’s New</span>
+                <h2>Latest Reports</h2>
+            </div>
+            <div class="all-btn all-category d-flex align-items-center">
+                <a href="/all-reports" class="btn btn-primary">All Reports</a>
+            </div>
+        </div>
+
+        {{>latestreports}}
+    </div>
+</section>
+<!-- /Feature Course -->
+
+<!-- Leading Companies -->
+<section class="section lead-companies trend-course lazyload"
+    data-bg="https://cdn.vantagemarketresearch.com/assets/img/bg-banner.webp">
+    <div class="container">
+        <div class="section-header aos" data-aos="fade-up">
+            <div class="section-sub-head feature-head text-center">
+                <span>Trusted By</span>
+                <h2>500+ Leading Companies</h2>
+            </div>
+        </div>
+        <div class="lead-group aos" data-aos="fade-up">
+            <div class="lead-group-slider owl-carousel owl-theme">
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="accenture logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/accenture-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="att logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/att-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="cisco logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/cisco-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="Citi logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/Citi.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="coca cola logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/coca-cola-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="cvs health logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/cvs-health-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="ford logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/ford-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="frito lay logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/frito-lay-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="ge logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/ge-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="google logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/google-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="honda logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/honda-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="hsbc logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/hsbc-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="ibm logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/ibm-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="ikea logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/ikea-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="intel logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/intel-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="loreal logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/loreal-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="mcdonalds logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/mcdonalds-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="microsoft logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/microsoft-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="nescafe logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/nescafe-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="netflix logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/netflix-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="oracle logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/oracle-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="pepsi-logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/pepsi-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="samsung-logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/samsung-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="siemens logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/siemens-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="toyota logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/toyota-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="verizon logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/verizon-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="visa logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/visa-logo.webp">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="lead-img">
+                        <img class="img-fluid lazyload" alt="walmart logo"
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/companies/walmart-logo.webp">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Leading Companies -->
+
+
+<!-- Users Love -->
+<section class="section user-love lazyload" data-bg="https://cdn.vantagemarketresearch.com/assets/img/user-love.webp">
+    <div class="container">
+        <div class="section-header white-header aos" data-aos="fade-up">
+            <div class="section-sub-head feature-head text-center">
+                <span>Check out these real reviews</span>
+                <h2>Users-love-us Don't take it from us.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Users Love -->
+
+<!-- Say testimonial Four -->
+<section class="testimonial-four">
+    <div class="review">
+        <div class="container">
+            <div class="testi-quotes">
+                <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute.webp" alt="quote icon"
+                    class="lazyload">
+            </div>
+            <div class="mentor-testimonial lazy slider aos" data-aos="fade-up" data-sizes="50vw ">
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center" style="width: 100%;">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote 1 icon">
+                                </div>
+                                <p>Well received and very impressed.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Zhangliang Group</a></h3>
+                                    <span>Head of Strategy Advisory</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        alt="quote 1 icon" class="lazyload">
+                                </div>
+                                <p>Ultimately, Vantage did the best they could at the time. In terms of their research
+                                    methods, we were able to draw a solid conclusion with what they provided us. I'd
+                                    recommend them if you're looking for pricing and demographic information for hair
+                                    care product market.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Hair Products Pvt. Ltd.</a></h3>
+                                    <span>Sales Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote 1 icon">
+                                </div>
+                                <p>I have had a great deal of success with clients where Vantage Market Research has
+                                    been able to provide me with factual information about the future opportunities for
+                                    my products and how I could enter new markets. One product that emerged from VMR was
+                                    Frozen Yum Yum Pop Straws.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Yummly</a></h3>
+                                    <span>Strategy & Planning-Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote 1 icon">
+                                </div>
+                                <p>What Vantage Market Research has helped my company through is information. We can
+                                    learn what other emerging markets around the country are wearing, taking note of
+                                    material and current trends. I've also found one of their survey tools to be helpful
+                                    because when we want to understand a specific type of relationship, they have
+                                    provided us with tools like ethnographies, market segmentations and purchasing
+                                    behavior.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Toray Indsutries</a></h3>
+                                    <span>Senior Sales Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>Vantage Market Research found the perfect opportunity for our company and exceeded
+                                    our expectations on all points. There were a number of challenges to overcome, but
+                                    their dedication and hard work led them through those obstacles.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Evox Therapeutics</a></h3>
+                                    <span>Vice President</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>Working with the team at Vantage Market Research was a seamless and professional
+                                    experience. They paid great attention to detail, bridging industry knowledge and
+                                    critical insights in order to evaluate a new product launch.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Abbott</a></h3>
+                                    <span>Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>I was impressed with the professionalism and reliability of this market research
+                                    company. Thank you
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Birdly</a></h3>
+                                    <span>Sales Head</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>We were looking for a demographic survey, and they did that on time. It turned out
+                                    our requirements were very clear. Their library of database material was extensive,
+                                    easy to find and compare.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Nestlé SA</a></h3>
+                                    <span>Sales Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>As a start-up, we only had a limited fund. We needed to create marketing campaigns
+                                    that appealed directly to consumers - meaning we needed to come up with creative and
+                                    effective ways for consumers to want our products. Fortunately, Vantage Market
+                                    Research was spot on with what we were looking for.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Nucleome Therapeutics</a></h3>
+                                    <span>Project Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>We have been working with Vantage Market Research for almost two years now. Their
+                                    consultants have helped us strategize our new business plan, line up financing and
+                                    distribution, and execute a marketing plan that has helped us make more sales.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Cognoptix</a></h3>
+                                    <span>Vice President</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>I have found the Vantage Market Research team to be a knowledgeable, professional,
+                                    and effective partner. They are able to listen to our company's needs and identify
+                                    opportunities that would help us make our business more sustainable.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Dabar</a></h3>
+                                    <span>Marketing Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>I can't say enough good things about Vantage Market Research. They worked on strategy
+                                    and branding for a variety of clients, bringing in outside expertise to address our
+                                    company's deeper needs. Our efforts outperformed projections all while they provided
+                                    internal and external support.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Force Therapeutics</a></h3>
+                                    <span>Chief Strategy and Product Officer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>We have been working with Vantage Market Research for the last 3+ years. My company
+                                    has greatly benefitted from their expertise and partner platform. They led us
+                                    through our transformation efforts, helped us redact an Idea Book and are now
+                                    managing our operations. We want to thank VMR for all of their hard work.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">Pfizer</a></h3>
+                                    <span>Brand Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="testimonial-all d-flex justify-content-center">
+                        <div class="testimonial-two-head text-center align-items-center d-flex">
+                            <div class="testimonial-four-saying ">
+                                <div class="testi-right">
+                                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/qute-01.webp"
+                                        class="lazyload" alt="quote icon">
+                                </div>
+                                <p>Vantage Market Research does a great job with helping my company in predicting what
+                                    may happen in the future so we can help our clients stay ahead of their competitors.
+                                    They understand the predictive analytics field much better than I ever could and
+                                    they have predicted trends with accuracy which is incredible.
+                                </p>
+                                <div class="four-testimonial-founder">
+                                    <h3><a href="#">AGC</a></h3>
+                                    <span>Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Say testimonial Four -->
+
+<!-- Trending News -->
+<section class="section trend-course lazyload" style="padding-top: 300px;"
+    data-bg="https://cdn.vantagemarketresearch.com/assets/img/bg-banner.webp">
+    <div class="container">
+        <div class="section-header aos" data-aos="fade-up">
+            <div class="section-sub-head">
+                <span>What’s New</span>
+                <h2>TRENDING NEWS</h2>
+            </div>
+            <div class="all-btn all-category d-flex align-items-center">
+                <a href="/press-releases" class="btn btn-primary">All News</a>
+            </div>
+        </div>
+
+        <div class="owl-carousel trending-course owl-theme aos" data-aos="fade-up">
+            {{#each recentPressrelease}}
+            <div class="course-box trend-box">
+                <div class="product trend-product">
+                    <div class="product-img">
+                        <a href="/press-release/{{slug}}">
+                            <img class="img-fluid lazyload" alt="{{writeup.reportTitle}} News Thumbnail"
+                                data-src="https://cdn.vantagemarketresearch.com/report/thumbnail/{{getUrl writeup.reportTitle false}}-Market.webp">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <div class="course-group d-flex">
+                            <div class="course-group-img d-flex">
+                                <div class="course-name">
+                                    <p>Vantage Market Research</p>
+                                </div>
+                            </div>
+                            <div class="course-share d-flex align-items-center justify-content-center">
+                                <a href="#"><i class="fa-regular fa-heart"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="title" style="line-height: 29px;font-size: 17px;"><a
+                                href="/press-release/{{slug}}">{{title}}</a></h3>
+                        <div class="course-info d-flex align-items-center">
+                            <div class="course-view d-flex align-items-center">
+                                <img data-src="https://cdn.vantagemarketresearch.com/assets/img/icon/icon-02.svg"
+                                    alt="Publish Date Icon" class="img-fluid lazyload">
+                                <p>{{formatdate createdAt 'MMM DD, YYYY'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Feature Blogs -->
+        <div class="feature-instructors">
+            <div class="section-header aos" data-aos="fade-up">
+                <div class="section-sub-head feature-head text-center">
+                    <h2>Featured Blogs</h2>
+                </div>
+            </div>
+            <div class="owl-carousel instructors-course owl-theme aos" data-aos="fade-up">
+                {{#each latestBlogs}}
+                <div class="instructors-widget">
+                    <div class="instructors-img ">
+                        <a href="/blog/{{slug}}">
+                            <img class="img-fluid lazyload" alt="{{writeupId.reportTitle}} Market Blog Thumbnail"
+                                data-src="https://cdn.vantagemarketresearch.com/report/thumbnail/{{getUrl writeupId.reportTitle false}}-Market.webp">
+                        </a>
+                    </div>
+                    <div class="instructors-content text-center">
+                        <h5><a href="/blog/{{slug}}">{{title}}</a></h5>
+                        <p>Vantage Market Research</p>
+                        <div class="student-count d-flex justify-content-center">
+                            <i class="fa-solid fa-calendar"></i>
+                            <span>{{formatdate createdAt 'MMM DD, YYYY'}}</span>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <!-- /Feature Instructors -->
+
+    </div>
+</section>
+<!-- /Trending Course -->
+
+<!-- Success Stories -->
+<section class="section latest-blog">
+    <div class="container">
+        <div class="section-header aos" data-aos="fade-up">
+            <div class="section-sub-head feature-head text-center mb-0">
+                <h2>Success Stories</h2>
+
+            </div>
+        </div>
+        <div class="owl-carousel blogs-slide owl-theme aos" data-aos="fade-up">
+            {{#each caseStudies}}
+            <div class="instructors-widget blog-widget">
+                <div class="instructors-img">
+                    <a href="/case-study/{{Slug}}-{{_id}}">
+                        <img class="img-fluid lazyload" alt=""
+                            data-src="https://cdn.vantagemarketresearch.com/assets/img/SuccessStory/thumbnail/{{getUrl Keyword false}}.webp">
+                    </a>
+                </div>
+                <div class="instructors-content text-center">
+                    <h5 style="text-align: center;
+    font-size: 17px;
+    line-height: 29px;"><a href="/case-study/{{Slug}}-{{_id}}">{{camelCase
+                            Summary}}</a></h5>
+                    <p>{{Keyword}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+<!-- /Success Stories -->
+
+<!-- Dashboard -->
+<section class="section share-knowledge lazyload"
+    data-bg="https://cdn.vantagemarketresearch.com/assets/img/bg-banner-01.webp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="knowledge-img aos" data-aos="fade-up">
+                    <img data-src="https://cdn.vantagemarketresearch.com/assets/img/home/dashboard.webp" alt="dashboard"
+                        class="img-fluid lazyload">
+                </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="join-mentor aos" data-aos="fade-up">
+                    <h2>Perfect visualized data</h2>
+                    <p>A dashboard is built for you, so you can understand data very easily.</p>
+                    <ul class="course-list">
+                        <li><i class="fa-solid fa-circle-check"></i>Important Data Visualization</li>
+                        <li><i class="fa-solid fa-circle-check"></i>Single Login for your research needs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Dashboard -->
+
+
+
+<style>
+    .vison {
+        background-color: #fff;
+        background-size: cover;
+        color: #000;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .vision p {
+        text-align: justify;
+        /*font-style: italic;
+        font-weight: bold;*/
+    }
+
+    .vison h2 {
+        color: #000;
+    }
+
+    .p-text {
+        color: #000;
+    }
+
+    .certified-group {
+        border-color: #df4675;
+    }
+
+    .btn-dark:hover {
+        background-color: #df4675 !important;
+        color: #fff !important;
+    }
+</style>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "{{host}}",
+      "logo": "{{host}}/assets/img/logo.webp"
+    }
+    </script>
+
+<script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"ItemList",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "url":"{{host}}/off-the-shelf-research"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "url":"{{host}}/consulting-and-advisory"
+        },
+        {
+          "@type":"ListItem",
+          "position":3,
+          "url":"{{host}}/consumer-survey"
+        },{
+          "@type":"ListItem",
+          "position":4,
+          "url":"{{host}}/the-vantage-point"
+        },{
+          "@type":"ListItem",
+          "position":5,
+          "url":"{{host}}/data-analytics"
+        },{
+          "@type":"ListItem",
+          "position":6,
+          "url":"{{host}}/technology-solutions"
+        }
+      ]
+    }
+    </script>

@@ -1,0 +1,35 @@
+<div id="floatingBuyNow"
+    style="display: flex;justify-content: space-between;flex-direction: column;margin-right: 10px;">
+    <div><span style="color: yellow;">Buy Now &amp; Get </span><span
+            style="color:#13fc2e; font-weight:bold;cursor: pointer;" class="blink-me"
+            onclick="redirectToBuyNow()">Express Delivery</span><span style="color:yellow"> in 48 hours</span></div>
+    <div>
+        <select style="width: 246px;border: 1px solid;border-radius: 5px;font-size: 14px;height: 26px;">
+            <option value="0">Standard License - $ {{pricingOptions.singleUser}} USD</option>
+            <option value="1">Multi User License - $ {{pricingOptions.multiUser}} USD</option>
+            <option value="2">Enterprise License - $ {{pricingOptions.cooperateUser}} USD</option>
+            {{!-- <option value="2">Data Sheet (Excel) - $ 2000 USD</option> --}}
+        </select>
+        <button style="border-radius: 5px;background: yellow;" onclick="redirectToBuyNow()">Buy Now</button>
+    </div>
+</div>
+
+<style>
+    .blink-me {
+        animation: blinker 1s linear infinite;
+    }
+
+    @keyframes blinker {
+        50% {
+            opacity: 0.2;
+        }
+    }
+</style>
+
+{{#script_section 'floating_buynow'}}
+<script>
+    function redirectToBuyNow() {
+        window.location.href = '/buy-now/' + window.location.href.split('/').pop() + '/' + $('#floatingBuyNow select').val();
+    }
+</script>
+{{/script_section}}

@@ -1,0 +1,437 @@
+<link href="/css/buynow.css" rel="stylesheet" />
+<main id="payment-main" class="mt-100 py">
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-11">
+                <div class="card card0 rounded-0">
+                    <div class="row">
+
+                        <div class="col-md-7 col-sm-12 p-0 box">
+                            <div class="card rounded-0 border-0 card2" id="paypage">
+                                <div class="form-card">
+
+                                    <ul class="bs4-order-tracking">
+                                        {{!-- <li class="step">
+                                            <div><i class="fa fa-user" aria-hidden="true"></i>
+                                            </div> Billing Information
+                                        </li> --}}
+                                        <li class="step active" id="step_form">
+                                            <div><i class="fa fa-truck" aria-hidden="true"></i>
+                                            </div> Order Confirmation
+                                        </li>
+                                        <li class="step" id="step_paymentOption">
+                                            <div><i class="fa fa-money" aria-hidden="true"></i></div> Payment
+                                            Options
+                                        </li>
+                                    </ul>
+                                    <div class="radio-group" id="paymentoption" style="display: none;">
+                                        <div class='radio active-card' data-value="paypal"><img
+                                                src="/assets/images/reports/paypal.jpg" width="200px" height="154px">
+                                        </div>
+                                        <div class='radio' data-value="razor"><img
+                                                src="/assets/images/reports/credit-card-methods-v2.jpg" width="200px"
+                                                height="154px">
+                                        </div>
+                                        <div class='radio' data-value="wire"><img
+                                                src="/assets/images/reports/wiretransfer.png" width="200px"
+                                                height="154px"></div>
+                                        <br>
+                                    </div>
+
+                                    <div class="row" id="form">
+                                        <input type="hidden" value="{{reportId}}" name="reportId" />
+                                        <input type="hidden" value="{{paymentType}}" name="paymentType" />
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    First Name
+                                                </label>
+                                                <input type="text" class="form-control" name="fName" id="fName"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    Last Name
+                                                </label>
+                                                <input type="text" class="form-control" name="lName" id="lName"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    Email
+                                                </label>
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    Phone Number
+                                                </label>
+                                                <input type="tel" class="form-control" name="phoneNo" id="phoneNo"
+                                                    mask="(000) 000 00 00" placeholder="(000) 000 00 00" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    Address
+                                                </label>
+                                                <textarea type="text" class="form-control" rows="5" name="address"
+                                                    id="address" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    Country
+                                                </label>
+                                                <!-- <input type="text" class="form-control" name="country" id="country"> -->
+                                                <!-- [(ngModel)]="enquiryFrm.country" -->
+                                                <select class="form-control" name="country" id="country" required>
+                                                    <option value="">Select country</option>
+                                                    {{#each country}}
+                                                    <option value="{{name}}">{{name}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    City
+                                                </label>
+                                                <input class="form-control" name="city" id="city" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    State
+                                                </label>
+                                                <input class="form-control" name="state" id="state" type="text"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="">
+                                                    Zip
+                                                </label>
+                                                <input class="form-control" name="zip" id="zip" type="text" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" *ngIf="currentStep == 1">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-info placeicon payment-btn"
+                                                onclick="displayForm(this)">
+                                                Next
+                                            </button>
+                                            <button class="btn btn-primary" onclick="payNow()" id="btnPaynow"
+                                                style="display: none;">Pay Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5  p-0 box">
+                            <div class="card rounded-0 border-0 card1" id="bill">
+                                <h3 id="heading1">Payment Summary</h3>
+                                <div class="row">
+                                    <div class="col-lg-7 col-8 mt-4 line pl-4">
+                                        <h2 class="bill-head">Title</h2>
+                                    </div>
+                                    <div class="col-lg-5 col-4 mt-4">
+                                        <h2 class="bill-head px-xl-5 px-lg-4">Price</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-7 col-8 mt-4 line pl-4">
+                                        <small class="billing-summary">
+                                            {{reportTitle}}
+                                        </small>
+                                    </div>
+                                    <div class="col-lg-5 col-4 mt-4">
+                                        <small class="billing-summary px-xl-5 px-lg-4">
+                                            USD {{planAmount}}
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-7 col-8 mt-4 line pl-4">
+                                        <h2 class="bill-head">Format</h2>
+                                    </div>
+                                    <div class="col-lg-5 col-4 mt-4">
+                                        <h2 class="bill-head px-xl-5 px-lg-4">Selected License</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-7 col-8 mt-4 line pl-4">
+                                        <small class="billing-summary">
+                                            PDF
+                                        </small>
+                                    </div>
+                                    <div class="col-lg-5 col-4 mt-4">
+                                        <small class="billing-summary px-xl-5 px-lg-4">
+                                            {{paymentTypeString}}
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 red-bg">
+                                        <p class="bill-date" id="total-label">Total Price</p>
+                                        <h2 class="bill-head" id="total">$ {{planAmount}}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main><!-- End #main -->
+<input type="hidden" id="buynowid" />
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    function displayForm(ctl) {
+        //console.log(("#form").validate());
+
+        //$("#form").validate();
+        validateForm();
+        if (!isFormValid)
+            return false;
+        $("#paymentoption").css('display', '');
+        $('#form').css('display', 'none');
+        $('#step_paymentOption').addClass('active');
+        $('#step_form').removeClass('active');
+        $(ctl).css('display', 'none');
+        $('#btnPaynow').css('display', '');
+
+        submitForm('form');
+    }
+
+    function submitForm(formID) {
+        let input = $('#' + formID + ' input');
+        let textarea = $('#' + formID + ' textarea');
+        let selects = $('#' + formID + ' select');
+        let obj = {};
+
+        input.each((ind, item) => {
+            obj[$(item).prop('name')] = $(item).val();
+        });
+
+        textarea.each((index, item) => {
+            obj[$(item).prop('name')] = $(item).val();
+        });
+
+        selects.each((index, item) => {
+            obj[$(item).prop('name')] = $(item).val();
+        });
+
+        obj['paymentThrough'] = $('.active-card').attr('data-value');
+
+        let buynowId = 0;
+
+        fetch('/submit-form', {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json; chartset=utf-8'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    buynowId = res.id;
+                    $('#buynowid').val(res.id);
+                }
+            });
+    }
+
+    function payNow() {
+        let buynowId = $('#buynowid').val();
+
+        if ($('.active-card').attr('data-value') == 'razor') {
+            razorPay(buynowId);
+        } else if ($('.active-card').attr('data-value') == 'paypal') {
+            paypal(buynowId)
+        } else if ($('.active-card').attr('data-value') == 'wire') {
+            wire(buynowId);
+        }
+    }
+
+    function razorPay(buynowId) {
+
+        fetch('/create-order', {
+            method: 'POST',
+            body: JSON.stringify({
+                buynowId: buynowId
+            }),
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                let option = {
+                    'key': 'rzp_live_YXjqTrXmVWJXyP',
+                    'order_id': res.order.id,
+                    'name': `{{reportTitle}}`,
+                    'amount': res.order.amount,
+                    'currency': 'USD',
+                    handler: function (response) {
+                        response['buynowId'] = buynowId;
+                        fetch('/complete-payment', {
+                            method: 'POST',
+                            body: JSON.stringify(response),
+                            headers: {
+                                'Content-Type': 'application/json; charset=utf-8'
+                            }
+                        }).then(res => res.json())
+                            .then(res => {
+                                console.log('payment status', res.success);
+                                if (res.success) {
+                                    window.location.href = '/payment-success/' + buynowId + "?mode=razor";
+                                } else {
+                                    window.location.href = '/payment-fail/' + buynowId + "?mode=razor";
+                                }
+                            });
+                    },
+                    'prefill': {
+                        'name': $('#fName').val() + ' ' + $('#lName').val(),
+                        'email': $('#email').val(),
+                        'contact': $('#phoneNo').val()
+                    }
+                };
+                let rz = new Razorpay(option);
+                rz.open();
+            });
+
+    }
+
+    function paypal(buynowId) {
+        fetch('/create-paypal-payment', {
+            method: 'POST',
+            body: JSON.stringify({ buynowId: buynowId }),
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                if (res && res.result.links.length > 0) {
+                    let approveLink = res.result.links.filter(l => {
+                        return l.rel == 'approve';
+                    })
+                    window.location.href = approveLink[0].href;
+                }
+            })
+    }
+
+    function wire(buynowId) {
+        fetch('/complete-wiretransfer-payment', {
+            method: 'POST',
+            body: JSON.stringify({
+                buynowId: buynowId
+            }),
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        }).then(res => res.json())
+            .then(res => {
+                if (res && res.success) {
+                    window.location.href = '/wiretransfer/' + buynowId;
+                }
+            })
+    }
+
+    $(document).ready(function () {
+        $('.radio').click(function () {
+            $('.radio').removeClass('active-card');
+            $(this).addClass('active-card');
+        });
+
+        $('#form input[type=text],input[type=email],input[type=tel]').blur(function () {
+            if ($(this).val() == '') {
+                $(this).addClass('is-invalid');
+                $(this).removeClass('is-valid')
+            } else {
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+            }
+        });
+
+        $('#form select').blur(function () {
+            if ($(this).val() == '') {
+                $(this).addClass('is-invalid');
+                $(this).removeClass('is-valid')
+            } else {
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+            }
+        });
+
+        $('#form textarea').blur(function () {
+            if ($(this).val() == '') {
+                $(this).addClass('is-invalid');
+                $(this).removeClass('is-valid')
+            } else {
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+            }
+        });
+    })
+
+    var isFormValid = true;
+    function validateForm() {
+        isFormValid = true;
+        let allinputs = $("#form input[type=text],#form input[type=email],#form input[type=tel]");
+        let allselect = $('#form select');
+        let allTextArea = $("#form textarea");
+
+        allinputs.each((ind, item) => {
+            if ($(item).val() == '') {
+                $(item).addClass('is-invalid');
+                $(item).removeClass('is-valid')
+                isFormValid = false;
+            } else {
+                $(item).removeClass('is-invalid');
+                $(item).addClass('is-valid');
+
+            }
+        });
+
+        allselect.each((ind, item) => {
+            if ($(item).val() == '') {
+                $(item).addClass('is-invalid');
+                $(item).removeClass('is-valid')
+                isFormValid = false;
+            } else {
+                $(item).removeClass('is-invalid');
+                $(item).addClass('is-valid');
+            }
+        });
+
+        allTextArea.each((ind, item) => {
+            if ($(item).val() == '') {
+                $(item).removeClass('is-valid')
+                $(item).addClass('is-invalid');
+                isFormValid = false;
+            } else {
+                $(item).removeClass('is-invalid');
+                $(item).addClass('is-valid');
+            }
+        });
+    }
+</script>

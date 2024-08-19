@@ -1,0 +1,341 @@
+<link href="/css/pr.css" rel="stylesheet" />
+<main id="blog-main" class="mt-80">
+
+    <div class="">
+        <img src="/assets/images/press_release/pr_1.webp" alt="about-us" class="img-fluid">
+    </div>
+    <div id="blog-detilas-section-main mt-5">
+        <div class="container-fluid pl-5 pr text" id="report-details-main">
+            <div class="row">
+                <div class="col-md-12 breadcrumb-custom">
+                    <div class="pt-4">
+                        <ul>
+                            <li class="mr-0">
+                                <span>
+                                    <a href="/">Home</a></span>&nbsp;<i
+                                    class="fa fa-angle-double-right"></i>
+                            </li>
+                            <li class="mr-0">
+                                <span>
+                                    <a href="/press-releases" >Press Releases</a>
+                                </span>&nbsp;<i class="fa fa-angle-double-right"></i>
+                            </li>
+                            <li class="mr-0">
+                                <h1 style="font-size: 14px;">Global {{metatitle}}</h1>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 nav-tabs-main" id="right_win">
+                    <div class="card my-4" style="padding: 20px;">
+
+                        <div class="card-header">
+                            <div class="page-title-wrapper">
+                                <h2 style="font-size: 1.75rem;" class="page-title">{{pr.title}}</h2>
+                            </div>
+                            <div class="link-main">
+                                <ul class="nav nav-tabs nav-tabs-neutral justify-content-center p-3"
+                                    data-background-color="orange">
+                                    <li class="nav-item mr-3">
+                                        <a class="nav-link" href="/industry-report/{{pr.report.slug}}">Description</a>
+                                    </li>
+                                    <li class="nav-item mr-3">
+                                        <a class="nav-link" href="/toc/{{pr.report.slug}}">Table of
+                                            Content</a>
+                                    </li>
+
+                                    <li class="nav-item mr-3">
+                                        <a class="nav-link" href="/methodology/{{pr.report.slug}}">Methodology</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="card-body sidebar-box">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="mp-post-info pb-2">{{formatdate pr.createdAt 'MMM DD, YYYY'}}
+                                        {{#if_not_eq pr.report.keyword undefined}}
+                                        <span> |
+                                            &nbsp;<b>{{pr.report.keyword}} Market Growth & Trends</b>
+                                        </span>
+                                        {{/if_not_eq}}
+                                    </div>
+                                    <div class="text-justify pr-description">{{{pr.description}}}</div>
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="page-title-wrapper">
+                                        <h6 class="page-title mt-0">The {{pr.report.keyword}} Market is segmented
+                                            as follows:
+                                        </h6>
+                                    </div>
+                                    <div>
+                                        <ul type="disk" style="line-height: 2;
+                                        font-size: 15px;">
+                                            {{#each pr.pr.segmentation}}
+                                            <li>
+                                                <b>{{title}}</b>
+                                                {{#if_not_eq subSegment undefined}}
+                                                <ul>
+                                                    {{#split_each subSegment ','}}
+                                                    <li>
+                                                        {{.}}
+                                                    </li>
+                                                    {{/split_each}}
+                                                </ul>
+                                                {{/if_not_eq}}
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <p class="text-justify" style="font-size: 15px;font-weight: 600;">
+                                        Browse {{pr.rage300}} market data Tables and {{pr.range20}} Figures
+                                        spread through
+                                        {{pr.report.noOfPages}}
+                                        Pages and in-depth TOC on&nbsp;<a
+                                            href="/toc/{{pr.report.slug}}">"{{pr.report.title}}"</a>&nbsp;<br>
+
+                                    </p>
+                                    <p
+                                        style="font-size: 15px;font-weight: 600; border-bottom: 1px solid #ef8d9e26; padding-bottom: 10px; padding-top: 10px; border-top: 1px solid #ef8d9e26; ">
+                                        <b>View detailed Research Report here - </b> <a
+                                            href="/industry-report/{{pr.report.slug}}"
+                                            target="_blank">https://www.vantagemarketresearch.com/industry-report/{{pr.report.slug}}</a>
+                                    </p>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="page-title-wrapper">
+                                        <h6 class="page-title mt-0">By Region</h6>
+                                    </div>
+                                    <div>
+                                        {{#if pr.reginalStates}}
+                                        {{{pr.reginalStates}}}
+                                        {{/if}}
+
+                                        {{#if_eq pr.reginalStates undefined}}
+                                        <ul>
+                                            <li><strong>North America</strong>
+                                                <ul>
+                                                    <li>U.S.</li>
+                                                    <li>Canada</li>
+                                                    <li>Mexico</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Europe</strong>
+                                                <ul>
+                                                    <li>UK</li>
+                                                    <li>France</li>
+                                                    <li>Germany</li>
+                                                    <li>Italy</li>
+                                                    <li>Spain</li>
+                                                    <li>Rest of Europe</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Asia Pacific</strong>
+                                                <ul>
+                                                    <li>China</li>
+                                                    <li>Japan</li>
+                                                    <li>India</li>
+                                                    <li>South Korea</li>
+                                                    <li>Southeast Asia</li>
+                                                    <li>Rest of Asia Pacific</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Latin America</strong>
+                                                <ul>
+                                                    <li>Brazil</li>
+                                                    <li>Rest of Latin America</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Middle East and Africa</strong>
+                                                <ul>
+                                                    <li>GCC Countries</li>
+                                                    <li>South Africa</li>
+                                                    <li>Rest of MEA</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        {{/if_eq}}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="page-title-wrapper">
+                                        <h6 class="page-title mt-0">About us</h6>
+                                    </div>
+                                    <div>
+                                        <p class="text-justify">
+                                            Vantage Market Research is a reputed company committed to providing high
+                                            quality data
+                                            and
+                                            market research services. The company provides quantified B2B high quality
+                                            research on
+                                            more
+                                            than 20,000 emerging markets. The company offers detailed reports on
+                                            multiple industries
+                                            including chemical materials and energy, food and beverages, healthcare,
+                                            technology,
+                                            etc.
+                                            The company comprises over 125 analysts and consultants, adding more than
+                                            1,100 market
+                                            research reports to its vast database every year. The company’s clientele
+                                            base spans
+                                            across
+                                            70% of the Global Fortune 500 companies.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="page-title-wrapper">
+                                        <h6 class="page-title mt-0">Contact us</h6>
+                                    </div>
+                                    <div>
+                                        <p class="text-justify">
+                                            Vantage Market Research<br>
+                                            6218 Georgia Avenue NW Ste 1 - 564 Washington<br>
+                                            DC 20011-5125 United States<br>
+                                            Tel: <a href="tel:+1 202 380 9727">+1 202 380 9727</a> <br>
+                                            Email: <a href="mailto:sales@vantagemarketresearch.com">
+                                                sales@vantagemarketresearch.com</a><br>
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" id="target">
+                    <div class="card my-4">
+                        <div class="card-body sidebar-box">
+                            <div class="row">
+                                <div class="col-lg-12 report-btn-main">
+                                    <div>
+                                        <a href="/pricing/{{pr.report.slug}}" type="button" rel="dofollow"
+                                            class="btn btn-block sample-button anchor"><i aria-hidden="true"
+                                                class="fa fa-shopping-cart "></i>
+                                            Proceed To Buy
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a type="button" class="btn btn-block sample-button anchor" rel="dofollow"
+                                            href="/{{pr.report.slug}}/request-sample"><i aria-hidden="true"
+                                                class="fa fa-file-text"></i>
+                                            Request Sample Report
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a type="button" class="btn btn-block customize-button anchor" rel="dofollow"
+                                            href="/{{pr.report.slug}}/customization-request"><i
+                                                class="customize-icon fa fa-list" aria-hidden="true"></i> Customization
+                                            Request</a>
+                                    </div>
+                                    <div>
+
+                                        <a type="button" class="btn btn-block request-button anchor" rel="dofollow"
+                                            href="/{{pr.report.slug}}/contact-analyst"><i
+                                                class="request-icon fa fa-share-alt" aria-hidden="true"></i>Speak To
+                                            Analyst</a>
+                                    </div>
+                                    <div>
+                                        <a type="button" class="btn btn-block queries-button anchor" rel="dofollow"
+                                            href="/{{pr.report.slug}}/inquiry-before-buying"><i
+                                                class="queries-icon fa fa-question-circle  icon-help"
+                                                aria-hidden="true"></i>
+                                            Inquiry Before Buying</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="col-md-12">
+                   
+                </div>
+                
+                <div class="col-md-12">
+                    
+                </div> -->
+
+                <!-- <div class="col-md-12 browser_report mt-4">
+
+                </div> -->
+
+                <!-- <div class="col-md-12">
+                    
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+</main><!-- End #main -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.vantagemarketresearch.com/press-release/{{slug}}"
+      },
+      "headline": "Article headline",
+      "image": [
+        "https://www.vantagemarketresearch.com/assets/images/logo/logo.webp"
+      ],
+      "datePublished": "{{createdAt}}",
+      "dateModified": "{{createdAt}}",
+      "author": {
+        "@type": "Brand",
+        "name": "Vantage Market Research",
+        "url": "https://www.vantagemarketresearch.com/about-us"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Vantage Market Research",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.vantagemarketresearch.com/assets/images/logo/logo.webp"
+        }
+      }
+    }
+    </script>
+<style>
+    .pr.text {
+        text-align: justify;
+        padding: 20px;
+    }
+
+    .alternate-table tr:nth-child(even) {
+        background-color: lightblue;
+    }
+
+    .page-title-wrapper .page-title {
+        margin-top: 0px !important;
+    }
+</style>
+{{#metasection 'indexmeta'}}
+<meta name="robots" content="noindex">
+{{/metasection}}
+<script>
+    $(document).ready(function () {
+        $('.my-4 table').addClass('table table-bordered alternate-table')
+    })
+</script>

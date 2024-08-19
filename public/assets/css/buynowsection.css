@@ -1,0 +1,66 @@
+.productcart {
+    /* background: #0d355a; */
+    border-radius: 20px;
+    margin: 0;
+    padding: 10px 30px 30px;
+    background-image: url(/assets/img/buynow_2.webp);
+    background-size: cover;
+}
+
+.productcart label,
+.productcart p {
+    color: #fff;
+}
+
+.productcart p {
+    font-size: 23px;
+}
+
+@media only screen and (max-width: 800px) {
+    .productcart p {
+        font-size: 18px;
+    }
+}
+
+.addtocart {
+    border-radius: 5.8px;
+    background-color: #13b5a9;
+    font-size: 20.2px !important;
+    font-weight: 700;
+    line-height: normal;
+    color: #fff;
+    padding: 7px 25px;
+    border: 1px solid #13b5a9;
+}
+
+.radiobtn input[type=radio]:checked+label {
+    -webkit-animation-name: blink;
+    animation-name: blink;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+.radiobtn label {
+    display: block;
+    color: #fff;
+    border-radius: 12px;
+    padding: 8px 10px 8px 35px;
+    border: 2px solid #0d355a;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.radiobtn {
+    display: block;
+    position: relative;
+}
+
+.radiobtn input[type=radio] {
+    position: absolute;
+    top: 16.2px;
+    left: 16px;
+    z-index: 100;
+}

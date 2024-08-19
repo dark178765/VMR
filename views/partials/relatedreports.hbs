@@ -1,0 +1,21 @@
+<ul class="latest-posts">
+    {{#each relatedReports}}
+    <li>
+        <div class="post-thumb">
+            <a href="/industry-report/{{slug}}">
+                <img class="img-fluid"
+                    src="https://cdn.vantagemarketresearch.com/report/thumbnail/{{getUrl keyword false}}-Market.webp"
+                    alt="{{keyword}} related report">
+            </a>
+        </div>
+        <div class="post-info">
+            <h4>
+                <a href="/industry-report/{{slug}}">{{keyword}} Market</a>
+            </h4>
+            <p><img class="img-fluid" src="/assets/img/icon/icon-22.svg" alt="">{{formatdate
+                createdAt 'MMM DD, YYYY'}}
+            </p>
+        </div>
+    </li>
+    {{/each}}
+</ul>

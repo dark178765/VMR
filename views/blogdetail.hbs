@@ -1,0 +1,98 @@
+<section class="course-content" style="padding-top: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+
+                <!-- Blog Post -->
+                <div class="blog">
+                    <div class="blog-image">
+                        {{#if_eq blog.writeupId undefined}}
+                            <img src="https://cdn.vantagemarketresearch.com/blog/cover/default-blog.webp" style="width: 100%;max-height: 283px;" />
+                        {{/if_eq}}
+                        {{#if_not_eq blog.writeupId undefined}}
+                        <img class="img-fluid"
+                            src="https://cdn.vantagemarketresearch.com/report/cover/{{getUrl blog.writeupId.reportTitle false}}-Market.webp"
+                            alt="{{blog.writeupId.reportTitle}}">
+                        {{/if_not_eq}}
+                        <h1 class="blog-title">{{blog.title}}</h1>
+                    </div>
+                    <div class="blog-info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                <li>
+                                    <div class="post-author">
+                                        <i class="fa fa-globe"></i> <span>Vantage Market Research</span></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="post-author">
+                                        <i class="fa fa-calendar"></i>&nbsp; <span>{{formatdate
+                                            blog.createdAt 'MMM DD, YYYY'}}</span>
+                                    </div>
+                                </li>
+                                <li><img class="img-fluid" src="/assets/img/icon/icon-23.svg"
+                                        alt="">{{blog.writeupId.reportTitle}} Market</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="blog-content">
+                        <div class="card">
+                            <div class="card-body">
+                                {{{blog.description}}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Blog Post -->
+
+            </div>
+
+            <!-- Blog Sidebar -->
+            <div class="col-lg-3 col-md-12 sidebar-right theiaStickySidebar">
+
+                <!-- Latest Posts -->
+                <div class="card post-widget blog-widget">
+                    <div class="card-header">
+                        <h4 class="card-title">Related Reports</h4>
+                    </div>
+                    <div class="card-body">
+                        {{> relatedreports relatedReports=blog.relatedReports}}
+                    </div>
+                </div>
+                <!-- /Latest Posts -->
+
+            </div>
+            <!-- /Blog Sidebar -->
+
+        </div>
+    </div>
+</section>
+<!-- /Blog Details -->
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "{{blog.title}}",
+      "image": [
+        "https://cdn.vmr.biz/report/cover/{{getUrl blog.writeupId.reportTitle false}}-Market.webp"
+       ],
+      "datePublished": "{{formatdate blog.createdAt 'MMM DD, YYYY'}}",
+      "author": [{
+          "@type": "Organization",
+          "name": "Vantage Market Research",
+          "url": "{{host}}"
+        }]
+    }
+    </script>
+
+<style>
+    .blog a {
+        color: #F66962;
+    }
+</style>
+{{#metasection 'blogindex'}}
+<meta name="robots" content="index">
+<meta name="googlebot" content="index">
+{{/metasection}}

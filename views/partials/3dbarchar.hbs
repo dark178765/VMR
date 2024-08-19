@@ -1,0 +1,37 @@
+<script src="https://x3dom.org/release/x3dom.js"></script>
+<link rel="stylesheet" href="https://x3dom.org/release/x3dom.css" />
+<script src="https://raw.githack.com/jamesleesaunders/d3-x3d/master/dist/d3-x3d.js"></script>
+<div id="chartholder"></div>
+<script>
+    var chartHolder = d3.select("#chartholder");
+
+    var revenue2021 = parseFloat('{{ Revenue_2021 }}'.replace(/USD/gmi, '').replace(/Billion/gmi, ''));
+    var cagr = parseFloat('{{ CAGR_Revenue }}'.replace(/%/gmi, ''));
+    var MorB = '{{ Revenue_2021 }}'.replace(/usd/gmi, '').replace(/$/gmi, '').replace(new RegExp(revenue2021, 'gmi'), '').trim();
+    var dt = [];
+
+
+
+    for (var i = 0; i < 8; i++) {
+        if (dt.length > 0) {
+            dt.push({
+                key: `${(2021 + i)}`,
+                value: (dt[i - 1].value * (cagr / 100)) + dt[i - 1].value
+            });
+        } else {
+            dt.push({
+                key: `${(2021 + i)}`,
+                value: revenue2021
+            })
+        }
+    }
+
+    var data = [{
+        key: 'Global',
+        values: [...dt]
+    }];
+
+    var myChart = d3.x3d.chart.barChartMultiSeries();
+    chartHolder.datum(data).call(myChart);
+
+</script>

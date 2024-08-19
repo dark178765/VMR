@@ -1,0 +1,216 @@
+<style>
+    .inner-banner {
+        background: url(https://cdn.vmr.biz/report/cover/{{reportImage}}-Market.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .inner-banner:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: initial;
+    }
+</style>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Request Sample Report for {{pr.report.keyword}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{> popupform}}
+            </div>
+        </div>
+    </div>
+</div>
+{{#script_section 'modal'}}
+<script>
+    $(document).ready(function () {
+        fetch('/refresh-captcha/7').then(res => res.json()).then(res => {
+            $('#captchaImage').attr('src', res.captcha);
+        });
+
+        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+        setTimeout(() => {
+            myModal.show();
+        }, 15000);
+    });
+</script>
+{{/script_section}}
+<!-- Inner Banner -->
+<div class="inner-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="instructor-wrap border-bottom-0 m-0">
+                    <span class="web-badge mb-3">{{pr.report.childCategory.title}}</span>
+                </div>
+                <h1 class="report-title">{{pr.title}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Inner Banner -->
+
+<!-- Course Content -->
+<section class="page-content course-sec">
+    <div class="container">
+        <div class="row">
+            <div class="COL-MD-12">
+                <div class="course-info d-flex align-items-center border-bottom-0 m-0 p-0">
+                    <div class="cou-info">
+                        <i class="fa fa-globe"></i>
+                        <p>Vantage Market Research</p>
+                    </div>
+                    <div class="cou-info">
+                        <i class="fa fa-calendar"></i>
+                        <p>{{formatdate pr.createdAt 'MMM DD, YYYY'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Overview -->
+                <div class="card overview-sec">
+                    <div class="card-body pr-content">
+                        {{{pr.description}}}
+                    </div>
+                </div>
+                <!-- /Overview -->
+
+                {{#if_not_eq pr.report null}}
+                <div class="card" style="background-color: #003844;">
+                    <div class="card-header" style="color:#fff;font-size:1.2rem; background-color:inherit;">
+                        {{pr.report.title}}
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12" style="color: #fff;;">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="border-top: none !important; background-color:inherit;">
+                        <a class="btn btn-sm btn-light" href="/industry-report/{{pr.report.slug}}"
+                            style="width: fit-content;color:#000;">Read Full Report</a>
+                    </div>
+                </div>
+                {{/if_not_eq}}
+            </div>
+
+            <div class="col-lg-4 sidebar-right theiaStickySidebar">
+                <div class="sidebar-sec">
+
+                    <!-- Video -->
+                    <div class="video-sec vid-bg">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="video-details">
+                                    <div class="course-fee">
+                                        <h2>{{pr.report.keyword}} Market</h2>
+                                    </div>
+                                    <div class="row gx-2">
+                                        <div class="col-md-6">
+                                            <a href="/industry-report/{{pr.report.slug}}" class="btn btn-wish w-100"><i
+                                                    class="feather-heart"></i> Read Report</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="/toc/{{pr.report.slug}}" rel="noindex"
+                                                class="btn btn-wish w-100"><i class="feather-share-2"></i> Read TOC</a>
+                                        </div>
+                                    </div>
+                                    <a href="/{{pr.report.slug}}/request-sample" rel="noindex"
+                                        class="btn btn-enroll w-100">Request
+                                        Sample</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Video -->
+                    <div class="card post-widget blog-widget">
+                        <div class="card-header" style="display: flex; justify-content: space-between;">
+                            <h4 class="card-title">Related Reports</h4>
+                            <a class="btn btn-sm btn-primary" href="/all-reports">All Reports</a>
+                        </div>
+                        <div class="card-body">
+                            {{> relatedreports relatedReports=pr.relatedReports}}
+                        </div>
+                    </div>
+                    <div class="card category-widget blog-widget">
+                        <div class="card-header" style="display: flex;justify-content: space-between">
+                            <h4 class="card-title">Recent Pressrelease</h4>
+                            <a class="btn btn-sm btn-primary" href="/press-releases">All Pressrelease</a>
+                        </div>
+                        <div class="card-body">
+                            <ul class="categories pr-list">
+                                {{#each pr.recenetPressrelease}}
+                                <li><a href="/press-release/{{slug}}"><i class="fas fa-angle-right"></i>{{title}}</a>
+                                    <div class="post-left">
+                                        <ul>
+                                            <li><img class="img-fluid" src="/assets/img/icon/icon-22.svg"
+                                                    alt="">{{formatdate createdAt 'MMM DD, YYYY'}}</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Pricing Plan -->
+<style>
+    .report-title {
+        color: #eee;
+        background: rgba(64, 59, 59, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.2px);
+        -webkit-backdrop-filter: blur(6.2px);
+        border: 1px solid rgba(64, 59, 59, 0.3);
+        padding-left: 15px;
+        mix-blend-mode: difference;
+    }
+
+    .pr-content {
+        text-align: justify;
+    }
+
+    .pr-list li {
+        border-bottom: 1px solid #dfdfdf;
+        padding-bottom: 10px;
+    }
+</style>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "{{pr.title}}",
+      "image": [
+        "https://www.vantagemarketresearch.com/assets/img/reports/cover/{{reportImage}}-Market.webp"
+       ],
+      "datePublished": "{{formatdate pr.createdAt 'MMM DD, YYYY'}}",
+      "author": [{
+          "@type": "Organization",
+          "name": "Vantage Market Research",
+          "url": "https://www.vantagemarketresearch.com"
+        }]
+    }
+</script>
+
+{{#if_not_eq host 'https://www.vantagemarketresearch.com'}}
+{{#metasection 'noindex'}}
+<meta name="robots" content="index">
+{{/metasection}}
+{{/if_not_eq}}

@@ -1,0 +1,322 @@
+<link href="/css/form.css" rel="stylesheet" />
+<main id="aboutus-main">
+    <div class="pt-5">
+        <img src="/assets/images/contact-us/Contact Us_2.jpg" alt="about-us" class="img-fluid banner-img">
+    </div>
+    <div class="container-fluid" style="background-color: #0068ad;">
+        <div class="row">
+            <div class="col">
+
+                <section id="contact" class="contact">
+                    <div class="container">
+
+                        <div class="section-title">
+                            <h2 style="color: #fff; font-familty: 'Poppins';">{{title}}</h2>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                {{#if reportUrl}}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a class="btn btn-dark" target="_blank"
+                                            href="/industry-report/{{reportUrl}}">Read Full Report</a>
+                                        <a class="btn btn-warning" target="_blank" href="/toc/{{reportUrl}}">Read
+                                            TOC</a>
+                                    </div>
+                                </div>
+                                {{/if}}
+                                <div class="row">
+                                    {{#if_not_eq formType 3}}
+                                    <div class="col-md-12 mb-3">
+                                        <div class="info-box p-2"
+                                            style="font-family: 'Poppins' !important; font-size: 24px;color:#fff; text-align: justify; line-height: 45px;">
+                                            {{reportTitle}}
+                                        </div>
+                                    </div>
+                                    {{/if_not_eq}}
+                                    <div class="col-md-6">
+                                        <div class="info-box">
+                                            <i class="bx bx-envelope"></i>
+                                            <h3>Email Us</h3>
+                                            <p>contact@vantagemarketresearch.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="info-box">
+                                            <i class="bx bx-phone-call"></i>
+                                            <h3>Call Us</h3>
+                                            <p>India - +91 20-46748502</p>
+                                            <p>US OFFICE NO - +1 (202) 380-9727</p>
+                                            <p>Toll Free - +1 (877) 500-9070</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="info-box">
+                                            <h3>Address</h3>
+                                            <p style="text-align: justify;"><b>Asia Pacific - </b>
+                                                C2-401, Kamdhenu Jasmine,<br /> Near State Bank of India,<br /> Govind
+                                                Garden Chowk,
+                                                Pimple Saudagar, Pune 411 027
+                                            </p>
+                                            <hr />
+                                            <p style="text-align: justify;">
+                                                <b>Europe -</b>
+                                                6218 Georgia Avenue <br />NW Ste 1 - 564 Washington, DC <br />20011-5125
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-6">
+                                <form class="php-email-form" name="enquiry" id="frm_{{formType}}">
+                                    {{#if_not_eq reportId undefined}}
+                                    <input type="hidden" name="reportId" value="{{reportId}}" />
+                                    <input type="hidden" name="title" value="{{reportTitle}}" />
+                                    <input type="hidden" name="reportUrl" value="{{reportUrl}}" />
+                                    {{/if_not_eq}}
+                                    <input type="hidden" name="formType" value="{{formType}}" />
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" name="firstName" class="form-control" id="name"
+                                                placeholder="Full Name" message='Full Name is required' required>
+                                        </div>
+
+                                        <div class="col-md-12 form-group mt-3 mt-md-0">
+                                            <input type="email" class="form-control" name="businessEmail"
+                                                id="businessEmail"
+                                                placeholder="Business Email ( Please avoid generic email like g-mail/yahoo )"
+                                                message="Email is required" required>
+                                        </div>
+                                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                                            <select class="form-control" name="country" id="country"
+                                                style="font-size: 14px;" message="Please select country" required>
+                                                <option value="">Select country</option>
+                                                {{#each countries}}
+                                                <option value="{{name}}">
+                                                    {{name}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                                            <input type="text" class="form-control" name="phNo" id="phNo"
+                                                mask="(000) 000 00 00" placeholder="(000) 000 00 00"
+                                                message="Phone Number is required" required>
+                                        </div>
+                                        <div class="col-md-12 form-group mt-3 mt-md-0">
+                                            <input type="text" class="form-control" name="jobTitle" id="jobTitle"
+                                                placeholder="Job Title" message="Job Title is required" required>
+                                        </div>
+                                        <div class="col-md-12 form-group mt-3 mt-md-0">
+                                            <input type="text" class="form-control" name="company" id="company"
+                                                placeholder="Company name" message="Company Name is required" required>
+                                        </div>
+                                        <div class="col-md-12 form-group mt-12 mt-md-0">
+                                            <textarea class="form-control" name="comment" rows="5"
+                                                placeholder="To receive personalized service, please share your research needs"
+                                                message="Comment is required" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <img src="{{captcha}}" class="captcha-img" />
+                                            <img src="/assets/images/refresh.png" onclick="jsRefreshCaptcha()"
+                                                style="width: 32px; height:32px;" />
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input class="form-inline form-control" id="varification" name="captcha"
+                                                message="Captcha is required" required>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="validation-errors"></div>
+                                            <button class="btn btn-outline-primary float-end"
+                                                onclick="submitForm('frm_{{formType}}', this)" type="button">
+                                                Submit</button>
+
+                                        </div>
+                                    </div>
+
+                                    {{!-- <div class="my-3" *ngIf="isSuccess || errorMsg">
+                                        <div [ngClass]="{'text-success': isSuccess,'text-danger':errorMsg}">
+                                            {{errorMsg
+                                            || "Your message has been sent. Thank
+                                            you!"}}</div>
+                                    </div> --}}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    function submitForm(formID, btn) {
+
+        let ve = validateForm(formID);
+        if (!ve) {
+            let input = $('#' + formID + ' input');
+            let textarea = $('#' + formID + ' textarea');
+            let selects = $('#' + formID + ' select');
+            let obj = {};
+
+            input.each((ind, item) => {
+                obj[$(item).prop('name')] = $(item).val();
+            });
+
+            textarea.each((index, item) => {
+                obj[$(item).prop('name')] = $(item).val();
+            });
+
+            selects.each((index, item) => {
+                obj[$(item).prop('name')] = $(item).val();
+            });
+
+            $(btn).text("Processing");
+            $(btn).prop('disabled', true);
+            fetch('/form/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(obj)
+            }).then(res => res.json())
+                .then(res => {
+
+                    if (res.success && res.success == true) {
+                        window.location.href = (res.reportUrl ? '/' + res.reportUrl : '') + '/' + res.formType + '/thank-you';
+                    } else if (res.validationError && res.validationError.length > 0) {
+                        $(btn).text("Submit");
+                        $(btn).prop('disabled', false);
+                        let validations = res.validationError;
+                        if (validations && validations.length > 0) {
+                            $('.validation-errors').addClass('alert alert-datnger');
+
+                            let html = '<ul>';
+                            validations.forEach(item => {
+                                html += `<li>${item.messgae}</li>`;
+                            });
+                            html += '</ul>';
+
+                            $('.validation-errors').html('');
+                            $('.validation-errors').html(html);
+                        }
+                    } else if (res.message) {
+                        $(btn).text("Submit");
+                        $(btn).prop('disabled', false);
+                        $("#varification").after(`<span class="vm">Invalid Captcha</span>`);
+                    } else {
+                        $(btn).text("Submit");
+                        $(btn).prop('disabled', false);
+                    }
+                });
+        }
+    }
+
+    function validateForm(formID) {
+
+        let allinputs = $('#' + formID + ' input');
+        let allSelect = $('#' + formID + ' select');
+        let textArea = $('#' + formID + ' textarea');
+
+        let validationError = false;
+
+        $('span[class="vm"]').remove();
+
+
+        allinputs.each((ind, item) => {
+            if ($(item).attr('required') && $(item).val() == '') {
+                $(item).after(`<span class="vm">${$(item).attr('message')}</span>`);
+                validationError = true;
+            }
+        });
+
+        allSelect.each((ind, item) => {
+            if ($(item).attr('required') && $(item).val() == '') {
+                $(item).after(`<span class="vm">${$(item).attr('message')}</span>`);
+                validationError = true;
+            }
+        });
+
+        if ($(textArea).val() == '') {
+            $(textArea).after(`<span class="vm">${$(textArea).attr('message')}</span>`);
+        }
+
+        return validationError;
+    }
+
+    $('#frm_{{formType}} input').change(function () {
+        if ($(this).attr('required') && $(this).val() !== '') {
+            $(this).next('.vm').remove();
+        }
+    });
+
+    $('#frm_{{formType}} select').change(function () {
+        if ($(this).attr('required') && $(this).val() !== '') {
+            $(this).next('.vm').remove();
+        }
+    });
+
+    function jsRefreshCaptcha() {
+        fetch('/refresh-captcha/' + $('input[name=formType]').val(), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                $('.captcha-img').attr('src', res.captcha);
+            });
+    }
+</script>
+<style>
+    .vm {
+        color: red;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .info-box {
+        background-color: inherit;
+    }
+
+    .info-box h3 {
+        color: #fff !important;
+    }
+
+    .contact .info-box i {
+        color: #fff !important;
+        border-color: #fff !important;
+    }
+
+    .info-box p {
+        color: #fff !important;
+    }
+
+    input {
+        border: 1px solid black !important;
+    }
+
+    textarea {
+        border: 1px solid black !important;
+    }
+
+    select {
+        border: 1px solid black !important;
+    }
+</style>
+
+{{#metasection 'noindex'}}
+<meta name="robots" content="noindex">
+{{/metasection}}

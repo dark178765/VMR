@@ -1,0 +1,83 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="breadcrumb-list">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item">{{Keyword}} Market</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Breadcrumb -->
+
+<!-- Breadcrumb -->
+<div class="page-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <h1 class="mb-0">{{Keyword}} Market</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="container">
+        {{#if_eq alreadySubmitted false}}
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Name</label>
+                    <div class="form-control">{{fullName}}</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    <div class="form-control">{{emailID}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Company</label>
+                    <div class="form-control">{{company}}</div>
+                </div>
+            </div>
+        </div>
+        <div id="testimonial"></div>
+        <script defer src="/assets/js/component/testimonialform.js"></script>
+        {{/if_eq}}
+
+        {{#if_eq alreadySubmitted true}}
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Your testimonial/review already has been submitted.</h3>
+            </div>
+        </div>
+        {{/if_eq}}
+    </div>
+</div>
+<style>
+    button.star {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 36px;
+}
+.on {
+  color: #ff735a;
+}
+.off {
+  color: #ccc;
+}
+</style>

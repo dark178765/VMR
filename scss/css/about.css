@@ -1,0 +1,21 @@
+.sub-content h2 {
+  font-size: 24px;
+  color: #398cbf;
+  font-weight: 700;
+  margin: .6rem 0 1.5rem; }
+.sub-content h3 {
+  font-size: 18px;
+  color: #444;
+  font-weight: 600;
+  margin: 0 0 .5rem;
+  text-decoration: underline; }
+.sub-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  text-align: justify; }
+
+.about-details {
+  padding: 1.5rem 0 2rem; }
+
+/*# sourceMappingURL=about.css.map */
