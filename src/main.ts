@@ -260,7 +260,7 @@ async function bootstrap() {
   });
 
   app.enableCors({
-    origin: ['https://www.vantagemarketresearch.com', 'https://vpoint.vantagemarketresearch.com']
+    origin: ['https://www.vantagemarketresearch.com', 'https://vpoint.vantagemarketresearch.com', 'https://p010824-nestjs.7c2g7o.easypanel.host' ]
   });
 
   app.use(session({
